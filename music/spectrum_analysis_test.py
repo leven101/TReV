@@ -68,8 +68,6 @@ class SpectrumAnalyzer:
             rate=self.wf.getframerate(),
             output=True
         )
-        self.bass_signal_start_index = 1100
-        self.bass_signal_end_index = 1130
 
 
     def initMicrophone(self):
@@ -86,7 +84,7 @@ class SpectrumAnalyzer:
         block = self.wf.readframes(INPUT_FRAMES_PER_BLOCK)
         self.stream.write(block)
         count = len(block) / 2
-        format = "%dh" % (count)
+        format = "%dh" % count
         shorts = struct.unpack(format, block)
         return np.array(shorts)
 
@@ -144,22 +142,18 @@ class SpectrumAnalyzer:
 
         return f.tolist(), (np.absolute(Pxx)).tolist()
 
-
     def get_ratio_signal(self, spectrum, decibels):
         if self.bass_signal_start_index == -1:
-            self.bass_signal_start_index = spectrum.index(0)
-            self.bass_signal_end_index = spectrum.index(1020)
+            self.bass_signal_start_index = spectrum.index(20)
+            self.bass_signal_end_index = spectrum.index(400)
         if self.treble_signal_start_index == -1:
-            self.bass_signal_start_index = spectrum.index(0)
-            self.bass_signal_end_index = spectrum.index(1020)
+            self.treble_signal_start_index = spectrum.index(1500)
+            self.treble_signal_end_index = spectrum.index(4000)
         bass_signal = decibels[self.bass_signal_start_index:self.bass_signal_end_index]
-        rest_signal = decibels[self.bass_signal_end_index:]
-        total_bass_decibals = np.sum(bass_signal)
-        total_rest_decibals = np.sum(rest_signal)
-        bass_ratio = total_bass_decibals / (total_rest_decibals + total_bass_decibals)
-        treble_ratio = total_rest_decibals / (total_rest_decibals + total_bass_decibals)
+        treble_singal = decibels[self.treble_signal_start_index:self.treble_signal_end_index]
+        bass_ratio = np.sum(bass_signal) / np.sum(decibels)
+        treble_ratio = np.sum(treble_singal) / np.sum(decibels)
         return bass_ratio, treble_ratio
-
 
     def mainLoop(self):
         batch_size = 10.
@@ -176,8 +170,8 @@ class SpectrumAnalyzer:
             except IOError:
                 continue
             f, Pxx = self.get_spectrum(data)
-            # get signal for TERV/EERV
-            bass_signal, rest_signal = self.get_ratio_signal(f, Pxx)
+
+            bass_signal, rest_signal = self.get_ratio_signal(f, Pxx) # get signal for TERV/EERV
             cnt += 1
             if cnt % int(batch_size) == 0:
                 print('{} : {}'.format(agr_bass / batch_size, agr_tre / batch_size))
@@ -187,10 +181,47 @@ class SpectrumAnalyzer:
             agr_tre += rest_signal
             # print('{} : {}'.format(bass_signal, rest_signal))
             # self.graphics.visualize_ratio(bass_signal, rest_signal, 0.1)
+
             self.specItem.plot(x=f, y=Pxx, clear=True)
             QtGui.QApplication.processEvents()
 
+    def timed_window_ratios(self):
+        import time
+        time_delay = 2
+        agr_bass = 0
+        agr_tre = 0
+        t_end = time.time() + time_delay
+        while 1:
+            try:
+                # data = self.readMicData()
+                data = self.readAndPlayWavData()
+            except IOError:
+                continue
+            f, Pxx = self.get_spectrum(data)
+            bass_signal, rest_signal = self.get_ratio_signal(f, Pxx)
+            agr_bass += bass_signal
+            agr_tre += rest_signal
+            self.specItem.plot(x=f, y=Pxx, clear=True)
+            QtGui.QApplication.processEvents()
+            if time.time() > t_end:
+                print('{} : {}'.format(agr_bass, agr_tre))
+                # time.sleep(1)
+                agr_bass = 0
+                agr_tre = 0
+                t_end = time.time() + time_delay
+
+    def visualize_only(self):
+        while 1:
+            try:
+                data = self.readMicData()
+                # data = self.readAndPlayWavData()
+            except IOError:
+                continue
+            f, Pxx = self.get_spectrum(data)
+            self.specItem.plot(x=f, y=Pxx, clear=True)
+            QtGui.QApplication.processEvents()
 
 if __name__ == '__main__':
     sa = SpectrumAnalyzer(False)
-    sa.mainLoop()
+    sa.visualize_only()
+    # sa.mainLoop()
