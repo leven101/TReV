@@ -1,7 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-
 class HeatMap:
     def __init__(self):
         plt.ion()

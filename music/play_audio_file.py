@@ -30,6 +30,6 @@ class AudioFile:
         self.p.terminate()
 
 # Usage example for pyaudio
-a = AudioFile("/Users/alevenberg/Documents/erv/prototype/sound/dt_16bars_102rap.wav")
+a = AudioFile("/Users/alevenberg/Documents/trev/prototype/sound/dt_16bars_102rap.wav")
 a.play()
 a.close()

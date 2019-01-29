@@ -41,7 +41,7 @@ class SpectrumAnalyzer:
         self.pa = pyaudio.PyAudio()
         self.use_wav = use_wav
         if use_wav:
-            self.initSpeakers('/Users/alevenberg/Documents/erv/prototype/sound/dt_16bars_102rap.wav')
+            self.initSpeakers('/Users/alevenberg/Documents/trev/prototype/sound/dt_16bars_102rap.wav')
         else:
             self.initMicrophone()
         self.initUI()
@@ -213,15 +213,17 @@ class SpectrumAnalyzer:
     def visualize_only(self):
         while 1:
             try:
-                data = self.readMicData()
-                # data = self.readAndPlayWavData()
+                # data = self.readMicData()
+                data = self.readAndPlayWavData()
             except IOError:
                 continue
             f, Pxx = self.get_spectrum(data)
             self.specItem.plot(x=f, y=Pxx, clear=True)
             QtGui.QApplication.processEvents()
 
+
 if __name__ == '__main__':
-    sa = SpectrumAnalyzer(False)
-    sa.visualize_only()
+    sa = SpectrumAnalyzer(True)
+    sa.timed_window_ratios()
+    # sa.visualize_only()
     # sa.mainLoop()
