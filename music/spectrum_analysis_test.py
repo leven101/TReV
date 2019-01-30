@@ -37,11 +37,11 @@ LR = "l"
 
 
 class SpectrumAnalyzer:
-    def __init__(self, use_wav):
+    def __init__(self, wav_path=None):
         self.pa = pyaudio.PyAudio()
-        self.use_wav = use_wav
-        if use_wav:
-            self.initSpeakers('/Users/alevenberg/Documents/trev/prototype/sound/dt_16bars_102rap.wav')
+        self.use_wav = wav_path is not None
+        if self.use_wav:
+            self.initSpeakers(wav_path)
         else:
             self.initMicrophone()
         self.initUI()
@@ -68,7 +68,6 @@ class SpectrumAnalyzer:
             rate=self.wf.getframerate(),
             output=True
         )
-
 
     def initMicrophone(self):
         device_index = self.find_input_device()
@@ -139,7 +138,6 @@ class SpectrumAnalyzer:
         f = np.fft.fftfreq(N, T)
         Pxx = np.fft.fftshift(Pxx)
         f = np.fft.fftshift(f)
-
         return f.tolist(), (np.absolute(Pxx)).tolist()
 
     def get_ratio_signal(self, spectrum, decibels):
@@ -187,16 +185,18 @@ class SpectrumAnalyzer:
 
     def timed_window_ratios(self):
         import time
-        time_delay = 2
+        time_delay = 5  # seconds
         agr_bass = 0
         agr_tre = 0
         t_end = time.time() + time_delay
+        ratios = []
         while 1:
             try:
                 # data = self.readMicData()
                 data = self.readAndPlayWavData()
             except IOError:
                 continue
+            if len(data) == 0: break
             f, Pxx = self.get_spectrum(data)
             bass_signal, rest_signal = self.get_ratio_signal(f, Pxx)
             agr_bass += bass_signal
@@ -205,10 +205,13 @@ class SpectrumAnalyzer:
             QtGui.QApplication.processEvents()
             if time.time() > t_end:
                 print('{} : {}'.format(agr_bass, agr_tre))
-                # time.sleep(1)
+                ratios.append((agr_bass, agr_tre))
                 agr_bass = 0
                 agr_tre = 0
                 t_end = time.time() + time_delay
+        ratios.append((agr_bass, agr_tre))
+        return ratios
+
 
     def visualize_only(self):
         while 1:
@@ -221,9 +224,34 @@ class SpectrumAnalyzer:
             self.specItem.plot(x=f, y=Pxx, clear=True)
             QtGui.QApplication.processEvents()
 
+import csv
+
+
+def load_saved_data(fname):
+    import pandas as pd
+    data = pd.read_csv('./out/{}.csv'.format(fname), sep=' ', header=None)
+    return data.values
+    # with open('./out/{}.csv'.format(fname), 'rb') as fin:
+    #     fcsv = csv.reader(fin, delimiter=' ', quoting=csv.QUOTE_NONNUMERIC)
+    #     return map(tuple, fcsv)
+
+
+def save_control_data(fname, ratios):
+    time_delay = 5
+    with open('./out/{}.csv'.format(fname), 'w') as fout:
+        fscv = csv.writer(fout, delimiter=' ', quoting=csv.QUOTE_NONNUMERIC)
+        fscv.writerow(['top', 'bottom', 'exposure'])
+        for ratio in ratios:
+            # fscv.writerow(ratio)
+            fscv.writerow([ratio[0], ratio[1], time_delay])
+
 
 if __name__ == '__main__':
-    sa = SpectrumAnalyzer(True)
-    sa.timed_window_ratios()
+    # path = '/Users/alevenberg/Documents/trev/prototype/sound/0452.wav'
+    path = '/Users/alevenberg/Documents/trev/prototype/sound/dt_16bars_102rap.wav'
+    # sa = SpectrumAnalyzer(path)
+    # ratios = sa.timed_window_ratios()
+    ratios = load_saved_data('raw-values')
+    save_control_data('test-1', ratios)
     # sa.visualize_only()
     # sa.mainLoop()
