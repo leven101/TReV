@@ -14,6 +14,7 @@ import sys
 import numpy as np
 import wave
 import heatmap
+import csv
 
 import pyqtgraph as pg
 from pyqtgraph.Qt import QtGui, QtCore
@@ -212,7 +213,6 @@ class SpectrumAnalyzer:
         ratios.append((agr_bass, agr_tre))
         return ratios
 
-
     def visualize_only(self):
         while 1:
             try:
@@ -223,8 +223,6 @@ class SpectrumAnalyzer:
             f, Pxx = self.get_spectrum(data)
             self.specItem.plot(x=f, y=Pxx, clear=True)
             QtGui.QApplication.processEvents()
-
-import csv
 
 
 def load_saved_data(fname):
@@ -248,10 +246,10 @@ def save_control_data(fname, ratios):
 
 if __name__ == '__main__':
     # path = '/Users/alevenberg/Documents/trev/prototype/sound/0452.wav'
-    path = '/Users/alevenberg/Documents/trev/prototype/sound/dt_16bars_102rap.wav'
-    # sa = SpectrumAnalyzer(path)
-    # ratios = sa.timed_window_ratios()
-    ratios = load_saved_data('raw-values')
-    save_control_data('test-1', ratios)
+    path = './audio-files/dt_16bars_102rap.wav'
+    sa = SpectrumAnalyzer(path)
+    ratios = sa.timed_window_ratios()
+    # ratios = load_saved_data('raw-values')
+    # save_control_data('test-1', ratios)
     # sa.visualize_only()
     # sa.mainLoop()

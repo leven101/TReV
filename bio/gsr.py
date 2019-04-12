@@ -73,11 +73,17 @@ def count_peaks(gsr_map):
     gsr_map['PEAKS'] = peak_coords
 
 
+def run_analysis(flist):
+    for fcsv in flist:
+        exp_name, data_map = load_esense_csv(fcsv)
+        avg_scr_peaks(data_map)
+        count_peaks(data_map)
+
+
 if __name__ == '__main__':
     setup_logging()
     parent_dir = '/Users/alevenberg/Downloads/eSense_Skin Response_20190409'
     flist = [os.path.join(parent_dir, x) for x in os.listdir(parent_dir)]
-    exp_name, data_map = load_esense_csv(flist[0])
-    avg_scr_peaks(data_map)
-    count_peaks(data_map)
+    run_analysis(flist)
+
 
