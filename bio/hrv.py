@@ -46,6 +46,6 @@ def run_analysis(flist):
 if __name__ == '__main__':
     setup_logging()
     parent_dir = '/Users/abby/Downloads/trev/eSense_Pulse_20190414'
-    flist = [os.path.join(parent_dir, x) for x in os.listdir(parent_dir)]
+    flist = [os.path.join(parent_dir, x) for x in os.listdir(parent_dir) if x.endswith('.csv')]
     logging.info('Loaded {} experiments'.format(flist))
     run_analysis(flist)
