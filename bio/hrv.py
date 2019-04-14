@@ -32,14 +32,14 @@ def run_analysis(flist):
         exp_name, data_map = load_esense_csv(fcsv)
         logging.info('Processing experiment {}'.format(exp_name))
         exp_type = 'bl' if 'Baseline-' in exp_name else 'trev'
-        total_stats[exp_type]['count'] += 1
+        total_stats[exp_type]['exp_cnt'] += 1
         for var in var_to_select:
             total_stats[exp_type][var] += data_map[var]
     print(total_stats)
     for exp_type in total_stats:
         print('Exp Type: {}'.format(exp_type))
         for var in var_to_select:
-            avg = total_stats[exp_type][var] / total_stats[exp_type]['count']
+            avg = total_stats[exp_type][var] / total_stats[exp_type]['exp_cnt']
             print('\t{}: {}'.format(var, avg))
 
 

@@ -4,7 +4,7 @@ import numpy as np
 import logging
 from collections import defaultdict
 
-
+var_to_select = ['AVERAGE OF SESSION', 'TOTAL SCR', '% of SCR OF SESSION']
 def setup_logging():
     log_format = '%(asctime)s %(levelname)-7s %(name)-20s:%(message)s'
     logging.basicConfig(level=logging.INFO, format=log_format)
@@ -18,8 +18,10 @@ def load_esense_csv(path):
     with open(path, 'r') as fin:
         fcsv = csv.reader(fin, delimiter=';')
         for i, row in enumerate(fcsv):
-            if i == 1:
+            if row[0] == 'RECORDING NAME':
                 exp_name = str(row[1])
+            elif row[0] in var_to_select:
+                data_map[row[0]] = float(row[1].split()[0].strip('%'))
             elif i == 24:
                 headers = row
             elif i > 24:
@@ -74,8 +76,7 @@ def count_peaks(gsr_map):
 
 
 def run_analysis(flist):
-    peak_stats = {'bl': {'exp_cnt': 0.0, 'peak_cnt': 0.0, 'amp': 0.0},
-                  'trev': {'exp_cnt': 0.0, 'peak_cnt': 0.0, 'amp': 0.0}}
+    peak_stats = {'bl': defaultdict(float), 'trev': defaultdict(float)}
     for fcsv in flist:
         exp_name, data_map = load_esense_csv(fcsv)
         logging.info('Processing experiment {}'.format(exp_name))
@@ -86,11 +87,18 @@ def run_analysis(flist):
         peak_stats[exp_type]['peak_cnt'] += len(data_map['PEAKS'])
         for _, _, amp in data_map['PEAKS']:
             peak_stats[exp_type]['amp'] += amp
+        for var in var_to_select:
+            peak_stats[exp_type][var] += data_map[var]
     logging.info(peak_stats)
     for exp_type in peak_stats:
+        print('Exp Type: {}'.format(exp_type))
         avg_peaks = peak_stats[exp_type]['peak_cnt'] / peak_stats[exp_type]['exp_cnt']
+        print('\tavg peaks: {}'.format(avg_peaks))
         avg_amp = peak_stats[exp_type]['amp'] / peak_stats[exp_type]['peak_cnt']
-        print('exp type: {}\tavg peaks: {}\tavg amplitude: {}'.format(exp_type, avg_peaks, avg_amp))
+        print('\tavg amplitude: {}'.format(avg_amp))
+        for var in var_to_select:
+            avg = peak_stats[exp_type][var] / peak_stats[exp_type]['exp_cnt']
+            print('\t{}: {}'.format(var, avg))
 
 
 if __name__ == '__main__':
