@@ -13,7 +13,7 @@ import struct
 import sys
 import numpy as np
 import wave
-import heatmap
+# import heatmap
 import csv
 
 import pyqtgraph as pg
@@ -50,7 +50,7 @@ class SpectrumAnalyzer:
         self.bass_signal_end_index = -1
         self.treble_signal_start_index = -1
         self.treble_signal_end_index = -1
-        self.graphics = heatmap.HeatMap()
+        # self.graphics = heatmap.HeatMap()
 
     def find_input_device(self):
         device_index = None

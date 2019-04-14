@@ -19,7 +19,7 @@ def load_esense_csv(path):
         fcsv = csv.reader(fin, delimiter=';')
         for i, row in enumerate(fcsv):
             if i == 1:
-                exp_name = row[1]
+                exp_name = str(row[1])
             elif i == 24:
                 headers = row
             elif i > 24:
@@ -58,10 +58,10 @@ def count_peaks(gsr_map):
     for i in range(x.size):
         if x[i] > 0.01 and onset is None:
             onset = i
-        elif x[i] < 0 and onset:
+        elif x[i] < 0 and onset is not None:
             peak_coords.append([onset, i])  # i is offset
             onset = None
-    print('Total number of peaks: {}'.format(len(peak_coords)))
+    logging.info('Total number of peaks: {}'.format(len(peak_coords)))
 
     # second pass to get amplitude
     x = np.array(gsr_map['MICROSIEMENS'], dtype=float)
@@ -74,16 +74,30 @@ def count_peaks(gsr_map):
 
 
 def run_analysis(flist):
+    peak_stats = {'bl': {'exp_cnt': 0.0, 'peak_cnt': 0.0, 'amp': 0.0},
+                  'trev': {'exp_cnt': 0.0, 'peak_cnt': 0.0, 'amp': 0.0}}
     for fcsv in flist:
         exp_name, data_map = load_esense_csv(fcsv)
+        logging.info('Processing experiment {}'.format(exp_name))
         avg_scr_peaks(data_map)
         count_peaks(data_map)
+        exp_type = 'bl' if 'Baseline-' in exp_name else 'trev'
+        peak_stats[exp_type]['exp_cnt'] += 1
+        peak_stats[exp_type]['peak_cnt'] += len(data_map['PEAKS'])
+        for _, _, amp in data_map['PEAKS']:
+            peak_stats[exp_type]['amp'] += amp
+    logging.info(peak_stats)
+    for exp_type in peak_stats:
+        avg_peaks = peak_stats[exp_type]['peak_cnt'] / peak_stats[exp_type]['exp_cnt']
+        avg_amp = peak_stats[exp_type]['amp'] / peak_stats[exp_type]['peak_cnt']
+        print('exp type: {}\tavg peaks: {}\tavg amplitude: {}'.format(exp_type, avg_peaks, avg_amp))
 
 
 if __name__ == '__main__':
     setup_logging()
-    parent_dir = '/Users/alevenberg/Downloads/eSense_Skin Response_20190409'
+    parent_dir = '/Users/abby/Downloads/trev/eSense_Skin Response_20190409'
     flist = [os.path.join(parent_dir, x) for x in os.listdir(parent_dir)]
+    logging.info('Loaded {} experiments'.format(flist))
     run_analysis(flist)
 
 
