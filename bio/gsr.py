@@ -103,7 +103,7 @@ def run_analysis(flist):
 
 if __name__ == '__main__':
     setup_logging()
-    parent_dir = '/Users/abby/Downloads/trev/eSense_Skin Response_20190409'
+    parent_dir = '/Users/abby/Documents/TREV/biometrics/eSense_Skin Response_20190421/'
     flist = [os.path.join(parent_dir, x) for x in os.listdir(parent_dir) if x.endswith('.csv')]
     logging.info('Loaded {} experiments'.format(flist))
     run_analysis(flist)
