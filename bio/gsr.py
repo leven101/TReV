@@ -94,18 +94,41 @@ def run_analysis(flist):
         print('Exp Type: {}'.format(exp_type))
         avg_peaks = peak_stats[exp_type]['peak_cnt'] / peak_stats[exp_type]['exp_cnt']
         print('\tavg peaks: {}'.format(avg_peaks))
-        avg_amp = peak_stats[exp_type]['amp'] / peak_stats[exp_type]['peak_cnt']
+        peak_cnt = peak_stats[exp_type]['peak_cnt']
+        avg_amp = (peak_stats[exp_type]['amp'] / peak_cnt) if peak_cnt > 0 else 0
         print('\tavg amplitude: {}'.format(avg_amp))
         for var in var_to_select:
             avg = peak_stats[exp_type][var] / peak_stats[exp_type]['exp_cnt']
             print('\t{}: {}'.format(var, avg))
+    return peak_stats
+
+
+def run_combined():
+    parent_dir = '/Users/abby/Documents/TREV/biometrics/eSense_Skin Response_20190421'
+    flist = [os.path.join(parent_dir, x) for x in os.listdir(parent_dir) if x.endswith('.csv')]
+    logging.info('Loaded {} experiments'.format(flist))
+    run_analysis(flist)
+
+
+def run_per_experiment():
+    parent_dir = '/Users/abby/Documents/TREV/biometrics/'
+    dir_list = [x for x in os.listdir(parent_dir) if x.startswith('eSense_Skin Response_')]
+    full_stats = defaultdict(lambda: defaultdict)
+    for dir_path in dir_list:
+        logging.info('Processing {}...'.format(dir_path))
+        flist = [os.path.join(parent_dir, dir_path, x)
+                 for x in os.listdir(os.path.join(parent_dir, dir_path)) if x.endswith('.csv')]
+        print('Processing experiment ', dir_path)
+        dir_stats = run_analysis(flist)
+        print(dir_stats)
+        full_stats[dir_path] = dir_stats
 
 
 if __name__ == '__main__':
     setup_logging()
-    parent_dir = '/Users/abby/Documents/TREV/biometrics/eSense_Skin Response_20190421/'
-    flist = [os.path.join(parent_dir, x) for x in os.listdir(parent_dir) if x.endswith('.csv')]
-    logging.info('Loaded {} experiments'.format(flist))
-    run_analysis(flist)
+    # run_combined()
+    run_per_experiment()
+
+
 
 
