@@ -113,29 +113,42 @@ def run_combined():
 def run_pair_wise_compare():
     parent_dir = '/Users/abby/Documents/TREV/biometrics/eSense_Skin Response'
     flist = [os.path.join(parent_dir, x) for x in os.listdir(parent_dir) if x.endswith('.csv')]
-    name_2_exp = defaultdict(lambda: defaultdict(lambda: []))  # name -> exp_type -> values
+    name_2_exp = defaultdict(lambda: defaultdict(lambda: defaultdict(lambda: [])))  # name -> exp_type -> values
+    # load data per volunteer
     for fcsv in flist:
         exp_name, data_map = load_esense_csv(fcsv)
         name = exp_name.split('-')[-1]
         avg_scr_peaks(data_map)
         count_peaks(data_map)
         exp_type = 'bl' if 'Baseline-' in exp_name else 'trev'
-        name_2_exp[name][exp_type].append(len(data_map['PEAKS']))
-    diff_dict = defaultdict(int)
-    for _, v in name_2_exp.items():
-        vs_diff = None
-        for exp_type, ar in v.items():
-            for i in range(len(ar)-1):
-                for j in range(i + 1, len(ar)):
-                    diff_dict[exp_type + '-diff'] += abs(ar[i] - ar[j])
-                    diff_dict[exp_type + '-num-comparisons'] += 1
-            if vs_diff is None:
-                vs_diff = sum(ar)
-            else:
-                vs_diff = abs(vs_diff - sum(ar))
-                diff_dict['vs_diff-num-comparisons'] += 1
-        diff_dict['vs_diff'] += vs_diff
-    print(diff_dict)
+        name_2_exp[name]['num-peaks'][exp_type].append(len(data_map['PEAKS']))  # total number of peaks
+
+        avg_peak_amp = 0  # average amplitude of each peak
+        for _, _, amp in data_map['PEAKS']:
+            avg_peak_amp += amp
+        if avg_peak_amp > 0:
+            avg_peak_amp = avg_peak_amp/len(data_map['PEAKS'])
+        name_2_exp[name]['amp'][exp_type].append(avg_peak_amp)
+
+    # compute pairwise differences
+    diff_dict = defaultdict(lambda: defaultdict(int))
+    for _, signal_map in name_2_exp.items():
+        for signal, val_map in signal_map.items():
+            vs_diff = None
+            for exp_type, ar in val_map.items():
+                for i in range(len(ar)-1):
+                    for j in range(i + 1, len(ar)):
+                        diff_dict[signal][exp_type + '-only-diff'] += abs(ar[i] - ar[j])
+                        diff_dict[signal][exp_type + '-num-comparisons'] += 1
+                if vs_diff is None:
+                    vs_diff = sum(ar)
+                else:
+                    vs_diff = abs(vs_diff - sum(ar))
+                    diff_dict[signal]['vs_diff-num-comparisons'] += 1
+            diff_dict[signal]['vs_diff'] += vs_diff
+    for signal, vals in diff_dict.items():
+        print(signal)
+        print(vals)
 
 
 def run_per_name():
@@ -163,6 +176,7 @@ def run_per_name():
         print(k)
         for k2,v2 in v.items():
             print('\t', k2, v2)
+    print('ratio: ', ratio)
     print('num_above_ratio: ', num_above_ratio)
     print('total participants: ', len(names_map))
 
@@ -183,7 +197,7 @@ def run_per_directory():
 
 if __name__ == '__main__':
     setup_logging()
-    run_pair_wise_compare()
+    # run_pair_wise_compare()
     # run_combined()
     run_per_name()
 
