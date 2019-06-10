@@ -26,7 +26,7 @@ def load_esense_csv(path):
     return exp_name, data_map
 
 
-def run_analysis(flist):
+def run_bl_vs_trev_analysis(flist):
     total_stats = {'bl': defaultdict(float), 'trev': defaultdict(float)}
     for fcsv in flist:
         exp_name, data_map = load_esense_csv(fcsv)
@@ -48,4 +48,4 @@ if __name__ == '__main__':
     parent_dir = '/Users/abby/Documents/TREV/biometrics/eSense_Pulse'
     flist = [os.path.join(parent_dir, x) for x in os.listdir(parent_dir) if x.endswith('.csv')]
     logging.info('Loaded {} experiments'.format(len(flist)))
-    run_analysis(flist)
+    run_bl_vs_trev_analysis(flist)

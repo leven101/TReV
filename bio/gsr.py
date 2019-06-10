@@ -75,7 +75,7 @@ def count_peaks(gsr_map):
     gsr_map['PEAKS'] = peak_coords
 
 
-def run_analysis(flist):
+def run_bl_vs_trev_analysis(flist):
     peak_stats = {'bl': defaultdict(float), 'trev': defaultdict(float)}
     for fcsv in flist:
         exp_name, data_map = load_esense_csv(fcsv)
@@ -83,8 +83,8 @@ def run_analysis(flist):
         avg_scr_peaks(data_map)
         count_peaks(data_map)
         exp_type = 'bl' if 'Baseline-' in exp_name else 'trev'
-        peak_stats[exp_type]['exp_cnt'] += 1
-        peak_stats[exp_type]['peak_cnt'] += len(data_map['PEAKS'])
+        peak_stats[exp_type]['exp_cnt'] += 1.0
+        peak_stats[exp_type]['peak_cnt'] += float(len(data_map['PEAKS']))
         for _, _, amp in data_map['PEAKS']:
             peak_stats[exp_type]['amp'] += amp
         for var in var_to_select:
@@ -107,10 +107,67 @@ def run_combined():
     parent_dir = '/Users/abby/Documents/TREV/biometrics/eSense_Skin Response_20190421'
     flist = [os.path.join(parent_dir, x) for x in os.listdir(parent_dir) if x.endswith('.csv')]
     logging.info('Loaded {} experiments'.format(flist))
-    run_analysis(flist)
+    run_bl_vs_trev_analysis(flist)
 
 
-def run_per_experiment():
+def run_pair_wise_compare():
+    parent_dir = '/Users/abby/Documents/TREV/biometrics/eSense_Skin Response'
+    flist = [os.path.join(parent_dir, x) for x in os.listdir(parent_dir) if x.endswith('.csv')]
+    name_2_exp = defaultdict(lambda: defaultdict(lambda: []))  # name -> exp_type -> values
+    for fcsv in flist:
+        exp_name, data_map = load_esense_csv(fcsv)
+        name = exp_name.split('-')[-1]
+        avg_scr_peaks(data_map)
+        count_peaks(data_map)
+        exp_type = 'bl' if 'Baseline-' in exp_name else 'trev'
+        name_2_exp[name][exp_type].append(len(data_map['PEAKS']))
+    diff_dict = defaultdict(int)
+    for _, v in name_2_exp.items():
+        vs_diff = None
+        for exp_type, ar in v.items():
+            for i in range(len(ar)-1):
+                for j in range(i + 1, len(ar)):
+                    diff_dict[exp_type + '-diff'] += abs(ar[i] - ar[j])
+                    diff_dict[exp_type + '-num-comparisons'] += 1
+            if vs_diff is None:
+                vs_diff = sum(ar)
+            else:
+                vs_diff = abs(vs_diff - sum(ar))
+                diff_dict['vs_diff-num-comparisons'] += 1
+        diff_dict['vs_diff'] += vs_diff
+    print(diff_dict)
+
+
+def run_per_name():
+    parent_dir = '/Users/abby/Documents/TREV/biometrics/eSense_Skin Response'
+    flist = [os.path.join(parent_dir, x) for x in os.listdir(parent_dir) if x.endswith('.csv')]
+    names_map = defaultdict(lambda: [])
+    for fcsv in flist:
+        exp_name, data_map = load_esense_csv(fcsv)
+        # TREV-2-Stephen
+        name = exp_name.split('-')[-1]
+        names_map[name].append(fcsv)
+    diff_map = defaultdict(lambda: defaultdict(int))
+    ratio = 1.5
+    num_above_ratio = 0
+    for k,v in names_map.items():
+        print(k)
+        map = run_bl_vs_trev_analysis(v)
+        diff_map[k]['cnt_diff'] = abs(map['bl']['peak_cnt'] - map['trev']['peak_cnt'])
+        diff_map[k]['bl_avg_peaks'] = map['bl']['peak_cnt'] / map['bl']['exp_cnt']
+        diff_map[k]['trev_avg_peaks'] = map['trev']['peak_cnt'] / map['trev']['exp_cnt']
+        if diff_map[k]['trev_avg_peaks'] >= ratio * diff_map[k]['bl_avg_peaks'] or \
+            diff_map[k]['bl_avg_peaks'] >= ratio * diff_map[k]['trev_avg_peaks']:
+            num_above_ratio += 1
+    for k,v in diff_map.items():
+        print(k)
+        for k2,v2 in v.items():
+            print('\t', k2, v2)
+    print('num_above_ratio: ', num_above_ratio)
+    print('total participants: ', len(names_map))
+
+
+def run_per_directory():
     parent_dir = '/Users/abby/Documents/TREV/biometrics/'
     dir_list = [x for x in os.listdir(parent_dir) if x.startswith('eSense_Skin Response_')]
     full_stats = defaultdict(lambda: defaultdict)
@@ -119,15 +176,17 @@ def run_per_experiment():
         flist = [os.path.join(parent_dir, dir_path, x)
                  for x in os.listdir(os.path.join(parent_dir, dir_path)) if x.endswith('.csv')]
         print('Processing experiment ', dir_path)
-        dir_stats = run_analysis(flist)
+        dir_stats = run_bl_vs_trev_analysis(flist)
         print(dir_stats)
         full_stats[dir_path] = dir_stats
 
 
 if __name__ == '__main__':
     setup_logging()
+    run_pair_wise_compare()
     # run_combined()
-    run_per_experiment()
+    run_per_name()
+
 
 
 
