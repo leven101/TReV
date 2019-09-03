@@ -45,7 +45,7 @@ def run_bl_vs_trev_analysis(flist):
 
 if __name__ == '__main__':
     # setup_logging()
-    parent_dir = '/Users/abby/Documents/TREV/biometrics/eSense_Pulse'
+    parent_dir = '/Users/abby/Documents/TREV/biometrics/eSense_Pulse_20190629'
     flist = [os.path.join(parent_dir, x) for x in os.listdir(parent_dir) if x.endswith('.csv')]
     logging.info('Loaded {} experiments'.format(len(flist)))
     run_bl_vs_trev_analysis(flist)
