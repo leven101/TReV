@@ -33,12 +33,12 @@ def init_erv():
 
 
 erv = init_erv()
-print erv
+print(erv)
 show_heatmap(erv, 1.0)
 
 for _ in range(10):
     cell = select_next_cell()
-    print '\n\n\nSelected cell {}'.format(cell)
+    print('\n\n\nSelected cell {}'.format(cell))
     while erv[cell] != h_:
         erv[cell] += 1
         for i in range(1, r_+1):
@@ -46,6 +46,6 @@ for _ in range(10):
                 if (i, j) != cell and erv[(i, j)] > 0:
                     erv[(i, j)] -= 1
         show_heatmap(erv, 0.001)
-        print erv
+        print(erv)
 
 

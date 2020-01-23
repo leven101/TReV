@@ -1,21 +1,22 @@
 # Beat tracking example
 from __future__ import print_function
 import librosa
-import numpy
+import numpy as np
 
 # 1. Get the file path to the included audio example
 # filename = librosa.util.example_audio_file()
-filename = '/Users/alevenberg/Documents/trev/prototype/sound/looperman-l-2942130-0147507-simple-rap-drum.wav'
+filename = '/Users/abby/Documents/TREV/sound/heavy-beat_140bpm_C_major.wav'
 # 2. Load the audio as a waveform `y`
 #    Store the sampling rate as `sr`
-y, sr = librosa.load(filename)
-
+y, sr = librosa.load(filename, mono=True)
+print(librosa.get_duration(y=y, sr=sr))
 # 3. Run the default beat tracker
-tempo, beat_times = librosa.beat.beat_track(y=y, sr=sr, units='time', hop_length=5000)
+tempo, beat_times = librosa.beat.beat_track(y=y, sr=sr, units='time')
 print(beat_times)
 print('Estimated tempo: {:.2f} beats per minute'.format(tempo))
-beat_times_diff = numpy.diff(beat_times)
+beat_times_diff = np.diff(beat_times)
 print(beat_times_diff)
+
 # # 3. Run the default beat tracker
 # tempo, beat_frames = librosa.beat.beat_track(y=y, sr=sr)
 #

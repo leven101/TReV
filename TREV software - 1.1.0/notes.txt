@@ -1,0 +1,6 @@
+The Software/trev_pc_control directory contains the Processing sketch (written in Java) which implemented the 3D visualization and control interface we looked at on Friday. 
+
+The Hardware/Firmware/trev_led_control_is31fl3728 directory contains the headset firmware (written in C++) which controls the LED arrays and the ready state light brightness. The code includes comments which explain how it works and how to use it.
+
+
+There are 15 levels of brightness. In the control software (trev_pc_control) pressing the left and right keys will now adjust the brightness of the LED arrays.

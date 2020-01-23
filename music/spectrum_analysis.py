@@ -193,8 +193,10 @@ class SpectrumAnalyzer:
         ratios = []
         while 1:
             try:
-                # data = self.readMicData()
-                data = self.readAndPlayWavData()
+                if self.use_wav:
+                    data = self.readAndPlayWavData()
+                else:
+                    data = self.readMicData()
             except IOError:
                 continue
             if len(data) == 0: break
@@ -216,8 +218,10 @@ class SpectrumAnalyzer:
     def visualize_only(self):
         while 1:
             try:
-                # data = self.readMicData()
-                data = self.readAndPlayWavData()
+                if self.use_wav:
+                    data = self.readAndPlayWavData()
+                else:
+                    data = self.readMicData()
             except IOError:
                 continue
             f, Pxx = self.get_spectrum(data)
@@ -245,11 +249,10 @@ def save_control_data(fname, ratios):
 
 
 if __name__ == '__main__':
-    # path = '/Users/alevenberg/Documents/trev/prototype/sound/0452.wav'
-    path = './audio-files/dt_16bars_102rap.wav'
+    path = '/Users/abby/Documents/TREV/sound/looperman-l-2373031-0200277-kenny-beats-drum-loop.wav'
     sa = SpectrumAnalyzer(path)
     # ratios = sa.timed_window_ratios()
     # ratios = load_saved_data('raw-values')
     # save_control_data('test-1', ratios)
-    # sa.visualize_only()
-    sa.mainLoop()
+    sa.visualize_only()
+    # sa.mainLoop()
