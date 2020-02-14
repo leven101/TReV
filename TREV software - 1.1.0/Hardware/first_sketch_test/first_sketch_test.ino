@@ -98,9 +98,9 @@ void clearAll() {
   analogWrite(3, 0);
 }
 
-void ledGridOn() {
-  for (int row = 0; row < 4; row++) {
-    for (int col=0; col < 7; col++) {
+void ledGridOn(const int rStart=0, const int rEnd=4, const int cStart=0, const int cEnd=7) {
+  for (int row = rStart; row < rEnd; row++) {
+    for (int col=cStart; col < cEnd; col++) {
       leftTop.set(row, 6-col, true);
       rightTop.set(row, col, true);
       leftBottom.set(row, col, true);
@@ -109,6 +109,23 @@ void ledGridOn() {
   }
   updateAll();
 }
+
+void halfLedGridOn(const int rStart=0, const int rEnd=4, const int cStart=0, 
+                  const int cEnd=7, const bool top=true) {
+  for (int row = rStart; row < rEnd; row++) {
+    for (int col=cStart; col < cEnd; col++) {
+      if (top) {
+        leftTop.set(row, 6-col, true);
+        rightTop.set(row, col, true);
+      } else {
+        leftBottom.set(row, col, true);
+        rightBottom.set(row, 6-col, true);
+      }
+    }
+  }
+  updateAll();
+}
+
 
 void lightOneLED(int row=0, int col=3) {
   clearAll();
@@ -123,9 +140,11 @@ void lineVert(LEDArray& array, int column) {
   }
 }
 
-const int colStart = 3; // sizing
+const int colStart = 2; // sizing
+const int brightness = 5; 
 
 void bassExample() {
+  setBrightness(0);
   for (int c=colStart; c < colStart+1; c++) {
     lineVert(leftTop, 6-c);
     lineVert(rightTop, c);
@@ -142,6 +161,7 @@ void bassExample() {
 }
 
 void trebleExample() {
+  setBrightness(0);
     for (int c=colStart; c < colStart+1; c++) {
     lineVert(rightBottom, 6-c);
     lineVert(leftBottom, c);
@@ -158,11 +178,11 @@ void trebleExample() {
 }
 
 void blinkReadyStateLight() {
-  for (int i=0; i < 5; i++) {
+  for (int i=0; i < 50; i++) {
     analogWrite(3, 0);
-    delay(1000); 
+    delay(100); 
     analogWrite(3, 0xff);
-    delay(500);
+    delay(50);
   }
   analogWrite(3, 0);
 }
@@ -176,6 +196,7 @@ void drumBeatExample() {
     ledGridOn();
     delay(411.76);
   }
+  clearAll();
 }
 
 void normalizedBrightnessExample(float ratio=0.3) {
@@ -187,35 +208,42 @@ void normalizedBrightnessExample(float ratio=0.3) {
   rightBottom.brightness(14 - level);
   Serial.print("Setting top LEDs brightness to ");
   Serial.println(level);
-  for (int row = 0; row < 4; row++) {
-    for (int col=colStart; col < colStart+2; col++) {
-      leftTop.set(row, 6-col, true);
-      rightTop.set(row, col, true);
-      leftBottom.set(row, col, true);
-      rightBottom.set(row, 6-col, true);
-    }
+  ledGridOn(0, 4, colStart, colStart+2);
+}
+
+void upDownUp(const int seconds=3, const int tempo=200) {
+  setBrightness(brightness);
+  for (int i=0; i<seconds; i++) {
+    // top flash x 1
+    halfLedGridOn(1, 2, colStart, colStart+1, true);
+    delay(tempo);
+    // off x 2 
+    clearAll();
+    delay(tempo * 2);
+    // bottom flash
+    halfLedGridOn(1, 2, colStart, colStart+1, false);
+    delay(tempo);  
+    // off x 1
+    clearAll();
+    delay(tempo);
+    // top flash
+    halfLedGridOn(1, 2, colStart, colStart+1, true);
+    delay(tempo);
+    // off x 1
+    clearAll();
+    delay(tempo); 
   }
-  updateAll();
 }
 
 void blinkLEDExample(const int seconds=1, const int tempo=200) {
-  clearAll();
-  setBrightness(10);
+  setBrightness(brightness);
   for (int i=0; i<seconds; i++) {
-      if (i%2==0) {
-      for (int row = 1; row < 2; row++) {
-        for (int col=colStart; col < colStart+1; col++) {
-          leftTop.set(row, 6-col, true);
-          rightTop.set(row, col, true);
-          leftBottom.set(row, col, true);
-          rightBottom.set(row, 6-col, true);
-        }
-      }
-      updateAll();
+      if (i%1==0) {
+      ledGridOn(1, 2, colStart, colStart+1);
       analogWrite(3, 0);
       delay(tempo);
       clearAll();
-      analogWrite(3, 0x20);
+      analogWrite(3, 0x40);
       delay(1000-tempo);
     }
     else {
@@ -231,10 +259,6 @@ void inputFromPythonExample() {
     char c = Serial.read();
     Serial.println(c);
     switch (c) {
-      case '|': {
-        clearAll();
-        break;
-      }
       case 'b': {
         bassExample();
         break;
@@ -243,13 +267,16 @@ void inputFromPythonExample() {
         trebleExample();
         break;
       }
+      case 'd':  {
+//        drumBeatExample();
+        upDownUp();
+        break;
+      }
       case 'q': {
         String s = Serial.readString();
         int loc = s.indexOf("|");
         const int seconds = s.substring(0, loc).toInt();
         const float tempo = s.substring(loc+1, s.length()).toFloat();
-//        Serial.println(seconds);
-//        Serial.println(tempo);
         blinkLEDExample(seconds, tempo);
         break;
       }
@@ -263,7 +290,8 @@ void inputFromPythonExample() {
         break;  
       }
       default: {
-        Serial.println(Serial.readString());
+//        Serial.println(Serial.readString());
+        clearAll();
       }
     }
   }
@@ -274,10 +302,11 @@ void setup() {
   Wire.begin();
   pinMode(3, OUTPUT);  // ready state light connection
   Serial.println("Hello from TREV");
+  clearAll();
 }
 
 void loop() {
 // put your main code here, to run repeatedly:
-//  lightOneLED(1, 1);
+//  lightOneLED(2, 0);
   inputFromPythonExample();
 }
