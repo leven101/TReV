@@ -88,6 +88,7 @@ if __name__ == '__main__':
     music_dirc = '/Users/abby/Documents/TREV/sound/'
     # thread_example()
     # ser.write(b'r')
+    # time.sleep(10)
     # bass_treble_demo()
     # clear_lights()
     tempo_example()

@@ -126,6 +126,16 @@ void halfLedGridOn(const int rStart=0, const int rEnd=4, const int cStart=0,
   updateAll();
 }
 
+void lineVert(LEDArray& array, int column) {
+  for (int row = 0; row < 4; row++) {
+    array.set(row, column, true);
+  }
+}
+
+/* Example Usage Functions */ 
+const int colStart = 2; // sizing
+const int brightness = 10; 
+
 
 void lightOneLED(int row=0, int col=3) {
   clearAll();
@@ -133,15 +143,6 @@ void lightOneLED(int row=0, int col=3) {
   rightTop.update();
   setBrightness(0);
 }
-
-void lineVert(LEDArray& array, int column) {
-  for (int row = 0; row < 4; row++) {
-    array.set(row, column, true);
-  }
-}
-
-const int colStart = 2; // sizing
-const int brightness = 5; 
 
 void bassExample() {
   setBrightness(0);
@@ -252,6 +253,43 @@ void blinkLEDExample(const int seconds=1, const int tempo=200) {
     }
   }
   clearAll();
+}
+
+int* parseArgsExample(String s, const char delm='|') {
+  if (s[s.length()-1] != delm) {
+    s += delm;
+  }
+  int* params = new int[5];
+  int curParamsIdx = 0;
+  int lastStrIdx = 0;
+  for (int i=0; i < s.length(); i++) {
+    Serial.println("i: " + String(i) + "\ts[i]: " + String(s[i]));
+    if (s[i] == delm && i != 0) {
+      Serial.println("In if st");
+      params[curParamsIdx] = s.substring(lastStrIdx+1, i).toInt();
+      curParamsIdx++;
+      lastStrIdx = i;
+    }
+  }
+  for (int i=curParamsIdx; i < 5; ++i) {
+    params[i] = -1;
+  }
+  return params;
+}
+
+void inputParamsExample() {
+  int* params = NULL;
+  while (Serial.available()) {
+    int c = Serial.parseInt();  // read command
+    if (c == 1) { 
+      String s = Serial.readString(); // get rest of params
+      Serial.println("Rest of string -- " + s);
+      params = parseArgsExample(s);
+      for (int i=0; i < 5; ++i) {
+        Serial.println(params[i]);
+      }
+    }  
+  }
 }
 
 void inputFromPythonExample() {
