@@ -139,6 +139,26 @@ void topOn(const int brightness, const int rStart, const int rEnd,
   rightTop.update();
 }
 
+void leftTopOn(const int brightness, const int rStart, const int rEnd, 
+                   const int cStart, const int cEnd) {
+  for (int row = rStart; row < rEnd; row++) {
+    for (int col=cStart; col < cEnd; col++) {
+      leftTop.set(row, 6-col, true);
+    }
+  }
+  leftTop.update();
+}
+
+void rightTopOn(const int brightness, const int rStart, const int rEnd, 
+                   const int cStart, const int cEnd) {
+  for (int row = rStart; row < rEnd; row++) {
+    for (int col=cStart; col < cEnd; col++) {
+      rightTop.set(row, col, true);
+    }
+  }
+  rightTop.update();
+}
+
 void topOff() {
   leftTop.clear();
   rightTop.clear();
@@ -156,6 +176,26 @@ void bottomOn(const int brightness, const int rStart, const int rEnd,
   }
   leftBottom.update();
   rightBottom.update();
+}
+
+void rightBottomOn(const int brightness, const int rStart, const int rEnd, 
+                   const int cStart, const int cEnd) {
+  for (int row = rStart; row < rEnd; row++) {
+    for (int col=cStart; col < cEnd; col++) {
+      rightBottom.set(row, 6-col, true);
+    }
+  }
+  rightBottom.update();
+}
+
+void leftBottomOn(const int brightness, const int rStart, const int rEnd, 
+                   const int cStart, const int cEnd) {
+  for (int row = rStart; row < rEnd; row++) {
+    for (int col=cStart; col < cEnd; col++) {
+      leftBottom.set(row, col, true);
+    }
+  }
+  leftBottom.update();
 }
 
 void bottomOff() {
@@ -184,11 +224,16 @@ void randomize(LEDArray& array) {
   }
 }
 
-void blinkRandomly() {
-  randomize(leftTop);
-  randomize(rightTop);
-  randomize(leftBottom);
-  randomize(rightBottom);
+void blinkRandomly(const int seconds) {
+  int milliseconds = seconds * 1000;
+  unsigned long currentMillis = millis();
+  while (millis()  - currentMillis < milliseconds) {
+    randomize(leftTop);
+    randomize(rightTop);
+    randomize(leftBottom);
+    randomize(rightBottom);
+  }
+  ledGridOff();
 }
 
 // cmd code, brightness, row start, row end, col start, col end
@@ -196,7 +241,7 @@ const int numParams = 6;
 int params[numParams];
 boolean newData = false;
 
-void recvIntWithStartEndMarkers() {
+void recvParamsWithStartEndMarkers() {
     static boolean recvInProgress = false;
     static byte ndx = 0;
     char startMarker = '<';
@@ -228,7 +273,7 @@ void recvIntWithStartEndMarkers() {
     }
 }
 
-void showNewIntData() {
+void showAndExecuteCmd() {
     if (newData == true) {
         Serial.print("This just in ... ");
         for (int i=0; i<numParams; ++i) {
@@ -259,19 +304,35 @@ void executeCommand() {
       break;
     }
     case 5: {
-      bottomOff();
+      rightBottomOn(params[1], params[2], params[3], params[4], params[5]);
       break;
     }
     case 6: {
+      leftBottomOn(params[1], params[2], params[3], params[4], params[5]);
+      break;
+    }         
+    case 7: {
+      bottomOff();
+      break;
+    }
+    case 8: {
       topOn(params[1], params[2], params[3], params[4], params[5]);
       break;
     }
-    case 7: {
+    case 9: {
+      rightTopOn(params[1], params[2], params[3], params[4], params[5]);
+      break;
+    }
+    case 10: {
+      leftTopOn(params[1], params[2], params[3], params[4], params[5]);
+      break;
+    }    
+    case 11: {
       topOff();
       break;
     } 
-    case 9: {
-      blinkRandomly();
+    case 12: {
+      blinkRandomly(params[1]);
       break;
     }     
     default: {
@@ -291,6 +352,6 @@ void setup() {
 
 void loop() {
 // put your main code here, to run repeatedly:
-    recvIntWithStartEndMarkers();
-    showNewIntData();
+    recvParamsWithStartEndMarkers();
+    showAndExecuteCmd();
 }

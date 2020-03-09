@@ -21,7 +21,7 @@ typedef enum TrevMode {
   MODE_RANDOM,
 } TrevMode;
 
-TrevMode mode = MODE_SERIAL_CONTROL;
+TrevMode mode = MODE_RANDOM;
 
 class LEDArray {
 private:

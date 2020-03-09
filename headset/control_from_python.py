@@ -15,13 +15,13 @@ if __name__ == '__main__':
     ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
     time.sleep(2)
     ser.write(off_cmd.encode())
-    # while True:
-    #     ser.write(on_cmd.encode())
-    #     print(ser.readline())
-    #     time.sleep(0.1)
-    #     ser.write(off_cmd.encode())
-    #     print(ser.readline())
-    #     time.sleep(0.2)
+    while True:
+        ser.write(on_cmd.encode())
+        print(ser.readline())
+        time.sleep(0.1)
+        ser.write(off_cmd.encode())
+        print(ser.readline())
+        time.sleep(0.2)
 
 
     # time.sleep(3)

@@ -5,7 +5,8 @@ import numpy as np
 
 # 1. Get the file path to the included audio example
 # filename = librosa.util.example_audio_file()
-filename = '/Users/abby/Documents/TREV/sound/heavy-beat_140bpm_C_major.wav'
+# filename = '/Users/abby/Documents/TREV/sound/heavy-beat_140bpm_C_major.wav'
+filename = '/Users/abby/Downloads/b5.m4a'
 # 2. Load the audio as a waveform `y`
 #    Store the sampling rate as `sr`
 y, sr = librosa.load(filename, mono=True)
