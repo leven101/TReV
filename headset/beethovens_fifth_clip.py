@@ -106,29 +106,29 @@ if __name__ == '__main__':
                 'top_on': '8', 'right_top_on': '9', 'left_top_on': '10', 'top_off': '11',
                 'random': '12'}
     # cmd code, brightness, row start, row end, col start, col end
-    ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
-    r_start = 0
-    c_start = 1
-    brightness = 7
-    off_cmd = (cmd_dict['cmd_start'] + cmd_dict['all_off'] + cmd_dict['cmd_end']).encode()
-    ser.write(off_cmd)
-    leds_cmd = ' {} {} {} {} {}'
+    # ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
+    # r_start = 0
+    # c_start = 1
+    # brightness = 7
+    # off_cmd = (cmd_dict['cmd_start'] + cmd_dict['all_off'] + cmd_dict['cmd_end']).encode()
+    # ser.write(off_cmd)
+    # leds_cmd = ' {} {} {} {} {}'
 
     play_track()
     time.sleep(0.6)
-    start_time = time.time()
-    short_short_short_long(2)
-    ser.write(off_cmd)
-    bottom_left_right_left(2, 0.125)
-    bottom_left_right_left(1, 0.075)
-
-    short_short_long()
-    ser.write(off_cmd)
-    time.sleep(1.2)
-    short_short_short_long(1)
-    ser.write(off_cmd)
-    # validated above this
-    short_short_short_long(1)
-    beat_metronome(5)
-    print(time.time() - start_time)
+    # start_time = time.time()
+    # short_short_short_long(2)
+    # ser.write(off_cmd)
+    # bottom_left_right_left(2, 0.125)
+    # bottom_left_right_left(1, 0.075)
+    #
+    # short_short_long()
+    # ser.write(off_cmd)
+    # time.sleep(1.2)
+    # short_short_short_long(1)
+    # ser.write(off_cmd)
+    # # validated above this
+    # short_short_short_long(1)
+    # beat_metronome(5)
+    # print(time.time() - start_time)
 
