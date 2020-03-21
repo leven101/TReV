@@ -1,9 +1,7 @@
 import serial
 import time
 
-cmd_dict = {'cmd_start': '<', 'cmd_end': '>', 'all_off': '0', 'all_on': '1',
-            'ready_state_on': '2', 'ready_state_off': '3', 'bottom_on': '4',
-            'bottom_off': '7', 'top_on': '8', 'top_off': '11', 'random': '12'}
+from headset.shared import cmd_dict
 
 '''
 Time steps
@@ -37,7 +35,7 @@ for i in range(0, 256, 9):
 ser.write(off_cmd.encode())
 print('off_cmd', off_cmd)
 
-on_cmd = cmd_dict['cmd_start'] + '{} 10 {} {} 0 7' + cmd_dict['cmd_end']
+on_cmd = cmd_dict['cmd_start'] + '{} 10 {} {} 0 6' + cmd_dict['cmd_end']
 for i in range(4, -1, -1):
     ser.write(on_cmd.format(cmd_dict['bottom_on'], i, i+1).encode())
     print('on_cmd', on_cmd.format(cmd_dict['bottom_on'], i, i+1))
@@ -55,7 +53,7 @@ ser.write(off_cmd.encode())
 print('off_cmd', off_cmd)
 time.sleep(4)
 #
-on_cmd = cmd_dict['cmd_start'] + cmd_dict['all_on'] + ' 14 0 4 0 7' + cmd_dict['cmd_end']
+on_cmd = cmd_dict['cmd_start'] + cmd_dict['all_on'] + ' 14 0 3 0 6' + cmd_dict['cmd_end']
 ser.write(on_cmd.encode())
 print('all on', on_cmd)
 time.sleep(1)
@@ -70,3 +68,4 @@ print('off_cmd', off_cmd)
 
 # close()
 print(time.time() - start_time)
+ser.close()

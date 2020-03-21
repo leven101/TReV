@@ -44,7 +44,7 @@ void LEDArray::set(int row, int column, bool ledOn) {
 }
 
 void LEDArray::clear() {
-  for (int col = 0; col < 7; col++) {
+  for (int col = 0; col <= 6; col++) {
     ledRegValues[col] = 0;
 
     Wire.beginTransmission(address);
@@ -108,14 +108,15 @@ void readyStateOff() {
 
 void ledGridOn(const int brightness, const int rStart, const int rEnd, 
                const int cStart, const int cEnd) {
-  for (int row = rStart; row < rEnd; row++) {
-    for (int col=cStart; col < cEnd; col++) {
+  for (int row = rStart; row <= rEnd; row++) {
+    for (int col = cStart; col <= cEnd; col++) {
       leftTop.set(row, 6-col, true);
       rightTop.set(row, col, true);
       leftBottom.set(row, col, true);
       rightBottom.set(row, 6-col, true);
     }
   }
+  setBrightness(brightness);
   updateAll();
 }
 
@@ -129,33 +130,36 @@ void ledGridOff() {
 
 void topOn(const int brightness, const int rStart, const int rEnd, 
                    const int cStart, const int cEnd) {
-  for (int row = rStart; row < rEnd; row++) {
-    for (int col=cStart; col < cEnd; col++) {
+  for (int row = rStart; row <= rEnd; row++) {
+    for (int col = cStart; col <= cEnd; col++) {
       leftTop.set(row, 6-col, true);
       rightTop.set(row, col, true);
     }
   }
+  setBrightness(brightness);
   leftTop.update();
   rightTop.update();
 }
 
 void leftTopOn(const int brightness, const int rStart, const int rEnd, 
                    const int cStart, const int cEnd) {
-  for (int row = rStart; row < rEnd; row++) {
-    for (int col=cStart; col < cEnd; col++) {
+  for (int row = rStart; row <= rEnd; row++) {
+    for (int col = cStart; col <= cEnd; col++) {
       leftTop.set(row, 6-col, true);
     }
   }
+  setBrightness(brightness);
   leftTop.update();
 }
 
 void rightTopOn(const int brightness, const int rStart, const int rEnd, 
                    const int cStart, const int cEnd) {
-  for (int row = rStart; row < rEnd; row++) {
-    for (int col=cStart; col < cEnd; col++) {
+  for (int row = rStart; row <= rEnd; row++) {
+    for (int col = cStart; col <= cEnd; col++) {
       rightTop.set(row, col, true);
     }
   }
+  setBrightness(brightness);
   rightTop.update();
 }
 
@@ -168,33 +172,36 @@ void topOff() {
 
 void bottomOn(const int brightness, const int rStart, const int rEnd, 
                    const int cStart, const int cEnd) {
-  for (int row = rStart; row < rEnd; row++) {
-    for (int col=cStart; col < cEnd; col++) {
+  for (int row = rStart; row <= rEnd; row++) {
+    for (int col = cStart; col <= cEnd; col++) {
       leftBottom.set(row, col, true);
       rightBottom.set(row, 6-col, true);
     }
   }
+  setBrightness(brightness);
   leftBottom.update();
   rightBottom.update();
 }
 
 void rightBottomOn(const int brightness, const int rStart, const int rEnd, 
                    const int cStart, const int cEnd) {
-  for (int row = rStart; row < rEnd; row++) {
-    for (int col=cStart; col < cEnd; col++) {
+  for (int row = rStart; row <= rEnd; row++) {
+    for (int col = cStart; col <= cEnd; col++) {
       rightBottom.set(row, 6-col, true);
     }
   }
+  setBrightness(brightness);
   rightBottom.update();
 }
 
 void leftBottomOn(const int brightness, const int rStart, const int rEnd, 
                    const int cStart, const int cEnd) {
-  for (int row = rStart; row < rEnd; row++) {
-    for (int col=cStart; col < cEnd; col++) {
+  for (int row = rStart; row <= rEnd; row++) {
+    for (int col = cStart; col <= cEnd; col++) {
       leftBottom.set(row, col, true);
     }
   }
+  setBrightness(brightness);
   leftBottom.update();
 }
 
@@ -203,12 +210,6 @@ void bottomOff() {
   rightBottom.clear();
   leftBottom.update();
   rightBottom.update();
-}
-
-void lineVert(LEDArray& array, int column) {
-  for (int row = 0; row < 4; row++) {
-    array.set(row, column, true);
-  }
 }
 
 void randomize(LEDArray& array) {
@@ -273,13 +274,49 @@ void recvParamsWithStartEndMarkers() {
     }
 }
 
+void validateParams() {
+  if (params[2] != NULL && params[3] != NULL) {
+    if (params[1] < 0) {
+      params[1] = 0;
+    } 
+    else if (params[1] > 14) {
+      params[1] = 14;
+    }
+    if (params[2] < 0) {
+      params[2] = 0;
+    } 
+    else if (params[2] > 3) {
+      params[2] = 3;
+    }
+    if (params[3] < 0) {
+      params[3] = 0;
+    } 
+    else if (params[3] > 3) {
+      params[3] = 3;
+    }
+  }
+  if (params[4] < 0) {
+    params[4] = 0;
+  } 
+  else if (params[4] > 6) {
+    params[4] = 6;
+  }
+  if (params[5] < 0) {
+    params[5] = 0;
+  } 
+  else if (params[5] > 6) {
+    params[5] = 6;
+  }
+}
+
 void showAndExecuteCmd() {
     if (newData == true) {
-        Serial.print("This just in ... ");
+        Serial.print("Received command to execute ... ");
         for (int i=0; i<numParams; ++i) {
           Serial.print(String(params[i]) + " ");
         }
         Serial.println();
+        validateParams();
         executeCommand();
         newData = false;
     }

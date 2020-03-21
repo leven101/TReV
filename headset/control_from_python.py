@@ -32,4 +32,4 @@ if __name__ == '__main__':
     # blink bottom on one second
     # all off
     # blink ready-state light on
-    # ser.close()
+    ser.close()

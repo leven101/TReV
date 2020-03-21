@@ -3,6 +3,8 @@ import time
 import threading
 import playsound
 
+from headset.shared import cmd_dict
+
 
 def play_track():
     t1 = threading.Thread(target=playsound.playsound, daemon=True,
@@ -12,7 +14,7 @@ def play_track():
 
 
 def bottom_left_right_left_right(num_times, delay):
-    lcl_led_cmd = leds_cmd.format(brightness, r_start, r_start+2, c_start, c_start+2)
+    lcl_led_cmd = leds_cmd.format(brightness, r_start, r_start+1, c_start, c_start+1)
     left_cmd = cmd_dict['cmd_start'] + cmd_dict['left_bottom_on'] + lcl_led_cmd + cmd_dict['cmd_end']
     right_cmd = cmd_dict['cmd_start'] + cmd_dict['right_bottom_on'] + lcl_led_cmd + cmd_dict['cmd_end']
 
@@ -34,9 +36,9 @@ def bottom_left_right_left_right(num_times, delay):
 
 
 def top_short_rsl_short_right_short_top_long(num_times):
-    lcl_led_cmd = leds_cmd.format(min(brightness*2, 14), r_start, r_start+2, c_start, c_start+2)
+    lcl_led_cmd = leds_cmd.format(min(brightness*2, 14), r_start, r_start+1, c_start, c_start+1)
     top_cmd = cmd_dict['cmd_start'] + cmd_dict['top_on'] + lcl_led_cmd + cmd_dict['cmd_end']
-    lcl_led_cmd = leds_cmd.format(brightness, r_start, r_start+2, c_start, c_start+2)
+    lcl_led_cmd = leds_cmd.format(brightness, r_start, r_start+1, c_start, c_start+1)
     bot_cmd = cmd_dict['cmd_start'] + cmd_dict['bottom_on'] + lcl_led_cmd + cmd_dict['cmd_end']
 
     for i in range(0, num_times):
@@ -63,7 +65,7 @@ def top_short_rsl_short_right_short_top_long(num_times):
 
 
 def all_short_short_long():
-    lcl_led_cmd = leds_cmd.format(brightness, r_start, r_start + 3, c_start, c_start + 3)
+    lcl_led_cmd = leds_cmd.format(brightness, r_start, r_start+2, c_start, c_start+2)
     on_cmd = cmd_dict['cmd_start'] + cmd_dict['all_on'] + lcl_led_cmd + cmd_dict['cmd_end']
 
     ser.write(on_cmd.encode())
@@ -84,7 +86,7 @@ def all_short_short_long():
 
 
 def beat_metronome(seconds, tempo=0.326, note=0.50, soft=False):
-    lcl_led_cmd = leds_cmd.format(brightness, r_start, r_start + 1, c_start, c_start + 1)
+    lcl_led_cmd = leds_cmd.format(brightness, r_start, r_start, c_start, c_start)
     beat_cmd = cmd_dict['cmd_start'] + cmd_dict['all_on'] + lcl_led_cmd + cmd_dict['cmd_end']
     rsl_on_cmd = cmd_dict['cmd_start'] + cmd_dict['ready_state_on'] + ' 200' + cmd_dict['cmd_end']
     rsl_off_cmd = cmd_dict['cmd_start'] + cmd_dict['ready_state_off'] + cmd_dict['cmd_end']
@@ -118,7 +120,7 @@ def rsl_bright_to_dim():
 
 
 def top_to_bottom_flash(num_times):
-    lcl_led_cmd = leds_cmd.format(brightness, r_start, r_start+2, c_start, c_start+2)
+    lcl_led_cmd = leds_cmd.format(brightness, r_start, r_start+1, c_start, c_start+1)
     top_cmd = cmd_dict['cmd_start'] + cmd_dict['top_on'] + lcl_led_cmd + cmd_dict['cmd_end']
     bot_cmd = cmd_dict['cmd_start'] + cmd_dict['bottom_on'] + lcl_led_cmd + cmd_dict['cmd_end']
     for i in range(0, num_times):
@@ -133,11 +135,6 @@ def top_to_bottom_flash(num_times):
 
 
 if __name__ == '__main__':
-    cmd_dict = {'cmd_start': '<', 'cmd_end': '>', 'all_off': '0', 'all_on': '1',
-                'ready_state_on': '2', 'ready_state_off': '3', 'bottom_on': '4',
-                'right_bottom_on': '5', 'left_bottom_on': '6', 'bottom_off': '7',
-                'top_on': '8', 'right_top_on': '9', 'left_top_on': '10', 'top_off': '11',
-                'random': '12'}
     # <cmd code, brightness, row start, row end, col start, col end>
     ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
     r_start = 0
@@ -178,5 +175,6 @@ if __name__ == '__main__':
     rsl_bright_to_dim()
     flash(0.2)
     time.sleep(2)
+    ser.close()
     print(time.time() - start_time)
 
