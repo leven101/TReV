@@ -1,16 +1,7 @@
 import serial
 import time
-import threading
-import playsound
 
-from headset.shared import cmd_dict
-
-
-def play_track():
-    t1 = threading.Thread(target=playsound.playsound, daemon=True,
-                          args=('/Users/abby/Documents/TREV/sound/b5.m4a',))
-    t1.start()
-    # playsound.playsound('/Users/abby/Documents/TREV/sound/b5.m4a')
+from headset.shared import cmd_dict, play_track
 
 
 def bottom_left_right_left_right(num_times, delay):
@@ -102,7 +93,7 @@ def beat_metronome(seconds, tempo=0.326, note=0.50, soft=False):
     ser.write(off_cmd)
 
 
-def flash(seconds=0.5):
+def flash_all(seconds=0.5):
     lcl_led_cmd = leds_cmd.format(brightness, 0, 4, 0, 7)
     flash_cmd = cmd_dict['cmd_start'] + cmd_dict['all_on'] + lcl_led_cmd + cmd_dict['cmd_end']
     # print(flash_cmd)
@@ -161,7 +152,7 @@ if __name__ == '__main__':
     beat_metronome(15)
     ser.write(off_cmd)
     time.sleep(0.5)
-    flash()
+    flash_all()
     beat_metronome(17.5, soft=True)
     beat_metronome(10, note=0.25)
     ser.write(off_cmd)
@@ -173,7 +164,7 @@ if __name__ == '__main__':
     beat_metronome(10, soft=True)
     top_to_bottom_flash(3)
     rsl_bright_to_dim()
-    flash(0.2)
+    flash_all(0.2)
     time.sleep(2)
     ser.close()
     print(time.time() - start_time)

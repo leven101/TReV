@@ -2,12 +2,16 @@ import serial
 import time
 import random
 
-from headset.shared import cmd_dict, leds_cmd, off_cmd, cmd_template
+from headset.shared import cmd_dict, off_cmd, cmd_template
 
 start_choices = ['right_bottom_on', 'right_top_on', 'left_bottom_on', 'left_top_on']
 row_choices = [0, 1]
 col_choices = [0, 1, 2, 3, 4, 5, 6]
 
+'''TODO for Hans Solo face
+- add surprise RSL gradient  at 1:14
+- happy for 2:25 - 2:26
+'''
 
 def brightness_gradient_up(cmd_shell):
     for i in range(0, 15, 5):
@@ -86,6 +90,7 @@ def ship_takeoff():
 
 
 def irritate_noise():
+    # for 0:23 - 0:25
     cmd = cmd_template.format(cmd_dict['left_top_on'], 7, 2, 4, '{}', '{}')
     s = time.time()
     while time.time() - s < 2:

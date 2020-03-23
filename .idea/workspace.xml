@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="313ef6f8-0c9d-4f10-a0a6-3ba620c7cc1f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/headset/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/headset/shared.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/headset/star_wars_clip.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/headset/track_examples.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TREV software - 1.1.0/Hardware/control_from_python/control_from_python.ino" beforeDir="false" afterPath="$PROJECT_DIR$/TREV software - 1.1.0/Hardware/control_from_python/control_from_python.ino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headset/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/headset/beethovens_fifth_clip.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/beethovens_fifth_clip.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headset/control_from_python.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/control_from_python.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headset/spaceship_example.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/spaceship_example.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headset/control_from_python.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/headset/shared.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/shared.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headset/star_wars_clip.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/star_wars_clip.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/music/librosa/example.py" beforeDir="false" afterPath="$PROJECT_DIR$/music/librosa/get_tempo_example.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,12 +20,12 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/headset/star_wars_clip.py">
+        <entry file="file://$PROJECT_DIR$/headset/track_examples.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
-              <caret line="132" column="19" selection-start-line="132" selection-start-column="19" selection-end-line="132" selection-end-column="19" />
+            <state relative-caret-position="205">
+              <caret line="97" column="36" lean-forward="true" selection-start-line="97" selection-start-column="36" selection-end-line="97" selection-end-column="36" />
               <folding>
-                <element signature="e#0#13#0" expanded="true" />
+                <element signature="e#78#91#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -51,20 +51,22 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/headset/__init__.py" />
-        <option value="$PROJECT_DIR$/headset/shared.py" />
         <option value="$PROJECT_DIR$/headset/control_from_python.py" />
-        <option value="$PROJECT_DIR$/headset/beethovens_fifth_clip.py" />
         <option value="$PROJECT_DIR$/headset/spaceship_example.py" />
+        <option value="$PROJECT_DIR$/headset/__init__.py" />
         <option value="$PROJECT_DIR$/headset/star_wars_clip.py" />
+        <option value="$PROJECT_DIR$/music/librosa/example.py" />
+        <option value="$PROJECT_DIR$/headset/shared.py" />
+        <option value="$PROJECT_DIR$/headset/beethovens_fifth_clip.py" />
+        <option value="$PROJECT_DIR$/headset/track_examples.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="47" />
-    <option name="y" value="27" />
-    <option name="width" value="1223" />
-    <option name="height" value="923" />
+    <option name="x" value="82" />
+    <option name="y" value="42" />
+    <option name="width" value="1411" />
+    <option name="height" value="810" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -81,7 +83,19 @@
             <path>
               <item name="TReV" type="b2602c69:ProjectViewProjectNode" />
               <item name="TReV" type="462c0819:PsiDirectoryNode" />
-              <item name="headset" type="462c0819:PsiDirectoryNode" />
+              <item name="music" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TReV" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TReV" type="462c0819:PsiDirectoryNode" />
+              <item name="music" type="462c0819:PsiDirectoryNode" />
+              <item name="audio-files" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TReV" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TReV" type="462c0819:PsiDirectoryNode" />
+              <item name="music" type="462c0819:PsiDirectoryNode" />
+              <item name="librosa" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -107,8 +121,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.star_wars_clip">
-    <configuration name="beethovens_fifth_clip" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.track_examples">
+    <configuration name="example" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TReV" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -116,11 +130,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/headset" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/music/librosa" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/headset/beethovens_fifth_clip.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/music/librosa/get_tempo_example.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -142,27 +156,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/headset/shared.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="simple_colorbar" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="TReV" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/heat-map" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/heat-map/simple_colorbar.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -213,13 +206,34 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="track_examples" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TReV" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/headset" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/headset/track_examples.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.track_examples" />
+        <item itemvalue="Python.shared" />
+        <item itemvalue="Python.example" />
         <item itemvalue="Python.star_wars_clip" />
         <item itemvalue="Python.spaceship_example" />
-        <item itemvalue="Python.shared" />
-        <item itemvalue="Python.beethovens_fifth_clip" />
-        <item itemvalue="Python.simple_colorbar" />
       </list>
     </recent_temporary>
   </component>
@@ -241,26 +255,33 @@
       <option name="project" value="LOCAL" />
       <updated>1584803282666</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="- refactored Arduino driver indexes&#10;- added Arduino parameter validation&#10;- added Star Wars clip demo">
+      <created>1584828246865</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1584828246865</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="47" y="27" width="1223" height="923" extended-state="0" />
+    <frame x="82" y="42" width="1411" height="810" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49828768" visible="true" weight="0.23211314" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49828768" visible="true" weight="0.19640288" />
       <window_info id="Structure" order="1" sideWeight="0.5017123" side_tool="true" weight="0.21192053" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32972324" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.299639" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2488372" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32851985" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.32729805" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32972324" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32851985" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32790697" />
       <window_info anchor="bottom" id="Messages" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -269,7 +290,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="- finished first synch of Beethoven's fifth" />
-    <option name="LAST_COMMIT_MESSAGE" value="- finished first synch of Beethoven's fifth" />
+    <MESSAGE value="- refactored Arduino driver indexes&#10;- added Arduino parameter validation&#10;- added Star Wars clip demo" />
+    <option name="LAST_COMMIT_MESSAGE" value="- refactored Arduino driver indexes&#10;- added Arduino parameter validation&#10;- added Star Wars clip demo" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/heat-map/heatmap_test.py">
@@ -291,26 +313,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/headset/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/headset/shared.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/headset/control_from_python.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/headset/headset_connect_test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -320,20 +322,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/headset/beethovens_fifth_clip.py">
+    <entry file="file://$PROJECT_DIR$/headset/control_from_python.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2126">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="525">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/headset/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="67" selection-start-line="1" selection-start-column="67" selection-end-line="1" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/headset/spaceship_example.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="37" column="72" lean-forward="true" selection-start-line="37" selection-start-column="72" selection-end-line="37" selection-end-column="72" />
+        <state relative-caret-position="372">
+          <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="19" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
@@ -342,10 +351,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/headset/star_wars_clip.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="132" column="19" selection-start-line="132" selection-start-column="19" selection-end-line="132" selection-end-column="19" />
+        <state relative-caret-position="-1606">
+          <caret line="11" column="15" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/headset/shared.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/headset/beethovens_fifth_clip.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-217">
+          <caret line="3" column="47" selection-start-line="3" selection-start-column="47" selection-end-line="3" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/music/librosa/get_tempo_example.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="7" column="11" lean-forward="true" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/headset/track_examples.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="97" column="36" lean-forward="true" selection-start-line="97" selection-start-column="36" selection-end-line="97" selection-end-column="36" />
+          <folding>
+            <element signature="e#78#91#0" expanded="true" />
           </folding>
         </state>
       </provider>
