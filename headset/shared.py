@@ -1,6 +1,6 @@
 import threading
 import playsound
-
+import time
 
 cmd_dict = {'cmd_start': '<', 'cmd_end': '>', 'all_off': '0', 'all_on': '1',
             'ready_state_on': '2', 'ready_state_off': '3', 'bottom_on': '4',
@@ -24,12 +24,20 @@ def get_tempo_delay(bpm, ms=False):
     return 60/bpm
 
 
-def play_track(path='/Users/abby/Documents/TREV/sound/b5.m4a'):
+def play_track(path='../music/audio-files/b5.m4a'):
     t1 = threading.Thread(target=playsound.playsound, daemon=True,
                           args=(path,))
     t1.start()
-    # playsound.playsound('/Users/abby/Documents/TREV/sound/b5.m4a')
+    # playsound.playsound('../music/audio-files/b5.m4a')
 
+
+def flash_all(ser, seconds=0.5, brightness=7):
+    flash_cmd = cmd_template.format(cmd_dict['all_on'], brightness, 0, 4, 0, 7)
+    ser.write(flash_cmd.encode())
+    time.sleep(seconds)
+    ser.write(off_cmd)
 
 if __name__ == '__main__':
-    print(get_tempo_delay(103.36))
+    # print(get_tempo_delay(103.36))
+    play_track()
+

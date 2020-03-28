@@ -33,18 +33,18 @@ def revolt_drum_rhythm():
     r = [1, 2]
     c = [1, 2]
     seconds = 0.40
-    note = note_dict['1/16']
+    note = note_dict['1/8']
     tempo = (seconds - (note*3)) / 3
     for i in range(0, 2):
         time.sleep(0.125)
-        blink(r, c, cmd_dict['bottom_on'], seconds=seconds, tempo=tempo, note=note_dict['1/16'])
+        blink(r, c, cmd_dict['bottom_on'], seconds=seconds, tempo=tempo, note=note)
     time.sleep(1)
 
 
 def scrape_n_scratch():
     threading.Thread(target=rsl_gradient).start()
     r = [1, 1]
-    seconds = 0.25
+    seconds = 0.35
     tempo = 0.001
     for i in range(0, 7):
         blink(r, [0, i], cmd_dict['top_on'], seconds=seconds, tempo=tempo)
@@ -75,18 +75,16 @@ def blink(r, c, cmd_type, seconds=0.5, tempo=0.1, note=note_dict['1/4'], rsl=Fal
 
 def revolt_by_malaa():
     r = [1, 1]
-    c = [3, 3]
-    play_track('/Users/abby/Documents/TREV/sound/revolt.malaa.m4a')
-    time.sleep(2)
+    c = [2, 2]
     s = time.time()
-    blink(r, c, cmd_dict['all_on'], 37, 0.58, rsl=True)
-    time.sleep(0.5)
-    while time.time() - s < 60:
+    tempo = 0.58
+    play_track('../music/audio-files/revolt.malaa.m4a')
+    time.sleep(20.5)
+    blink(r, c, cmd_dict['all_on'], 17, tempo*2, rsl=True)
+    while time.time() - s < 57:
         revolt_drum_rhythm()
-    time.sleep(0.5)
     scrape_n_scratch()
-    time.sleep(0.5)
-    while time.time() - s < 68:
+    while time.time() - s < 67:
         revolt_drum_rhythm()
     scrape_n_scratch()
     while time.time() - s < 77:
@@ -95,9 +93,9 @@ def revolt_by_malaa():
     while time.time() - s < 87:
         revolt_drum_rhythm()
     scrape_n_scratch()
-    blink(r, c, cmd_dict['all_on'], 20, 0.58, rsl=True)
-    time.sleep(2)
+    blink(r, c, cmd_dict['all_on'], 16, tempo, rsl=True)
     print(time.time() - s)
+    time.sleep(1)
 
 
 if __name__ == '__main__':

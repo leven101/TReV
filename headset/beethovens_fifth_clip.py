@@ -129,14 +129,14 @@ if __name__ == '__main__':
     # <cmd code, brightness, row start, row end, col start, col end>
     ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
     r_start = 0
-    c_start = 3
+    c_start = 1
     brightness = 7
     off_cmd = (cmd_dict['cmd_start'] + cmd_dict['all_off'] + cmd_dict['cmd_end']).encode()
     ser.write(off_cmd)
     leds_cmd = ' {} {} {} {} {}'
 
     play_track()
-    time.sleep(0.65)
+    time.sleep(3)
     start_time = time.time()
     top_short_rsl_short_right_short_top_long(2)
     ser.write(off_cmd)

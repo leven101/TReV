@@ -1,7 +1,7 @@
 import serial
 import time
 
-from headset.shared import cmd_dict
+from headset.shared import cmd_dict, flash_all
 
 '''
 Time steps
@@ -19,11 +19,14 @@ Time steps
 
 ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
 
+time.sleep(7)
+flash_all(ser)
+
 start_time = time.time()
 off_cmd = cmd_dict['cmd_start'] + cmd_dict['all_off'] + cmd_dict['cmd_end']
 print('off_cmd', off_cmd)
 ser.write(off_cmd.encode())
-time.sleep(2)
+time.sleep(1)
 
 ready_state_cmd = cmd_dict['cmd_start'] + cmd_dict['ready_state_on'] + ' {}' + cmd_dict['cmd_end']
 print('ready_state_cmd', ready_state_cmd)
@@ -51,7 +54,7 @@ for i in range(0, 4):
 
 ser.write(off_cmd.encode())
 print('off_cmd', off_cmd)
-time.sleep(4)
+time.sleep(3)
 #
 on_cmd = cmd_dict['cmd_start'] + cmd_dict['all_on'] + ' 14 0 3 0 6' + cmd_dict['cmd_end']
 ser.write(on_cmd.encode())
