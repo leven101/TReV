@@ -104,3 +104,22 @@ if __name__ == '__main__':
     led_brightness = 6
     rsl_brightness = 100
     revolt_by_malaa()
+
+
+
+
+'''
+Next track: ? 
+ - Get average bass/treble ratios over each song segment.
+ - Along with blinking LEDs to beat normalize the bottom/top light 
+ intensities to treble/bass (bass/treble). 
+ - Split beats by stereo signal (??)
+'''
+
+
+
+
+
+
+
+

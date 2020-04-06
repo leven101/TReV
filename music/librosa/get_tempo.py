@@ -5,7 +5,7 @@ import numpy as np
 
 # 1. Get the file path to the included audio example
 # filename = '/Users/abby/Documents/TREV/sound/heavy-beat_140bpm_C_major.wav'
-filename = '/Users/abby/Documents/TREV/sound/revolt.malaa.m4a'
+filename = '../audio-files/revolt.malaa.m4a'
 # 2. Load the audio as a waveform `y`
 #    Store the sampling rate as `sr`
 y, sr = librosa.load(filename, mono=True)
@@ -26,3 +26,4 @@ print(beat_times_diff)
 # print('Saving output to beat_times.csv')
 # print(beat_times)
 # librosa.output.times_csv('beat_times_2.csv', beat_times)
+

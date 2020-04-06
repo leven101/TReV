@@ -5,7 +5,7 @@ PyAudio + PyQtGraph Spectrum Analyzer
 
 Author:@sbarratt
 Date Created: August 8, 2015
-
+https://github.com/sbarratt/spectrum-analyzer
 """
 
 import pyaudio
@@ -14,7 +14,8 @@ import sys
 import numpy as np
 import wave
 # import heatmap
-import csv
+import time
+import pandas as pd
 
 import pyqtgraph as pg
 from pyqtgraph.Qt import QtGui, QtCore
@@ -185,8 +186,6 @@ class SpectrumAnalyzer:
             QtGui.QApplication.processEvents()
 
     def timed_window_ratios(self):
-        import time
-        time_delay = 5  # seconds
         agr_bass = 0
         agr_tre = 0
         t_end = time.time() + time_delay
@@ -233,26 +232,20 @@ def load_saved_data(fname):
     import pandas as pd
     data = pd.read_csv('./out/{}.csv'.format(fname), sep=' ', header=None)
     return data.values
-    # with open('./out/{}.csv'.format(fname), 'rb') as fin:
-    #     fcsv = csv.reader(fin, delimiter=' ', quoting=csv.QUOTE_NONNUMERIC)
-    #     return map(tuple, fcsv)
 
 
 def save_control_data(fname, ratios):
-    time_delay = 5
-    with open('./out/{}.csv'.format(fname), 'w') as fout:
-        fscv = csv.writer(fout, delimiter=' ', quoting=csv.QUOTE_NONNUMERIC)
-        fscv.writerow(['top', 'bottom', 'exposure'])
-        for ratio in ratios:
-            # fscv.writerow(ratio)
-            fscv.writerow([ratio[0], ratio[1], time_delay])
+    df = pd.DataFrame(data=ratios, columns=['top', 'bottom'])
+    df['exposure'] = time_delay
+    df.to_csv('./out/{}.csv'.format(fname))
 
 
 if __name__ == '__main__':
-    path = '/Users/abby/Documents/TREV/sound/looperman-l-2373031-0200277-kenny-beats-drum-loop.wav'
+    path = 'audio-files/dt_16bars_102rap.wav'
+    time_delay = 5
     sa = SpectrumAnalyzer(path)
-    # ratios = sa.timed_window_ratios()
+    ratios = sa.timed_window_ratios()
     # ratios = load_saved_data('raw-values')
-    # save_control_data('test-1', ratios)
-    sa.visualize_only()
+    save_control_data('test-1', ratios)
+    # sa.visualize_only()
     # sa.mainLoop()
