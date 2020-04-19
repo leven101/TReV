@@ -24,8 +24,8 @@ def get_tempo_delay(bpm, ms=False):
     return 60/bpm
 
 
-def play_track(path='../music/audio-files/b5.m4a'):
-    t1 = threading.Thread(target=playsound.playsound, daemon=True,
+def play_track(path='../music/audio-files/b5.m4a', daemon=True):
+    t1 = threading.Thread(target=playsound.playsound, daemon=daemon,
                           args=(path,))
     t1.start()
     # playsound.playsound('../music/audio-files/b5.m4a')

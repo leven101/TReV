@@ -244,8 +244,8 @@ if __name__ == '__main__':
     path = 'audio-files/dt_16bars_102rap.wav'
     time_delay = 5
     sa = SpectrumAnalyzer(path)
-    ratios = sa.timed_window_ratios()
+    # ratios = sa.timed_window_ratios()
     # ratios = load_saved_data('raw-values')
-    save_control_data('test-1', ratios)
-    # sa.visualize_only()
+    # save_control_data('test-1', ratios)
+    sa.visualize_only()
     # sa.mainLoop()
