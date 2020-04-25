@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="313ef6f8-0c9d-4f10-a0a6-3ba620c7cc1f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/headset/cam/cam_capture_example.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/headset/cam/cam_duel.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/headset/cam/cam_frames_to_file.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/headset/cam/template_emo_rec.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/headset/music/normalized_bass_treble.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/headset/cam/template_emo_rec_duel.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headset/embedded_cam/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/cam/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headset/shared.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/shared.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/music/librosa/get_spectrum.py" beforeDir="false" afterPath="$PROJECT_DIR$/music/librosa/get_spectrum.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headset/cam/cam_capture_example.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/headset/cam/cam_duel.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/cam/cam_capture.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headset/cam/cam_frames_to_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/cam/cam_frames_to_file.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headset/cam/template_emo_rec.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/cam/template_emo_rec.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/music/heatmap.py" beforeDir="false" afterPath="$PROJECT_DIR$/heat-map/heatmap.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/music/spectrum_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/music/spectrum_analysis.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,12 +20,12 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/headset/cam/template_emo_rec.py">
+        <entry file="file://$PROJECT_DIR$/headset/cam/template_emo_rec_duel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="33" column="33" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
+            <state relative-caret-position="45">
+              <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
               <folding>
-                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#0#10#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -50,6 +48,9 @@
       <find>RANGE</find>
       <find>INPUT_FRAMES_PER_BLOCK</find>
       <find>2we8</find>
+      <find>heatmap</find>
+      <find>CHANNELS</find>
+      <find>find_input_device</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -71,28 +72,29 @@
         <option value="$PROJECT_DIR$/headset/cam_capture.py" />
         <option value="$PROJECT_DIR$/headset/shared.py" />
         <option value="$PROJECT_DIR$/headset/music/normalized_bass_treble.py" />
-        <option value="$PROJECT_DIR$/music/spectrum_analysis.py" />
         <option value="$PROJECT_DIR$/music/librosa/get_spectrum.py" />
-        <option value="$PROJECT_DIR$/headset/cam/cam_capture.py" />
-        <option value="$PROJECT_DIR$/headset/cam/cam_duel.py" />
         <option value="$PROJECT_DIR$/headset/cam/get_train_images.py" />
+        <option value="$PROJECT_DIR$/headset/cam/cam_capture_example.py" />
+        <option value="$PROJECT_DIR$/headset/cam/cam_duel.py" />
         <option value="$PROJECT_DIR$/headset/cam/cam_frames_to_file.py" />
+        <option value="$PROJECT_DIR$/music/spectrum_analysis.py" />
         <option value="$PROJECT_DIR$/headset/cam/template_emo_rec.py" />
+        <option value="$PROJECT_DIR$/headset/cam/cam_capture.py" />
+        <option value="$PROJECT_DIR$/headset/cam/template_emo_rec_duel.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="28" />
-    <option name="y" value="23" />
-    <option name="width" value="1586" />
-    <option name="height" value="1027" />
+    <option name="x" value="76" />
+    <option name="y" value="33" />
+    <option name="width" value="1538" />
+    <option name="height" value="1017" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -111,10 +113,16 @@
               <item name="headset" type="462c0819:PsiDirectoryNode" />
               <item name="cam" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="TReV" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TReV" type="462c0819:PsiDirectoryNode" />
+              <item name="music" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -127,6 +135,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/heat-map" />
       <recent name="$PROJECT_DIR$/jupyter" />
       <recent name="$PROJECT_DIR$/headset/embedded_cam" />
       <recent name="$PROJECT_DIR$/headset/movies" />
@@ -145,7 +154,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.template_emo_rec">
+  <component name="RunManager" selected="Python.template_emo_rec_duel">
     <configuration name="cam_duel" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TReV" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -158,28 +167,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/headset/cam/cam_duel.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="get_spectrum" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="TReV" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/music/librosa" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/music/librosa/get_spectrum.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/headset/cam/cam_capture.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -251,20 +239,41 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="template_emo_rec_duel" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TReV" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/headset/cam" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/headset/cam/template_emo_rec_duel.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Python.get_spectrum" />
-      <item itemvalue="Python.spectrum_analysis" />
       <item itemvalue="Python.cam_duel" />
       <item itemvalue="Python.get_train_images" />
       <item itemvalue="Python.template_emo_rec" />
+      <item itemvalue="Python.spectrum_analysis" />
+      <item itemvalue="Python.template_emo_rec_duel" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.template_emo_rec_duel" />
         <item itemvalue="Python.template_emo_rec" />
+        <item itemvalue="Python.spectrum_analysis" />
         <item itemvalue="Python.get_train_images" />
         <item itemvalue="Python.cam_duel" />
-        <item itemvalue="Python.get_spectrum" />
-        <item itemvalue="Python.spectrum_analysis" />
       </list>
     </recent_temporary>
   </component>
@@ -328,23 +337,30 @@
       <option name="project" value="LOCAL" />
       <updated>1586177701537</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="- added dual webcam functionality">
+      <created>1587324073264</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1587324073264</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="28" y="23" width="1586" height="1027" extended-state="0" />
+    <frame x="76" y="33" width="1538" height="1017" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49828768" visible="true" weight="0.1341853" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49828768" visible="true" weight="0.19182597" />
       <window_info id="Structure" order="1" sideWeight="0.5017123" side_tool="true" weight="0.21192053" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32941177" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.51016045" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.38074866" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32864866" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3654054" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.30810812" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32480535" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32406417" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32941177" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.3259177" />
@@ -364,7 +380,8 @@
     <MESSAGE value="- check in Star Wars, Revolt" />
     <MESSAGE value="- added movies/music subdirs" />
     <MESSAGE value="- added librosa examples" />
-    <option name="LAST_COMMIT_MESSAGE" value="- added librosa examples" />
+    <MESSAGE value="- added dual webcam functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="- added dual webcam functionality" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -380,47 +397,47 @@
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>Pxx</expression-string>
+        <expression-string>Pxx[1152:1157]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>np.absolute(Pxx)</expression-string>
+        <expression-string>Pxx[1151:1157]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>data.shape</expression-string>
+        <expression-string>Pxx[1150:1157]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>f.shape</expression-string>
+        <expression-string>Pxx[1148:1157]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>len(Pxx)</expression-string>
+        <expression-string>Pxx[1147:1157]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>len(f)</expression-string>
+        <expression-string>Pxx[1145:1157]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>Pxx.shape</expression-string>
+        <expression-string>Pxx[1152:1153]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>S.shape</expression-string>
+        <expression-string>Pxx[1102:1103]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>librosa.power_to_db(abs(X))</expression-string>
+        <expression-string>f[1102:1103]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -432,39 +449,77 @@
     <entry file="file://$PROJECT_DIR$/music/out/test-1.csv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/headset/cam/cam_capture_example.py">
+    <entry file="file://$PROJECT_DIR$/heat-map/heatmap.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" selection-start-line="14" selection-end-line="15" selection-end-column="13" />
+        <state relative-caret-position="300">
+          <caret line="20" column="23" lean-forward="true" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/headset/cam/cam_duel.py">
+    <entry file="file://$PROJECT_DIR$/headset/cam/cam_capture_example.py" />
+    <entry file="file://$PROJECT_DIR$/headset/cam/cam_frames_to_file.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="53" column="14" lean-forward="true" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="14" />
+        <state relative-caret-position="60">
+          <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/headset/cam/cam_frames_to_file.py">
+    <entry file="file://$PROJECT_DIR$/music/librosa/get_tempo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="120">
+          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/music/librosa/get_spectrum.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="10" lean-forward="true" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/music/spectrum_analysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3660">
+          <caret line="244" column="33" selection-start-line="244" selection-start-column="33" selection-end-line="244" selection-end-column="33" />
+          <folding>
+            <element signature="e#159#173#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/headset/cam/template_emo_rec.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="33" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
+        <state relative-caret-position="198">
+          <caret line="43" selection-start-line="43" selection-end-line="56" selection-end-column="16" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/headset/cam/cam_capture.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="44" selection-start-line="44" selection-end-line="46" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/headset/cam/template_emo_rec_duel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -2,7 +2,25 @@ import cv2
 from multiprocessing import Process
 
 
-def capture_both_single_thread():
+def cv2_cam_capture_example():
+    cap = cv2.VideoCapture(0)
+    while (True):
+        # Capture frame-by-frame
+        ret, frame = cap.read()
+
+        # Our operations on the frame come here
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+        # Display the resulting frame
+        cv2.imshow('frame', gray)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+            # When everything done, release the capture
+    cap.release()
+    cv2.destroyAllWindows()
+
+
+def duel_cam_capture_single_thread():
     cam1 = cv2.VideoCapture(0)
     cam2 = cv2.VideoCapture(1)
 
@@ -60,6 +78,8 @@ def dual_cam_capture_multi_thread():
         p0.join()
         p1.join()
 
-capture_both_single_thread()
+
+if __name__ == '__main__':
+    cam_capture(0)
 
 

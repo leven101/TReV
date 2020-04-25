@@ -13,7 +13,6 @@ import struct
 import sys
 import numpy as np
 import wave
-# import heatmap
 import time
 import pandas as pd
 
@@ -51,13 +50,15 @@ class SpectrumAnalyzer:
         self.bass_signal_end_index = -1
         self.treble_signal_start_index = -1
         self.treble_signal_end_index = -1
-        # self.graphics = heatmap.HeatMap()
+
 
     def find_input_device(self):
         device_index = None
         for i in range(self.pa.get_device_count()):
             devinfo = self.pa.get_device_info_by_index(i)
-            if devinfo["name"].lower() in ["mic", "input"]:
+            print(devinfo['name'])
+            if "mic" in devinfo["name"].lower():
+            # if devinfo["name"].lower() in ["mic", "input"]:
                 device_index = i
 
         return device_index
@@ -75,7 +76,7 @@ class SpectrumAnalyzer:
         device_index = self.find_input_device()
 
         self.stream = self.pa.open(format=FORMAT,
-                                   channels=CHANNELS,
+                                   channels=1,
                                    rate=RATE,
                                    input=True,
                                    input_device_index=device_index,
@@ -241,7 +242,7 @@ def save_control_data(fname, ratios):
 
 
 if __name__ == '__main__':
-    path = 'audio-files/dt_16bars_102rap.wav'
+    path = 'audio-files/tones/300hz.wav'
     time_delay = 5
     sa = SpectrumAnalyzer(path)
     # ratios = sa.timed_window_ratios()
