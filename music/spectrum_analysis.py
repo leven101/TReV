@@ -51,16 +51,14 @@ class SpectrumAnalyzer:
         self.treble_signal_start_index = -1
         self.treble_signal_end_index = -1
 
-
     def find_input_device(self):
         device_index = None
         for i in range(self.pa.get_device_count()):
             devinfo = self.pa.get_device_info_by_index(i)
             print(devinfo['name'])
             if "mic" in devinfo["name"].lower():
-            # if devinfo["name"].lower() in ["mic", "input"]:
+                # if devinfo["name"].lower() in ["mic", "input"]:
                 device_index = i
-
         return device_index
 
     def initSpeakers(self, audio_file):
@@ -145,10 +143,10 @@ class SpectrumAnalyzer:
 
     def get_ratio_signal(self, spectrum, decibels):
         if self.bass_signal_start_index == -1:
-            self.bass_signal_start_index = spectrum.index(20)
-            self.bass_signal_end_index = spectrum.index(400)
+            self.bass_signal_start_index = spectrum.index(60)
+            self.bass_signal_end_index = spectrum.index(260)
         if self.treble_signal_start_index == -1:
-            self.treble_signal_start_index = spectrum.index(1500)
+            self.treble_signal_start_index = spectrum.index(2000)
             self.treble_signal_end_index = spectrum.index(4000)
         bass_signal = decibels[self.bass_signal_start_index:self.bass_signal_end_index]
         treble_singal = decibels[self.treble_signal_start_index:self.treble_signal_end_index]
@@ -172,7 +170,7 @@ class SpectrumAnalyzer:
                 continue
             f, Pxx = self.get_spectrum(data)
 
-            bass_signal, rest_signal = self.get_ratio_signal(f, Pxx) # get signal for TERV/EERV
+            bass_signal, rest_signal = self.get_ratio_signal(f, Pxx)  # get signal for TERV/EERV
             cnt += 1
             if cnt % int(batch_size) == 0:
                 print('{} : {}'.format(agr_bass / batch_size, agr_tre / batch_size))
@@ -216,6 +214,7 @@ class SpectrumAnalyzer:
         return ratios
 
     def visualize_only(self):
+        total = 0
         while 1:
             try:
                 if self.use_wav:
@@ -225,6 +224,15 @@ class SpectrumAnalyzer:
             except IOError:
                 continue
             f, Pxx = self.get_spectrum(data)
+            print('DB argmax: ', np.argmax(Pxx))
+            print('DB max: ', np.max(Pxx))
+            print('Hz at DB argmax: ', f[np.argmax(Pxx)])
+            idx_neg = mid - int(hz/jump)
+            idx_pos = mid + int(hz/jump)
+            # print('idx_neg: {}\tHz: {}\ttDB:{}'.format(idx_neg, f[idx_neg], Pxx[idx_neg]))
+            # print('idx_pos: {}\tHz: {}\tDB: {}'.format(idx_pos, f[idx_pos], Pxx[idx_neg]))
+            total += 1
+            print(total)
             self.specItem.plot(x=f, y=Pxx, clear=True)
             QtGui.QApplication.processEvents()
 
@@ -242,11 +250,15 @@ def save_control_data(fname, ratios):
 
 
 if __name__ == '__main__':
-    path = 'audio-files/tones/300hz.wav'
+    mid = 1102
+    hz = 100
+    jump = 20
+    path = 'audio-files/tones/{}hz.wav'.format(hz)
+    # path = 'audio-files/dt_16bars_102rap.wav'
     time_delay = 5
     sa = SpectrumAnalyzer(path)
     # ratios = sa.timed_window_ratios()
     # ratios = load_saved_data('raw-values')
     # save_control_data('test-1', ratios)
-    sa.visualize_only()
-    # sa.mainLoop()
+    # sa.visualize_only()
+    sa.mainLoop()

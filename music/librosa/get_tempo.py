@@ -11,7 +11,7 @@ filename = '../audio-files/revolt.malaa.m4a'
 y, sr = librosa.load(filename, mono=True)
 print(librosa.get_duration(y=y, sr=sr))
 # 3. Run the default beat tracker
-tempo, beat_times = librosa.beat.beat_track(y=y, sr=sr, units='time')
+tempo, beat_times = librosa.beat.beat_track(y=y, sr=sr, units='times')
 print(beat_times)
 print('Estimated tempo: {:.2f} beats per minute'.format(tempo))
 beat_times_diff = np.diff(beat_times)
