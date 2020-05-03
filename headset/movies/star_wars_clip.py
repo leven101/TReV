@@ -3,7 +3,7 @@ import time
 import random
 
 from headset.shared import cmd_dict, off_cmd, \
-    cmd_template, rsl_template, rsl_off_cmd, flash_all
+    cmd_template, rsl_on_cmd, rsl_off_cmd, flash_all
 
 start_choices = ['right_bottom_on', 'right_top_on', 'left_bottom_on', 'left_top_on']
 row_choices = [0, 1]
@@ -154,7 +154,7 @@ def warp_speed_effect():
 
 
 def rsl_gradient(jump):
-    rsl_on_cmd = rsl_template.format(cmd_dict['ready_state_on'], '{}')
+    rsl_on_cmd = rsl_on_cmd.format(cmd_dict['ready_state_on'], '{}')
     for i in range(0, 256, jump):
         ser.write(rsl_on_cmd.format(i).encode())
         time.sleep(0.10)

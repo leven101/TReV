@@ -9,6 +9,7 @@ sr = 22050  # 44100
 x, sr = librosa.load(path, sr=sr)
 
 hop_length = 512  # how many frames per fft
+# from spectrum_analysis.py n_fft = sr * (seconds / hops)
 n_fft = 2205
 X = librosa.stft(x, n_fft=n_fft, hop_length=hop_length)
 

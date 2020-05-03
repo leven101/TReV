@@ -54,7 +54,7 @@ def cam_capture(cam_id):
     if vc.isOpened():  # try to get the first frame
         rval, frame = vc.read()
     else:
-        rval = False
+        rval, frame = False, None
 
     while rval:
         frame = process_frame(frame)

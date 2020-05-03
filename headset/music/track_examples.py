@@ -9,7 +9,7 @@ import time
 import threading
 
 from headset.shared import cmd_dict, off_cmd, cmd_template, \
-    note_dict, rsl_template, rsl_off_cmd, play_track
+    note_dict, rsl_on_cmd, rsl_off_cmd, play_track
 
 '''
 Revolt - Malaa
@@ -78,7 +78,7 @@ def revolt_by_malaa():
     c = [2, 2]
     s = time.time()
     tempo = 0.58
-    play_track('../music/audio-files/revolt.malaa.m4a')
+    play_track('/Users/abby/work/TReV/music/audio-files/revolt.malaa.m4a')
     time.sleep(20.5)
     blink(r, c, cmd_dict['all_on'], 17, tempo*2, rsl=True)
     while time.time() - s < 57:
@@ -96,16 +96,15 @@ def revolt_by_malaa():
     blink(r, c, cmd_dict['all_on'], 16, tempo, rsl=True)
     print(time.time() - s)
     time.sleep(1)
+    ser.write(off_cmd)
 
 
 if __name__ == '__main__':
     ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
-    rsl_on_cmd = rsl_template.format(cmd_dict['ready_state_on'], '{}')
     led_brightness = 6
     rsl_brightness = 100
     revolt_by_malaa()
-
-
+    ser.close()
 
 
 '''
