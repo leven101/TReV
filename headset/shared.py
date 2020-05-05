@@ -19,13 +19,23 @@ rsl_on_cmd = '{}{} {}{}'.format(cmd_dict['cmd_start'], cmd_dict['ready_state_on'
 off_cmd = (cmd_dict['cmd_start'] + cmd_dict['all_off'] + cmd_dict['cmd_end']).encode()
 rsl_off_cmd = '<3>'.encode()
 
-total_brightness = 15
+total_brightness = 10
 
 
 # tempo is number of times the light blinks
 def beats_per_second(bpm, ms=False):
     if ms: return 60/bpm * 1000
     return 60/bpm
+
+
+# tempo: how many times the lights blink a second
+# note: how long each light is on for
+def get_tempo(bpm, note):
+    if bpm > 0:
+        tempo = beats_per_second(bpm)
+        return tempo - note
+    else:
+        return 0
 
 
 def play_track(path='/Users/abby/work/TReV/music/audio-files/b5.m4a', daemon=True):

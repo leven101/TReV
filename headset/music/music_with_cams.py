@@ -9,7 +9,7 @@ from multiprocessing import Process
 import headset.shared as shared
 import headset.music.signals_to_headset as headset
 
-thold = 0.90
+thold = 0.85
 template_right = cv2.imread('../cam/images/templates/happy-template-right.png', 0)
 template_right = cv2.flip(template_right, 0)
 w_right, h_right = template_right.shape[::-1]
@@ -21,7 +21,7 @@ w_left, h_left = template_left.shape[::-1]
 emotions = ['Neutral', 'Positive']
 current_emotion = emotions[0]
 
-in_audio_path = '/Users/abby/work/TReV/music/audio-files/tones/100hz.mp3'
+in_audio_path = '/Users/abby/work/TReV/music/audio-files/tones/100hz.wav'
 in_signals_path = 'track-data/{}-track-data.csv'.format(os.path.basename(in_audio_path))
 
 
@@ -91,16 +91,18 @@ def get_light_intensity(row):
 def run_track_program():
     df = pd.read_csv(in_signals_path, dtype=float)
     shared.play_track(in_audio_path, False)
-    tempo = headset.get_tempo(df.iloc[0]['tempo'])
+    start_time = time.time()
     for _, row in df.iterrows():
         procs = []
         top_intensity, bot_intensity = get_light_intensity(row)
         s_t = time.time()
-        procs.append(Process(target=headset.top, args=(ser, row['seconds'], top_intensity, tempo, s_t)))
-        procs.append(Process(target=headset.bottom, args=(ser, row['seconds'], bot_intensity, tempo, s_t)))
-        procs.append(Process(target=headset.ready_state_light, args=(ser, row['seconds'], tempo, s_t)))
+        procs.append(Process(target=headset.top, args=(ser, row, bot_intensity, s_t)))
+        procs.append(Process(target=headset.bottom, args=(ser, row, top_intensity, s_t)))
+        procs.append(Process(target=headset.ready_state_light, args=(ser, row, s_t)))
         [p.start() for p in procs]
         [p.join() for p in procs]
+    end_time = time.time()
+    print('run_track_program:', start_time, end_time, end_time-start_time)
     ser.write(shared.off_cmd)
 
 

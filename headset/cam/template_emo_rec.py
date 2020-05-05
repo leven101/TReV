@@ -77,16 +77,16 @@ def emo_rec_cam(cam_id):
     cv2.destroyWindow("preview" + cam_id_str)
 
 
-thold = 0.9225
-template = cv2.imread('images/templates/happy-template-front.png', 0)
+# thold = 0.9225
+# template = cv2.imread('images/templates/happy-template-front.png', 0)
+# w, h = template.shape[::-1]
+# emo_rec_cam(0)
+
+thold = 0.85
+template = cv2.imread('images/templates/happy-template-right.png', 0)
 w, h = template.shape[::-1]
 emo_rec_cam(0)
 
-# thold = 0.91
-# template = cv2.imread('images/templates/happy-template-right.png', 0)
-# w, h = template.shape[::-1]
-# emo_rec_cam(0)
-#
 # template = cv2.imread('images/templates/happy-template-left.png', 0)
 # w, h = template.shape[::-1]
 # emo_rec_cam(1)
