@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="313ef6f8-0c9d-4f10-a0a6-3ba620c7cc1f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/headset/music/stereo_signals_to_headset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TREV software - 1.1.0/Hardware/control_from_python/control_from_python.ino" beforeDir="false" afterPath="$PROJECT_DIR$/TREV software - 1.1.0/Hardware/control_from_python/control_from_python.ino" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headset/cam/cam_emo_response.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/cam/cam_emo_response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headset/cam/template_emo_rec.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/cam/template_emo_rec.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headset/cam/template_emo_rec_duel.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/cam/template_emo_rec_duel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headset/movies/star_wars_clip.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/movies/star_wars_clip.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headset/music/beethovens_fifth_clip.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/music/beethovens_fifth_clip.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headset/music/get_track_signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/music/get_track_signals.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headset/music/music_with_cams.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/music/music_with_cams.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/headset/music/signals_to_headset.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/music/signals_to_headset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headset/music/track_examples.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/music/track_examples.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headset/shared.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/shared.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/music/librosa/stereo_split.py" beforeDir="false" afterPath="$PROJECT_DIR$/music/librosa/stereo_split.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headset/music/stereo_signals_to_headset.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/music/stereo_signals_to_headset.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,8 +17,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/headset/music/stereo_signals_to_headset.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="117" column="36" selection-start-line="117" selection-start-column="36" selection-end-line="117" selection-end-column="36" />
+            <state relative-caret-position="482">
+              <caret line="122" column="25" selection-start-line="122" selection-start-column="25" selection-end-line="122" selection-end-column="25" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -106,8 +95,8 @@
         <option value="$PROJECT_DIR$/music/librosa/plot_hprss.py" />
         <option value="$PROJECT_DIR$/headset/shared.py" />
         <option value="$PROJECT_DIR$/headset/music/get_track_signals.py" />
-        <option value="$PROJECT_DIR$/headset/music/signals_to_headset.py" />
         <option value="$PROJECT_DIR$/headset/music/stereo_signals_to_headset.py" />
+        <option value="$PROJECT_DIR$/headset/music/signals_to_headset.py" />
       </list>
     </option>
   </component>
@@ -133,37 +122,13 @@
             <path>
               <item name="TReV" type="b2602c69:ProjectViewProjectNode" />
               <item name="TReV" type="462c0819:PsiDirectoryNode" />
-              <item name="headset" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TReV" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TReV" type="462c0819:PsiDirectoryNode" />
-              <item name="headset" type="462c0819:PsiDirectoryNode" />
-              <item name="cam" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TReV" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TReV" type="462c0819:PsiDirectoryNode" />
-              <item name="headset" type="462c0819:PsiDirectoryNode" />
-              <item name="music" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TReV" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TReV" type="462c0819:PsiDirectoryNode" />
-              <item name="headset" type="462c0819:PsiDirectoryNode" />
-              <item name="music" type="462c0819:PsiDirectoryNode" />
-              <item name="track-data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TReV" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TReV" type="462c0819:PsiDirectoryNode" />
               <item name="music" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TReV" type="b2602c69:ProjectViewProjectNode" />
               <item name="TReV" type="462c0819:PsiDirectoryNode" />
               <item name="music" type="462c0819:PsiDirectoryNode" />
-              <item name="librosa" type="462c0819:PsiDirectoryNode" />
+              <item name="audio-files" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -418,7 +383,21 @@
       <option name="project" value="LOCAL" />
       <updated>1588682566297</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="- stereo signals to get_track_signals.py&#10;- separate top/bottom left/right off commands to driver&#10;- stereo_signals_to_headset.py">
+      <created>1589745040527</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1589745040527</updated>
+    </task>
+    <task id="LOCAL-00014" summary="- fix bug in get_track_signals.mono_signal()">
+      <created>1589745566530</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1589745566530</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -459,7 +438,9 @@
     <MESSAGE value="- add get_track_data.py" />
     <MESSAGE value="- check in all changes" />
     <MESSAGE value="- fix bugs in timing for get_track_signals.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="- fix bugs in timing for get_track_signals.py" />
+    <MESSAGE value="- stereo signals to get_track_signals.py&#10;- separate top/bottom left/right off commands to driver&#10;- stereo_signals_to_headset.py" />
+    <MESSAGE value="- fix bug in get_track_signals.mono_signal()" />
+    <option name="LAST_COMMIT_MESSAGE" value="- fix bug in get_track_signals.mono_signal()" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -589,30 +570,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/headset/music/signals_to_headset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="872">
-          <caret line="83" column="17" selection-start-line="83" selection-start-column="17" selection-end-line="83" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/headset/music/get_track_signals.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="70" column="37" selection-start-line="70" selection-start-column="37" selection-end-line="70" selection-end-column="107" />
+        <state relative-caret-position="272">
+          <caret line="84" column="24" selection-start-line="84" selection-start-column="24" selection-end-line="84" selection-end-column="24" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/headset/music/signals_to_headset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="64" column="25" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/headset/music/stereo_signals_to_headset.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="117" column="36" selection-start-line="117" selection-start-column="36" selection-end-line="117" selection-end-column="36" />
+        <state relative-caret-position="482">
+          <caret line="122" column="25" selection-start-line="122" selection-start-column="25" selection-end-line="122" selection-end-column="25" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>

@@ -63,14 +63,11 @@ def run_track_program():
         bot_intensity = round(row['bottom'] * shared.total_brightness)  # % of bottom
         # print(top_intensity, bot_intensity, top_intensity + bot_intensity)
         s_t = time.time()
-        top(ser, row, top_intensity, s_t)
-        bottom(ser, row, bot_intensity, s_t)
-        ready_state_light(ser, row, s_t)
-        # procs.append(Process(target=top, args=(ser, row, bot_intensity, s_t)))
-        # procs.append(Process(target=bottom, args=(ser, row, top_intensity, s_t)))
-        # procs.append(Process(target=ready_state_light, args=(ser, row, s_t)))
-        # [p.start() for p in procs]
-        # [p.join() for p in procs]
+        procs.append(Process(target=top, args=(ser, row, bot_intensity, s_t)))
+        procs.append(Process(target=bottom, args=(ser, row, top_intensity, s_t)))
+        procs.append(Process(target=ready_state_light, args=(ser, row, s_t)))
+        [p.start() for p in procs]
+        [p.join() for p in procs]
         print('row', time.time()-row_start_time)
     print('run_track_program:', time.time()-start_time)
     if ser:
