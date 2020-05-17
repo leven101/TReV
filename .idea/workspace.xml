@@ -2,13 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="313ef6f8-0c9d-4f10-a0a6-3ba620c7cc1f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/headset/music/stereo_signals_to_headset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headset/cam/cam_response_vectors.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/cam/cam_emo_response.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TREV software - 1.1.0/Hardware/control_from_python/control_from_python.ino" beforeDir="false" afterPath="$PROJECT_DIR$/TREV software - 1.1.0/Hardware/control_from_python/control_from_python.ino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headset/cam/cam_emo_response.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/cam/cam_emo_response.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/headset/cam/template_emo_rec.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/cam/template_emo_rec.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headset/cam/template_emo_rec_duel.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/cam/template_emo_rec_duel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headset/movies/star_wars_clip.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/movies/star_wars_clip.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headset/music/beethovens_fifth_clip.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/music/beethovens_fifth_clip.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/headset/music/get_track_signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/music/get_track_signals.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/headset/music/music_with_cams.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/music/music_with_cams.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/headset/music/signals_to_headset.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/music/signals_to_headset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headset/music/track_examples.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/music/track_examples.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/headset/shared.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/shared.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/music/librosa/stereo_split.py" beforeDir="false" afterPath="$PROJECT_DIR$/music/librosa/stereo_split.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,12 +26,12 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/headset/cam/cam_emo_response.py">
+        <entry file="file://$PROJECT_DIR$/headset/music/stereo_signals_to_headset.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="22" column="21" lean-forward="true" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+            <state relative-caret-position="437">
+              <caret line="117" column="36" selection-start-line="117" selection-start-column="36" selection-end-line="117" selection-end-column="36" />
               <folding>
-                <element signature="e#0#10#0" expanded="true" />
+                <element signature="e#0#11#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -55,6 +62,10 @@
       <find>rsl</find>
       <find>rsl_brightness</find>
       <find>run_track_program</find>
+      <find>track_seconds</find>
+      <find>hops_per_second</find>
+      <find>tempo</find>
+      <find>cmd_start</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -71,13 +82,11 @@
         <option value="$PROJECT_DIR$/headset/spaceship_example.py" />
         <option value="$PROJECT_DIR$/headset/star_wars_clip.py" />
         <option value="$PROJECT_DIR$/music/librosa/get_tempo_example.py" />
-        <option value="$PROJECT_DIR$/music/librosa/stereo_split.py" />
         <option value="$PROJECT_DIR$/headset/cam_capture.py" />
         <option value="$PROJECT_DIR$/headset/cam/get_train_images.py" />
         <option value="$PROJECT_DIR$/headset/cam/cam_capture_example.py" />
         <option value="$PROJECT_DIR$/headset/cam/cam_duel.py" />
         <option value="$PROJECT_DIR$/headset/cam/cam_frames_to_file.py" />
-        <option value="$PROJECT_DIR$/headset/cam/template_emo_rec_duel.py" />
         <option value="$PROJECT_DIR$/music/spectrum_analysis.py" />
         <option value="$USER_HOME$/anaconda3/lib/python3.7/site-packages/librosa/beat.py" />
         <option value="$PROJECT_DIR$/music/librosa/get_track_data.py" />
@@ -85,16 +94,20 @@
         <option value="$PROJECT_DIR$/headset/music/get_track_data.py" />
         <option value="$PROJECT_DIR$/music/librosa/get_tempo.py" />
         <option value="$PROJECT_DIR$/headset/music/normalized_bass_treble.py" />
-        <option value="$PROJECT_DIR$/music/librosa/plot_hprss.py" />
         <option value="$PROJECT_DIR$/headset/music/track_examples.py" />
         <option value="$PROJECT_DIR$/headset/music/audio_and_cam_example.py" />
         <option value="$PROJECT_DIR$/headset/cam/cam_capture.py" />
         <option value="$PROJECT_DIR$/headset/cam/cam_response_vectors.py" />
-        <option value="$PROJECT_DIR$/headset/music/get_track_signals.py" />
-        <option value="$PROJECT_DIR$/headset/shared.py" />
-        <option value="$PROJECT_DIR$/headset/music/signals_to_headset.py" />
         <option value="$PROJECT_DIR$/headset/cam/template_emo_rec.py" />
+        <option value="$PROJECT_DIR$/headset/cam/template_emo_rec_duel.py" />
         <option value="$PROJECT_DIR$/headset/music/music_with_cams.py" />
+        <option value="$PROJECT_DIR$/headset/music/beethovens_fifth_clip.py" />
+        <option value="$PROJECT_DIR$/music/librosa/stereo_split.py" />
+        <option value="$PROJECT_DIR$/music/librosa/plot_hprss.py" />
+        <option value="$PROJECT_DIR$/headset/shared.py" />
+        <option value="$PROJECT_DIR$/headset/music/get_track_signals.py" />
+        <option value="$PROJECT_DIR$/headset/music/signals_to_headset.py" />
+        <option value="$PROJECT_DIR$/headset/music/stereo_signals_to_headset.py" />
       </list>
     </option>
   </component>
@@ -109,6 +122,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -149,13 +163,12 @@
               <item name="TReV" type="b2602c69:ProjectViewProjectNode" />
               <item name="TReV" type="462c0819:PsiDirectoryNode" />
               <item name="music" type="462c0819:PsiDirectoryNode" />
-              <item name="audio-files" type="462c0819:PsiDirectoryNode" />
+              <item name="librosa" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -187,29 +200,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.cam_emo_response">
-    <configuration name="cam_emo_response" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="TReV" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/headset/cam" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/headset/cam/cam_emo_response.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="music_with_cams" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.stereo_signals_to_headset">
+    <configuration name="get_track_signals" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TReV" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -221,7 +213,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/headset/music/music_with_cams.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/headset/music/get_track_signals.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -230,7 +222,49 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="normalized_bass_treble" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="play_ogg_file_example" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TReV" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/music" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/music/play_ogg_file_example.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="plot_hprss" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TReV" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/music/librosa" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/music/librosa/plot_hprss.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="signals_to_headset" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TReV" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -251,28 +285,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="template_emo_rec" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="TReV" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/headset/cam" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/headset/cam/template_emo_rec.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="track_examples" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="stereo_signals_to_headset" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TReV" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -284,7 +297,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/headset/music/track_examples.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/headset/music/stereo_signals_to_headset.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -294,19 +307,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.normalized_bass_treble" />
-      <item itemvalue="Python.music_with_cams" />
-      <item itemvalue="Python.track_examples" />
-      <item itemvalue="Python.template_emo_rec" />
-      <item itemvalue="Python.cam_emo_response" />
+      <item itemvalue="Python.get_track_signals" />
+      <item itemvalue="Python.plot_hprss" />
+      <item itemvalue="Python.play_ogg_file_example" />
+      <item itemvalue="Python.stereo_signals_to_headset" />
+      <item itemvalue="Python.signals_to_headset" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.cam_emo_response" />
-        <item itemvalue="Python.music_with_cams" />
-        <item itemvalue="Python.template_emo_rec" />
-        <item itemvalue="Python.normalized_bass_treble" />
-        <item itemvalue="Python.track_examples" />
+        <item itemvalue="Python.stereo_signals_to_headset" />
+        <item itemvalue="Python.get_track_signals" />
+        <item itemvalue="Python.signals_to_headset" />
+        <item itemvalue="Python.play_ogg_file_example" />
+        <item itemvalue="Python.plot_hprss" />
       </list>
     </recent_temporary>
   </component>
@@ -398,23 +411,30 @@
       <option name="project" value="LOCAL" />
       <updated>1588540949565</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="- fix bugs in timing for get_track_signals.py">
+      <created>1588682566297</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1588682566297</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="76" y="33" width="1538" height="1017" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49828768" visible="true" weight="0.21094266" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49828768" visible="true" weight="0.17930125" />
       <window_info id="Structure" order="1" sideWeight="0.5017123" side_tool="true" weight="0.21192053" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32864866" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.35675675" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.32540542" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3372973" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.28324324" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.32324323" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.19891892" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32864866" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.28972974" />
@@ -438,15 +458,19 @@
     <MESSAGE value="- added template based emo rec" />
     <MESSAGE value="- add get_track_data.py" />
     <MESSAGE value="- check in all changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="- check in all changes" />
+    <MESSAGE value="- fix bugs in timing for get_track_signals.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="- fix bugs in timing for get_track_signals.py" />
   </component>
   <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="i + n_hops_interval" language="Python" />
-        <watch expression="hz_db.shape[1]" language="Python" />
-      </configuration>
-    </watches-manager>
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/music/play_ogg_file_example.py</url>
+          <line>4</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
@@ -463,47 +487,47 @@
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>hz_db.shape[1]</expression-string>
+        <expression-string>hops_per_interval(tempo_r, note, track_seconds, hz_db_harm.shape[1])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>hz_db.shape[1] / 10</expression-string>
+        <expression-string>hops_per_interval(tempo_l, note, track_seconds, hz_db_harm.shape[1])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>hz_db.shape[1]/ (track_seconds / (tempo + note))</expression-string>
+        <expression-string>hops_per_interval(avg_tempo, note, track_seconds, hz_db_harm.shape[1])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>track_seconds / (tempo + note)</expression-string>
+        <expression-string>interval_beat % ((tempo_r + note))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>hz_db.shape[1] / int(round(interval_beat / hops_per_second))</expression-string>
+        <expression-string>interval_beat % ((tempo_r + note) * 2)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>int(round(interval_beat / hops_per_second))</expression-string>
+        <expression-string>(tempo_r + note) * 2</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>1 / (tempo + note)</expression-string>
+        <expression-string>(tempo_r + note) * 3</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>(tempo + note)</expression-string>
+        <expression-string>interval_beat / (tempo_r + note)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>1 * (tempo + note)</expression-string>
+        <expression-string>divmod(interval_beat, (tempo_r + note))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -513,84 +537,52 @@
     <entry file="file://$PROJECT_DIR$/headset/control_from_python.py" />
     <entry file="file://$PROJECT_DIR$/headset/music/revolt_malaa.py" />
     <entry file="file://$PROJECT_DIR$/headset/cam/cam_capture_example.py" />
-    <entry file="file://$PROJECT_DIR$/music/librosa/get_spectrum.py">
+    <entry file="file://$PROJECT_DIR$/headset/music/track-data-1.csv" />
+    <entry file="file://$PROJECT_DIR$/headset/music/track-data/100hz.mp3-track-data.csv" />
+    <entry file="file://$PROJECT_DIR$/headset/cam/template_emo_rec.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/headset/cam/cam_capture.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="75" selection-start-line="75" selection-end-line="75" selection-end-column="22" />
+        <state relative-caret-position="407">
+          <caret line="90" column="7" selection-start-line="90" selection-start-column="7" selection-end-line="90" selection-end-column="7" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/headset/music/track-data-1.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/headset/music/track-data/100hz.mp3-track-data.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/headset/music/track-data/dt_16bars_102rap.wav-track-data.csv">
+    <entry file="file://$PROJECT_DIR$/music/librosa/stereo_split.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" selection-start-line="16" selection-end-line="16" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/headset/music/track-data/100hz.wav-track-data.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="10" lean-forward="true" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/headset/music/track-data/b5.m4a-track-data.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="43" selection-start-line="43" selection-end-line="43" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/headset/music/beethovens_fifth_clip.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1155">
-          <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/headset/music/track-data/revolt.malaa.m4a-track-data.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/headset/music/get_track_signals.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-140">
-          <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+        <state relative-caret-position="180">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/headset/music/track_examples.py">
+    <entry file="file://$PROJECT_DIR$/music/librosa/get_tempo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="103" column="22" lean-forward="true" selection-start-line="103" selection-start-column="22" selection-end-line="103" selection-end-column="22" />
+        <state relative-caret-position="120">
+          <caret line="10" column="13" lean-forward="true" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/headset/music/music_with_cams.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="24" column="63" selection-start-line="24" selection-start-column="63" selection-end-line="24" selection-end-column="63" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/headset/music/track_examples.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/headset/shared.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+        <state relative-caret-position="67">
+          <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
@@ -599,49 +591,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/headset/music/signals_to_headset.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="72" column="48" lean-forward="true" selection-start-line="72" selection-start-column="48" selection-end-line="72" selection-end-column="48" />
+        <state relative-caret-position="872">
+          <caret line="83" column="17" selection-start-line="83" selection-start-column="17" selection-end-line="83" selection-end-column="17" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/headset/cam/template_emo_rec_duel.py">
+    <entry file="file://$PROJECT_DIR$/headset/music/get_track_signals.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="355">
+          <caret line="70" column="37" selection-start-line="70" selection-start-column="37" selection-end-line="70" selection-end-column="107" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/headset/cam/template_emo_rec.py">
+    <entry file="file://$PROJECT_DIR$/headset/music/stereo_signals_to_headset.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="84" column="12" selection-start-line="84" selection-start-column="12" selection-end-line="84" selection-end-column="12" />
+        <state relative-caret-position="437">
+          <caret line="117" column="36" selection-start-line="117" selection-start-column="36" selection-end-line="117" selection-end-column="36" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/headset/music/music_with_cams.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="20" column="34" lean-forward="true" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/headset/cam/cam_emo_response.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="22" column="21" lean-forward="true" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>

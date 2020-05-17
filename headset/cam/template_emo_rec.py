@@ -80,7 +80,7 @@ def emo_rec_cam(cam_id):
 # thold = 0.9225
 # template = cv2.imread('images/templates/happy-template-front.png', 0)
 # w, h = template.shape[::-1]
-# emo_rec_cam(0)
+# emo_rec_cam(2)
 
 thold = 0.85
 template = cv2.imread('images/templates/happy-template-right.png', 0)

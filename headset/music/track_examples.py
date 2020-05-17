@@ -8,7 +8,7 @@ import serial
 import time
 import threading
 
-from headset.shared import cmd_dict, off_cmd, cmd_template, \
+from headset.shared import cmd_dict, all_off_cmd, cmd_template, \
     note_dict, rsl_on_cmd, rsl_off_cmd, play_track
 
 '''
@@ -70,7 +70,7 @@ def blink(r, c, cmd_type, seconds=0.5, tempo=0.1, note=note_dict['1/4'], rsl=Fal
         if rsl:
             ser.write(rsl_off_cmd)
         time.sleep(note)
-        ser.write(off_cmd)
+        ser.write(all_off_cmd)
 
 
 def revolt_by_malaa():
@@ -96,7 +96,7 @@ def revolt_by_malaa():
     blink(r, c, cmd_dict['all_on'], 16, tempo, rsl=True)
     print(time.time() - s)
     time.sleep(1)
-    ser.write(off_cmd)
+    ser.write(all_off_cmd)
 
 
 if __name__ == '__main__':

@@ -129,7 +129,7 @@ if __name__ == '__main__':
     # <cmd code, brightness, row start, row end, col start, col end>
     ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
     r_start = 0
-    c_start = 1
+    c_start = 2
     brightness = 7
     off_cmd = (cmd_dict['cmd_start'] + cmd_dict['all_off'] + cmd_dict['cmd_end']).encode()
     ser.write(off_cmd)

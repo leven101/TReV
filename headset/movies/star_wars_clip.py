@@ -2,7 +2,7 @@ import serial
 import time
 import random
 
-from headset.shared import cmd_dict, off_cmd, \
+from headset.shared import cmd_dict, all_off_cmd, \
     cmd_template, rsl_on_cmd, rsl_off_cmd, flash_all
 
 start_choices = ['right_bottom_on', 'right_top_on', 'left_bottom_on', 'left_top_on']
@@ -20,7 +20,7 @@ def brightness_gradient_up(cmd_shell, speed):
         print(cmd)
         ser.write(cmd.encode())
         time.sleep(speed)
-    ser.write(off_cmd)
+    ser.write(all_off_cmd)
 
 
 def brightness_gradient_down(cmd_shell, speed):
@@ -29,7 +29,7 @@ def brightness_gradient_down(cmd_shell, speed):
         print(cmd)
         ser.write(cmd.encode())
         time.sleep(speed)
-    ser.write(off_cmd)
+    ser.write(all_off_cmd)
 
 
 def select_start_end_coordinates():
@@ -72,7 +72,7 @@ def ship_takeoff():
         print(cmd)
         ser.write(cmd.encode())
         time.sleep(0.5)
-    ser.write(off_cmd)
+    ser.write(all_off_cmd)
 
     time.sleep(0.5)
 
@@ -89,7 +89,7 @@ def ship_takeoff():
         print(cmd)
         ser.write(cmd.encode())
         time.sleep(0.5)
-    ser.write(off_cmd)
+    ser.write(all_off_cmd)
 
 
 def irritate_noise():
@@ -99,10 +99,10 @@ def irritate_noise():
     while time.time() - s < 2:
         ser.write(cmd.format(0, 1).encode())
         time.sleep(0.2)
-        ser.write(off_cmd)
+        ser.write(all_off_cmd)
         ser.write(cmd.format(1, 2).encode())
         time.sleep(0.2)
-        ser.write(off_cmd)
+        ser.write(all_off_cmd)
 
 
 def r2d2_noise():
@@ -111,10 +111,10 @@ def r2d2_noise():
     while time.time() - s < 2:
         ser.write(cmd.format(0, 1).encode())
         time.sleep(0.2)
-        ser.write(off_cmd)
+        ser.write(all_off_cmd)
         ser.write(cmd.format(1, 2).encode())
         time.sleep(0.2)
-        ser.write(off_cmd)
+        ser.write(all_off_cmd)
 
 
 def warp_speed_effect():
@@ -126,31 +126,31 @@ def warp_speed_effect():
         time.sleep(0.5)
 
     delay = 0.1
-    ser.write(off_cmd)
+    ser.write(all_off_cmd)
     ser.write(cmd.format(1, 5).encode())
     time.sleep(delay)
 
-    ser.write(off_cmd)
+    ser.write(all_off_cmd)
     ser.write(cmd.format(2, 4).encode())
     time.sleep(delay)
 
-    ser.write(off_cmd)
+    ser.write(all_off_cmd)
     ser.write(cmd_template.format(cmd_dict['all_on'], 7, 0, 2, 2, 4).encode())
     time.sleep(delay)
 
-    ser.write(off_cmd)
+    ser.write(all_off_cmd)
     ser.write(cmd_template.format(cmd_dict['all_on'], 7, 0, 2, 2, 3).encode())
     time.sleep(delay)
 
-    ser.write(off_cmd)
+    ser.write(all_off_cmd)
     ser.write(cmd_template.format(cmd_dict['all_on'], 7, 0, 1, 2, 3).encode())
     time.sleep(delay)
 
-    ser.write(off_cmd)
+    ser.write(all_off_cmd)
     ser.write(cmd_template.format(cmd_dict['all_on'], 7, 0, 0, 2, 2).encode())
     time.sleep(delay)
 
-    ser.write(off_cmd)
+    ser.write(all_off_cmd)
 
 
 def rsl_gradient(jump):

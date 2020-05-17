@@ -170,6 +170,16 @@ void topOff() {
   rightTop.update();
 }
 
+void topLeftOff() {
+  leftTop.clear();
+  leftTop.update();
+}
+
+void topRightOff() {
+  rightTop.clear();
+  rightTop.update();
+}
+
 void bottomOn(const int brightness, const int rStart, const int rEnd, 
                    const int cStart, const int cEnd) {
   for (int row = rStart; row <= rEnd; row++) {
@@ -209,6 +219,16 @@ void bottomOff() {
   leftBottom.clear();
   rightBottom.clear();
   leftBottom.update();
+  rightBottom.update();
+}
+
+void bottomLeftOff() {
+  leftBottom.clear();
+  leftBottom.update();
+}
+
+void bottomRightOff() {
+  rightBottom.clear();
   rightBottom.update();
 }
 
@@ -371,7 +391,23 @@ void executeCommand() {
     case 12: {
       blinkRandomly(params[1]);
       break;
-    }     
+    }   
+    case 13: {
+      topLeftOff();
+      break;
+    } 
+    case 14: {
+      topRightOff();
+      break;
+    }
+    case 15: {
+      bottomLeftOff();
+      break;
+    }
+    case 16: {
+      bottomRightOff();
+      break;
+    }  
     default: {
       clearAll();
     }

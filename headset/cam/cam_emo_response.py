@@ -22,7 +22,7 @@ rv_cmd = shared.cmd_template.format(shared.cmd_dict['all_on'], 100, 1, 1, 1, 1).
 def blink_led():
     ser.write(rv_cmd)
     time.sleep(0.1)
-    ser.write(shared.off_cmd)
+    ser.write(shared.all_off_cmd)
 
 
 def process_frame(frame, cam_id):

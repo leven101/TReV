@@ -9,11 +9,12 @@ from multiprocessing import Process
 import headset.shared as shared
 import headset.music.signals_to_headset as headset
 
-thold = 0.85
+r_thold = 0.86
 template_right = cv2.imread('../cam/images/templates/happy-template-right.png', 0)
 template_right = cv2.flip(template_right, 0)
 w_right, h_right = template_right.shape[::-1]
 
+l_thold = 0.90
 template_left = cv2.imread('../cam/images/templates/happy-template-left.png', 0)
 template_left = cv2.flip(template_left, 0)
 w_left, h_left = template_left.shape[::-1]
@@ -21,7 +22,7 @@ w_left, h_left = template_left.shape[::-1]
 emotions = ['Neutral', 'Positive']
 current_emotion = emotions[0]
 
-in_audio_path = '/Users/abby/work/TReV/music/audio-files/tones/100hz.wav'
+in_audio_path = '/Users/abby/work/TReV/music/audio-files/b5.m4a'
 in_signals_path = 'track-data/{}-track-data.csv'.format(os.path.basename(in_audio_path))
 
 
@@ -33,7 +34,7 @@ def process_frame(frame, cam_id):
     w = w_left if cam_id == 1 else w_right
     h = h_left if cam_id == 1 else w_left
     res = cv2.matchTemplate(template, frame, cv2.TM_CCOEFF_NORMED)
-    loc = np.where(res >= thold)
+    loc = np.where(res >= (l_thold if cam_id == 1 else r_thold))
     print(loc)
     if len(loc[0]) > 0:
         current_emotion = emotions[1]
@@ -103,7 +104,7 @@ def run_track_program():
         [p.join() for p in procs]
     end_time = time.time()
     print('run_track_program:', start_time, end_time, end_time-start_time)
-    ser.write(shared.off_cmd)
+    ser.write(shared.all_off_cmd)
 
 
 if __name__ == '__main__':

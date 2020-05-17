@@ -1,10 +1,11 @@
 import cv2
 import numpy as np
 
-thold = 0.90
+r_thold = 0.85
 template_right = cv2.imread('images/templates/happy-template-right.png', 0)
 w_right, h_right = template_right.shape[::-1]
 
+l_thold = 0.90
 template_left = cv2.imread('images/templates/happy-template-left.png', 0)
 w_left, h_left = template_left.shape[::-1]
 
@@ -15,7 +16,7 @@ def process_frame(frame, cam_id):
     w = w_left if cam_id == 1 else w_right
     h = h_left if cam_id == 1 else w_left
     res = cv2.matchTemplate(template, frame, cv2.TM_CCOEFF_NORMED)
-    loc = np.where(res >= thold)
+    loc = np.where(res >= (l_thold if cam_id == 1 else r_thold))
     print(loc)
     if len(loc[0]) > 0:
         print('Happy')

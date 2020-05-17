@@ -63,24 +63,25 @@ def run_track_program():
         bot_intensity = round(row['bottom'] * shared.total_brightness)  # % of bottom
         # print(top_intensity, bot_intensity, top_intensity + bot_intensity)
         s_t = time.time()
-        # top(ser, row, top_intensity, s_t)
-        procs.append(Process(target=top, args=(ser, row, bot_intensity, s_t)))
-        procs.append(Process(target=bottom, args=(ser, row, top_intensity, s_t)))
-        procs.append(Process(target=ready_state_light, args=(ser, row, s_t)))
-        [p.start() for p in procs]
-        # time.sleep(0.1)
-        [p.join() for p in procs]
+        top(ser, row, top_intensity, s_t)
+        bottom(ser, row, bot_intensity, s_t)
+        ready_state_light(ser, row, s_t)
+        # procs.append(Process(target=top, args=(ser, row, bot_intensity, s_t)))
+        # procs.append(Process(target=bottom, args=(ser, row, top_intensity, s_t)))
+        # procs.append(Process(target=ready_state_light, args=(ser, row, s_t)))
+        # [p.start() for p in procs]
+        # [p.join() for p in procs]
         print('row', time.time()-row_start_time)
     print('run_track_program:', time.time()-start_time)
     if ser:
-        ser.write(shared.off_cmd)
+        ser.write(shared.all_off_cmd)
 
 
 if __name__ == '__main__':
     in_audio_path = '/Users/abby/work/TReV/music/audio-files/b5.m4a'
     in_signals_path = 'track-data/{}-track-data.csv'.format(os.path.basename(in_audio_path))
     df = pd.read_csv(in_signals_path, dtype=float)
-    ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
+    ser = None # serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
     print(top_on, bot_on, shared.rsl_on_cmd)
     run_track_program()
     if ser:

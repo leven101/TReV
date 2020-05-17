@@ -1,7 +1,7 @@
 import librosa
 import numpy as np
 
-filename = '../audio-files/b5.m4a'
+filename = '/Users/abby/work/TReV/music/audio-files/b5.m4a'
 y_stereo, sr = librosa.load(filename, mono=False)
 
 
