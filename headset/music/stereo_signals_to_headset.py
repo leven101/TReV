@@ -132,9 +132,8 @@ def run_track_program():
 
 
 if __name__ == '__main__':
-    in_audio_path = '/Users/abby/work/TReV/music/audio-files/b5.m4a'
-    in_signals_path = 'track-data/stereo-track-data.csv'
-    # in_signals_path = 'track-data/{}-track-data.csv'.format(os.path.basename(in_audio_path))
+    in_audio_path = '/Users/abby/work/TReV/music/audio-files/dt_16bars_102rap.wav'
+    in_signals_path = 'track-data/stereo-{}-track-data.csv'.format(os.path.basename(in_audio_path))
     df = pd.read_csv(in_signals_path, dtype=float)
     ser = None # serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
     run_track_program()
