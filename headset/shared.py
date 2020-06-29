@@ -1,6 +1,7 @@
-from multiprocessing import Process
-import playsound
+import os
 import time
+import playsound
+from multiprocessing import Process
 
 cmd_dict = {'all_off': '0', 'all_on': '1',
             'ready_state_on': '2', 'ready_state_off': '3', 'bottom_on': '4',
@@ -52,7 +53,13 @@ def flash_all(ser, seconds=0.5, brightness=7):
     ser.write(all_off_cmd)
 
 
-if __name__ == '__main__':
-    print(beats_per_second(103.36))
-    # play_track()
+def play_clip(url, daemon=True):
+    cmd = '/Applications/VLC.app/Contents/MacOS/VLC {}'.format(url)
+    t1 = Process(target=os.system, args=(cmd,), daemon=daemon)
+    t1.start()
 
+
+if __name__ == '__main__':
+    # print(beats_per_second(103.36))
+    # play_track()
+    play_clip('https://www.youtube.com/watch?v=8qo6bEGqe54', False)

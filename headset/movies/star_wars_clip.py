@@ -3,7 +3,7 @@ import time
 import random
 
 from headset.shared import cmd_dict, all_off_cmd, \
-    cmd_template, rsl_on_cmd, rsl_off_cmd, flash_all
+    cmd_template, rsl_on_cmd, rsl_off_cmd, flash_all, play_clip
 
 start_choices = ['right_bottom_on', 'right_top_on', 'left_bottom_on', 'left_top_on']
 row_choices = [0, 1]
@@ -154,9 +154,9 @@ def warp_speed_effect():
 
 
 def rsl_gradient(jump):
-    rsl_on_cmd = rsl_on_cmd.format(cmd_dict['ready_state_on'], '{}')
+    on_cmd = rsl_on_cmd.format(cmd_dict['ready_state_on'], '{}')
     for i in range(0, 256, jump):
-        ser.write(rsl_on_cmd.format(i).encode())
+        ser.write(on_cmd.format(i).encode())
         time.sleep(0.10)
     ser.write(rsl_off_cmd)
 
@@ -192,10 +192,10 @@ def run_effects_timing():
 
 if __name__ == '__main__':
     ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
-    ''' clip from https://www.youtube.com/watch?v=qPEB9PS5mOw'''
-    time.sleep(2)
-    flash_all(ser)
+    clip_url = 'https://www.youtube.com/watch?v=qPEB9PS5mOw'
     s = time.time()
+    play_clip(clip_url, False)
+    time.sleep(2)
     run_effects_timing()
     print(time.time() - s)
     ser.close()

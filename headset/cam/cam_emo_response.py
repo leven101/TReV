@@ -7,11 +7,12 @@ from multiprocessing import Process
 import headset.shared as shared
 
 
-thold = 0.90
+r_thold = 0.85
 template_right = cv2.imread('images/templates/happy-template-right.png', 0)
 template_right = cv2.flip(template_right, 0)
 w_right, h_right = template_right.shape[::-1]
 
+l_thold = 0.91
 template_left = cv2.imread('images/templates/happy-template-left.png', 0)
 template_left = cv2.flip(template_left, 0)
 w_left, h_left = template_left.shape[::-1]
@@ -32,7 +33,7 @@ def process_frame(frame, cam_id):
     w = w_left if cam_id == 1 else w_right
     h = h_left if cam_id == 1 else w_left
     res = cv2.matchTemplate(template, frame, cv2.TM_CCOEFF_NORMED)
-    loc = np.where(res >= thold)
+    loc = np.where(res >= (l_thold if cam_id == 1 else r_thold))
     print(loc)
     if len(loc[0]) > 0:
         Process(target=blink_led()).start()
@@ -67,6 +68,6 @@ def cam_capture(cam_id):
 
 if __name__ == '__main__':
     ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
-    cam_capture(1)
+    cam_capture(0)
     ser.close()
 

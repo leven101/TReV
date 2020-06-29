@@ -1,7 +1,7 @@
 import serial
 import time
 
-from headset.shared import cmd_dict, flash_all
+from headset.shared import cmd_dict, flash_all, play_clip
 
 '''
 Time steps
@@ -19,16 +19,17 @@ Time steps
 
 ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
 
-time.sleep(7)
-flash_all(ser)
+
+play_clip('https://www.youtube.com/watch?v=8qo6bEGqe54', False)
+time.sleep(1)
 
 start_time = time.time()
-off_cmd = cmd_dict['cmd_start'] + cmd_dict['all_off'] + cmd_dict['cmd_end']
+off_cmd = '<' + cmd_dict['all_off'] + '>'
 print('off_cmd', off_cmd)
 ser.write(off_cmd.encode())
 time.sleep(1)
 
-ready_state_cmd = cmd_dict['cmd_start'] + cmd_dict['ready_state_on'] + ' {}' + cmd_dict['cmd_end']
+ready_state_cmd = '<' + cmd_dict['ready_state_on'] + ' {}' + '>'
 print('ready_state_cmd', ready_state_cmd)
 
 for i in range(0, 256, 9):
@@ -38,7 +39,7 @@ for i in range(0, 256, 9):
 ser.write(off_cmd.encode())
 print('off_cmd', off_cmd)
 
-on_cmd = cmd_dict['cmd_start'] + '{} 10 {} {} 0 6' + cmd_dict['cmd_end']
+on_cmd = '<' + '{} 10 {} {} 0 6' + '>'
 for i in range(4, -1, -1):
     ser.write(on_cmd.format(cmd_dict['bottom_on'], i, i+1).encode())
     print('on_cmd', on_cmd.format(cmd_dict['bottom_on'], i, i+1))
@@ -56,12 +57,12 @@ ser.write(off_cmd.encode())
 print('off_cmd', off_cmd)
 time.sleep(3)
 #
-on_cmd = cmd_dict['cmd_start'] + cmd_dict['all_on'] + ' 14 0 3 0 6' + cmd_dict['cmd_end']
+on_cmd = '<' + cmd_dict['all_on'] + ' 14 0 3 0 6' + '>'
 ser.write(on_cmd.encode())
 print('all on', on_cmd)
 time.sleep(1)
 
-random_cmd = cmd_dict['cmd_start'] + cmd_dict['random'] + ' 2' + cmd_dict['cmd_end']
+random_cmd = '<' + cmd_dict['random'] + ' 2' + '>'
 ser.write(random_cmd.encode())
 print('random_cmd', random_cmd)
 time.sleep(2)
