@@ -5,7 +5,7 @@ import os
 
 import headset.shared as shared
 
-track_path = '/Users/abby/work/TReV/music/audio-files/dt_16bars_102rap.wav'
+track_path = '/Users/abby/work/TReV/music/audio-files/circle-of-life.wav'
 # track_path = '/Users/abby/work/TReV/music/audio-files/tones/100hz.wav'
 
 # global default values
@@ -83,7 +83,7 @@ def stereo_signal():
         if interval_beat > 0:
             df.loc[df.shape[0]] = [interval_beat, bass_db, treb_db, tempo_l, tempo_r, note]
     # df.to_csv('track-data/stereo-track-data.csv', index=False)
-    df.to_csv('track-data/stereo-{}-track-data.csv'.format(os.path.basename(track_path)), index=False)
+    df.to_csv('track-data/{}-stereo.csv'.format(os.path.basename(track_path)), index=False)
 
 
 def mono_signal():
@@ -112,7 +112,7 @@ def mono_signal():
         if interval_beat > 0:
             df.loc[df.shape[0]] = [interval_beat, bass_db, treb_db, tempo, note]
 
-    df.to_csv('track-data/{}-track-data.csv'.format(os.path.basename(track_path)), index=False)
+    df.to_csv('track-data/{}-mono.csv'.format(os.path.basename(track_path)), index=False)
 
 
 if __name__ == '__main__':

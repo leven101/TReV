@@ -194,7 +194,7 @@ if __name__ == '__main__':
     ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
     clip_url = 'https://www.youtube.com/watch?v=qPEB9PS5mOw'
     s = time.time()
-    play_clip(clip_url, False)
+    play_clip(clip_url, True)
     time.sleep(2)
     run_effects_timing()
     print(time.time() - s)

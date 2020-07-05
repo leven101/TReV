@@ -53,8 +53,7 @@ def ready_state_light(conn, data, start):
         time.sleep(data['note'])
 
 
-def run_track_program():
-    shared.play_track(in_audio_path, False)
+def run_track_program(df):
     start_time = time.time()
     for _, row in df.iterrows():
         row_start_time = time.time()
@@ -75,11 +74,12 @@ def run_track_program():
 
 
 if __name__ == '__main__':
-    in_audio_path = '/Users/abby/work/TReV/music/audio-files/b5.m4a'
-    in_signals_path = 'track-data/{}-track-data.csv'.format(os.path.basename(in_audio_path))
+    in_audio_path = '/Users/abby/work/TReV/music/audio-files/circle-of-life.wav'
+    in_signals_path = 'track-data/{}-mono.csv'.format(os.path.basename(in_audio_path))
     df = pd.read_csv(in_signals_path, dtype=float)
-    ser = None # serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
+    ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
+    shared.play_track(in_audio_path, False)
     print(top_on, bot_on, shared.rsl_on_cmd)
-    run_track_program()
+    run_track_program(df)
     if ser:
         ser.close()

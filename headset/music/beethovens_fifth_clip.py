@@ -6,8 +6,8 @@ from headset.shared import cmd_dict, play_track
 
 def bottom_left_right_left_right(num_times, delay):
     lcl_led_cmd = leds_cmd.format(brightness, r_start, r_start+1, c_start, c_start+1)
-    left_cmd = cmd_dict['cmd_start'] + cmd_dict['left_bottom_on'] + lcl_led_cmd + cmd_dict['cmd_end']
-    right_cmd = cmd_dict['cmd_start'] + cmd_dict['right_bottom_on'] + lcl_led_cmd + cmd_dict['cmd_end']
+    left_cmd = '<' + cmd_dict['left_bottom_on'] + lcl_led_cmd + '>'
+    right_cmd = '<' + cmd_dict['right_bottom_on'] + lcl_led_cmd + '>'
 
     for _ in range(0, num_times):
         for _ in range(0, 2):
@@ -28,16 +28,16 @@ def bottom_left_right_left_right(num_times, delay):
 
 def top_short_rsl_short_right_short_top_long(num_times):
     lcl_led_cmd = leds_cmd.format(min(brightness*2, 14), r_start, r_start+1, c_start, c_start+1)
-    top_cmd = cmd_dict['cmd_start'] + cmd_dict['top_on'] + lcl_led_cmd + cmd_dict['cmd_end']
+    top_cmd = '<' + cmd_dict['top_on'] + lcl_led_cmd + '>'
     lcl_led_cmd = leds_cmd.format(brightness, r_start, r_start+1, c_start, c_start+1)
-    bot_cmd = cmd_dict['cmd_start'] + cmd_dict['bottom_on'] + lcl_led_cmd + cmd_dict['cmd_end']
+    bot_cmd = '<' + cmd_dict['bottom_on'] + lcl_led_cmd + '>'
 
     for i in range(0, num_times):
         ser.write(top_cmd.encode())
         time.sleep(0.4)
         ser.write(off_cmd)
 
-        rsl_cmd = cmd_dict['cmd_start'] + cmd_dict['ready_state_on'] + ' 200' + cmd_dict['cmd_end']
+        rsl_cmd = '<' + cmd_dict['ready_state_on'] + ' 200' + '>'
         ser.write(rsl_cmd.encode())
         time.sleep(0.4)
         ser.write(off_cmd)
@@ -57,7 +57,7 @@ def top_short_rsl_short_right_short_top_long(num_times):
 
 def all_short_short_long():
     lcl_led_cmd = leds_cmd.format(brightness, r_start, r_start+2, c_start, c_start+2)
-    on_cmd = cmd_dict['cmd_start'] + cmd_dict['all_on'] + lcl_led_cmd + cmd_dict['cmd_end']
+    on_cmd = '<' + cmd_dict['all_on'] + lcl_led_cmd + '>'
 
     ser.write(on_cmd.encode())
     time.sleep(0.5)
@@ -78,9 +78,9 @@ def all_short_short_long():
 
 def beat_metronome(seconds, tempo=0.326, note=0.50, soft=False):
     lcl_led_cmd = leds_cmd.format(brightness, r_start, r_start, c_start, c_start)
-    beat_cmd = cmd_dict['cmd_start'] + cmd_dict['all_on'] + lcl_led_cmd + cmd_dict['cmd_end']
-    rsl_on_cmd = cmd_dict['cmd_start'] + cmd_dict['ready_state_on'] + ' 200' + cmd_dict['cmd_end']
-    rsl_off_cmd = cmd_dict['cmd_start'] + cmd_dict['ready_state_off'] + cmd_dict['cmd_end']
+    beat_cmd = '<' + cmd_dict['all_on'] + lcl_led_cmd + '>'
+    rsl_on_cmd = '<' + cmd_dict['ready_state_on'] + ' 200' + '>'
+    rsl_off_cmd = '<' + cmd_dict['ready_state_off'] + '>'
     start_time = time.time()
     tempo *= 2 if soft else 1
     while time.time() - start_time < seconds:
@@ -95,7 +95,7 @@ def beat_metronome(seconds, tempo=0.326, note=0.50, soft=False):
 
 def flash_all(seconds=0.5):
     lcl_led_cmd = leds_cmd.format(brightness, 0, 4, 0, 7)
-    flash_cmd = cmd_dict['cmd_start'] + cmd_dict['all_on'] + lcl_led_cmd + cmd_dict['cmd_end']
+    flash_cmd = '<' + cmd_dict['all_on'] + lcl_led_cmd + '>'
     # print(flash_cmd)
     ser.write(flash_cmd.encode())
     time.sleep(seconds)
@@ -103,7 +103,7 @@ def flash_all(seconds=0.5):
 
 
 def rsl_bright_to_dim():
-    ready_state_cmd = cmd_dict['cmd_start'] + cmd_dict['ready_state_on'] + ' {}' + cmd_dict['cmd_end']
+    ready_state_cmd = '<' + cmd_dict['ready_state_on'] + ' {}' + '>'
     for i in range(256, 0, -9):
         ser.write(ready_state_cmd.format(i).encode())
         time.sleep(0.1)
@@ -112,8 +112,8 @@ def rsl_bright_to_dim():
 
 def top_to_bottom_flash(num_times):
     lcl_led_cmd = leds_cmd.format(brightness, r_start, r_start+1, c_start, c_start+1)
-    top_cmd = cmd_dict['cmd_start'] + cmd_dict['top_on'] + lcl_led_cmd + cmd_dict['cmd_end']
-    bot_cmd = cmd_dict['cmd_start'] + cmd_dict['bottom_on'] + lcl_led_cmd + cmd_dict['cmd_end']
+    top_cmd = '<' + cmd_dict['top_on'] + lcl_led_cmd + '>'
+    bot_cmd = '<' + cmd_dict['bottom_on'] + lcl_led_cmd + '>'
     for i in range(0, num_times):
         ser.write(top_cmd.encode())
         time.sleep(0.5)
@@ -131,11 +131,11 @@ if __name__ == '__main__':
     r_start = 0
     c_start = 2
     brightness = 7
-    off_cmd = (cmd_dict['cmd_start'] + cmd_dict['all_off'] + cmd_dict['cmd_end']).encode()
+    off_cmd = ('<' + cmd_dict['all_off'] + '>').encode()
     ser.write(off_cmd)
     leds_cmd = ' {} {} {} {} {}'
 
-    play_track()
+    play_track('/Users/abby/work/TReV/music/audio-files/b5.m4a')
     time.sleep(3)
     start_time = time.time()
     top_short_rsl_short_right_short_top_long(2)

@@ -29,12 +29,14 @@ def top_left(conn, data, intensity, start):
                     conn.write(top_left_on.format(intensity).encode())
                 time.sleep(data['note'])
             else:
+                time.sleep(data['seconds'] - (time.time() - start))
                 break
             if conn:
                 conn.write(top_left_off)
             if time.time() - start < data['seconds'] - data['tempo_left']:
                 time.sleep(data['tempo_left'])
             else:
+                time.sleep(data['seconds'] - (time.time() - start))
                 break
 
 
@@ -47,12 +49,14 @@ def top_right(conn, data, intensity, start):
                     conn.write(top_right_on.format(intensity).encode())
                 time.sleep(data['note'])
             else:
+                time.sleep(data['seconds'] - (time.time() - start))
                 break
             if conn:
                 conn.write(top_right_off)
             if time.time() - start < data['seconds'] - data['tempo_right']:
                 time.sleep(data['tempo_right'])
             else:
+                time.sleep(data['seconds'] - (time.time() - start))
                 break
 
 
@@ -65,12 +69,14 @@ def bottom_left(conn, data, intensity, start):
                     conn.write(bot_left_on.format(intensity).encode())
                 time.sleep(data['note'])
             else:
+                time.sleep(data['seconds'] - (time.time() - start))
                 break
             if conn:
                 conn.write(bot_left_off)
             if time.time() - start < data['seconds'] - data['tempo_left']:
                 time.sleep(data['tempo_left'])
             else:
+                time.sleep(data['seconds'] - (time.time() - start))
                 break
 
 
@@ -83,12 +89,14 @@ def bottom_right(conn, data, intensity, start):
                     conn.write(bot_right_on.format(intensity).encode())
                 time.sleep(data['note'])
             else:
+                time.sleep(data['seconds'] - (time.time() - start))
                 break
             if conn:
                 conn.write(bot_right_off)
             if time.time() - start < data['seconds'] - data['tempo_right']:
                 time.sleep(data['tempo_right'])
             else:
+                time.sleep(data['seconds'] - (time.time() - start))
                 break
 
 
@@ -102,17 +110,18 @@ def ready_state_light(conn, data, start):
                 conn.write(shared.rsl_off_cmd)
             time.sleep(data['tempo_left'])
         else:
+            time.sleep(data['seconds'] - (time.time() - start))
             break
         if conn:
             conn.write(shared.rsl_on_cmd.format(rsl_brightness).encode())
         if time.time() - start < data['seconds'] - data['note']:
             time.sleep(data['note'])
         else:
+            time.sleep(data['seconds'] - (time.time() - start))
             break
 
 
-def run_track_program():
-    shared.play_track(in_audio_path, True)
+def run_track_program(df, ser):
     start_time = time.time()
     for _, row in df.iterrows():
         row_start_time = time.time()
@@ -135,10 +144,12 @@ def run_track_program():
 
 
 if __name__ == '__main__':
-    in_audio_path = '/Users/abby/work/TReV/music/audio-files/b5.m4a'
-    in_signals_path = 'track-data/stereo-{}-track-data.csv'.format(os.path.basename(in_audio_path))
+    in_audio_path = '/Users/abby/work/TReV/music/audio-files/circle-of-life.wav'
+    in_signals_path = 'track-data/{}-stereo.csv'.format(os.path.basename(in_audio_path))
     df = pd.read_csv(in_signals_path, dtype=float)
     ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
-    run_track_program()
+    shared.play_track(in_audio_path, True)
+    time.sleep(2)
+    run_track_program(df)
     if ser:
         ser.close()

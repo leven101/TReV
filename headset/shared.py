@@ -1,6 +1,7 @@
 import os
 import time
 import playsound
+from subprocess import Popen
 from multiprocessing import Process
 
 cmd_dict = {'all_off': '0', 'all_on': '1',
@@ -40,10 +41,10 @@ def get_tempo(bpm, note):
         return 0
 
 
-def play_track(path='/Users/abby/work/TReV/music/audio-files/b5.m4a', daemon=True):
+def play_track(path, daemon=True):
     t1 = Process(target=playsound.playsound, daemon=daemon, args=(path,))
     t1.start()
-    # playsound.playsound('../music/audio-files/b5.m4a')
+    # playsound.playsound(path)
 
 
 def flash_all(ser, seconds=0.5, brightness=7):
@@ -53,13 +54,23 @@ def flash_all(ser, seconds=0.5, brightness=7):
     ser.write(all_off_cmd)
 
 
-def play_clip(url, daemon=True):
-    cmd = '/Applications/VLC.app/Contents/MacOS/VLC {}'.format(url)
-    t1 = Process(target=os.system, args=(cmd,), daemon=daemon)
+def play_clip(url, daemon=True, secs=None):
+    import pafy  # importing paft globally breaks play_track with multiprocess.Process???
+    video = pafy.new(url)
+    best = video.getbest()
+    cmd = '/Applications/VLC.app/Contents/MacOS/VLC "{}"'.format(best.url)
+    t1 = Process(target=play_media_thread, args=(cmd, secs), daemon=daemon)
     t1.start()
+
+
+def play_media_thread(cmd, secs):
+    process = Popen(cmd, shell=True)
+    if secs:
+        time.sleep(secs)
+        process.kill()
 
 
 if __name__ == '__main__':
     # print(beats_per_second(103.36))
-    # play_track()
-    play_clip('https://www.youtube.com/watch?v=8qo6bEGqe54', False)
+    # play_track('/Users/abby/work/TReV/music/audio-files/b5.m4a')
+    play_clip('https://www.youtube.com/watch?v=2BKfE76hTJ8')
