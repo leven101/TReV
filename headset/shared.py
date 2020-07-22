@@ -22,7 +22,7 @@ rsl_on_cmd = '<{} {}>'.format(cmd_dict['ready_state_on'], '{}')
 rsl_off_cmd = '<3>'.encode()
 off_cmd = '<{}>'
 all_off_cmd = off_cmd.format(cmd_dict['all_off']).encode()
-total_brightness = 10
+total_brightness = 8
 
 
 # tempo is number of times the light blinks
@@ -72,5 +72,5 @@ def play_media_thread(cmd, secs):
 
 if __name__ == '__main__':
     # print(beats_per_second(103.36))
-    # play_track('/Users/abby/work/TReV/music/audio-files/b5.m4a')
-    play_clip('https://www.youtube.com/watch?v=2BKfE76hTJ8')
+    play_track('/Users/abby/work/TReV/music/audio-files/fg/Name_of_the_Game_The_Crystal_Method.wav', False)
+    # play_clip('https://www.youtube.com/watch?v=2BKfE76hTJ8')

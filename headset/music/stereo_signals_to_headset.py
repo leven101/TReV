@@ -6,13 +6,17 @@ import pandas as pd
 import headset.shared as shared
 from multiprocessing import Process
 
-rsl_brightness = 100
-r = [1, 1]
-c = [2, 3]
+rsl_brightness = 60
+r = [1, 2]
+c = [1, 2]
 top_left_on = shared.cmd_template.format(shared.cmd_dict['left_top_on'], '{}', r[0], r[1], c[0], c[1])
+top_left_on_2 = shared.cmd_template.format(shared.cmd_dict['left_top_on'], '{}', r[0]+1, r[1]+1, c[0]+1, c[1]+1)
 top_right_on = shared.cmd_template.format(shared.cmd_dict['right_top_on'], '{}', r[0], r[1], c[0], c[1])
+top_right_on_2 = shared.cmd_template.format(shared.cmd_dict['right_top_on'], '{}', r[0]+1, r[1]+1, c[0]+1, c[1]+1)
 bot_left_on = shared.cmd_template.format(shared.cmd_dict['left_bottom_on'], '{}', r[0], r[1], c[0], c[1])
+bot_left_on_2 = shared.cmd_template.format(shared.cmd_dict['left_bottom_on'], '{}', r[0]+1, r[1]+1, c[0]+1, c[1]+1)
 bot_right_on = shared.cmd_template.format(shared.cmd_dict['right_bottom_on'], '{}', r[0], r[1], c[0], c[1])
+bot_right_on_2 = shared.cmd_template.format(shared.cmd_dict['right_bottom_on'], '{}', r[0]+1, r[1]+1, c[0]+1, c[1]+1)
 top_left_off = shared.off_cmd.format(shared.cmd_dict['left_top_off']).encode()
 top_right_off = shared.off_cmd.format(shared.cmd_dict['right_top_off']).encode()
 bot_left_off = shared.off_cmd.format(shared.cmd_dict['left_bottom_off']).encode()
@@ -21,13 +25,15 @@ bot_right_off = shared.off_cmd.format(shared.cmd_dict['right_bottom_off']).encod
 
 def top_left(conn, data, intensity, start):
     print('top_left', data['seconds'], intensity, data['tempo_left'], start)
-    if intensity > 0:
+    if intensity > 0 and data['tempo_left'] > 0:
         while True:
             # if we have time left to play the note
             if time.time() - start < data['seconds'] - data['note']:
                 if conn:
                     conn.write(top_left_on.format(intensity).encode())
-                time.sleep(data['note'])
+                    time.sleep(data['note']/2)
+                    conn.write(top_left_on_2.format(intensity).encode())
+                time.sleep(data['note']/2)
             else:
                 time.sleep(data['seconds'] - (time.time() - start))
                 break
@@ -42,12 +48,14 @@ def top_left(conn, data, intensity, start):
 
 def top_right(conn, data, intensity, start):
     print('top_right', data['seconds'], intensity, data['tempo_left'], start)
-    if intensity > 0:
+    if intensity > 0 and data['tempo_right'] > 0:
         while True:
             if time.time() - start < data['seconds'] - data['note']:
                 if conn:
                     conn.write(top_right_on.format(intensity).encode())
-                time.sleep(data['note'])
+                    time.sleep(data['note']/2)
+                    conn.write(top_right_on_2.format(intensity).encode())
+                time.sleep(data['note']/2)
             else:
                 time.sleep(data['seconds'] - (time.time() - start))
                 break
@@ -62,12 +70,14 @@ def top_right(conn, data, intensity, start):
 
 def bottom_left(conn, data, intensity, start):
     print('bottom_left', data['seconds'], intensity, data['tempo_right'], start)
-    if intensity > 0:
+    if intensity > 0 and data['tempo_left'] > 0:
         while True:
             if time.time() - start < data['seconds'] - data['note']:
                 if conn:
                     conn.write(bot_left_on.format(intensity).encode())
-                time.sleep(data['note'])
+                    time.sleep(data['note']/2)
+                    conn.write(bot_left_on_2.format(intensity).encode())
+                time.sleep(data['note']/2)
             else:
                 time.sleep(data['seconds'] - (time.time() - start))
                 break
@@ -82,12 +92,14 @@ def bottom_left(conn, data, intensity, start):
 
 def bottom_right(conn, data, intensity, start):
     print('bottom_right', data['seconds'], intensity, data['tempo_right'], start)
-    if intensity > 0:
+    if intensity > 0 and data['tempo_right'] > 0:
         while True:
             if time.time() - start < data['seconds'] - data['note']:
                 if conn:
                     conn.write(bot_right_on.format(intensity).encode())
-                time.sleep(data['note'])
+                    time.sleep(data['note']/2)
+                    conn.write(bot_right_on_2.format(intensity).encode())
+                time.sleep(data['note']/2)
             else:
                 time.sleep(data['seconds'] - (time.time() - start))
                 break
@@ -125,8 +137,8 @@ def run_track_program(df, ser):
     start_time = time.time()
     for _, row in df.iterrows():
         row_start_time = time.time()
-        top_intensity = round(row['harmonic'] * shared.total_brightness)  # % of top
-        bot_intensity = round(row['percussive'] * shared.total_brightness)  # % of bottom
+        top_intensity = int(round(row['harmonic'] * shared.total_brightness))  # % of top
+        bot_intensity = int(round(row['percussive'] * shared.total_brightness))  # % of bottom
         # print(top_intensity, bot_intensity, top_intensity + bot_intensity)
         procs = []
         s_t = time.time()
@@ -137,19 +149,28 @@ def run_track_program(df, ser):
         procs.append(Process(target=ready_state_light, args=(ser, row, s_t)))
         [p.start() for p in procs]
         [p.join() for p in procs]
-        print('row', time.time()-row_start_time)
+        print('row time', time.time()-row_start_time)
+        print('tot track time', time.time() - start_time)
     print('run_track_program:', time.time()-start_time)
     if ser:
         ser.write(shared.all_off_cmd)
 
 
 if __name__ == '__main__':
-    in_audio_path = '/Users/abby/work/TReV/music/audio-files/circle-of-life.wav'
+    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/fg/eventhedarkenss-barrbrothers.m4a'
+    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/fg/Xanandra-MagodeOz.wav'
+    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/fg/RealPraise-short.wav'
+    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/fg/tmp.m4a'
+    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/fg/morado-jBalvin.m4a'
+    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/fg/pessimist-paramore.m4a'
+    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/dirt-jayz.m4a'
+    in_audio_path = '/Users/abby/work/TReV/music/audio-files/fg/Disclosure-Latch.mp3'
     in_signals_path = 'track-data/{}-stereo.csv'.format(os.path.basename(in_audio_path))
     df = pd.read_csv(in_signals_path, dtype=float)
     ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
+    ser.write(shared.all_off_cmd)
     shared.play_track(in_audio_path, True)
     time.sleep(2)
-    run_track_program(df)
+    run_track_program(df, ser)
     if ser:
         ser.close()

@@ -133,8 +133,8 @@ void lineVert(LEDArray& array, int column) {
 }
 
 /* Example Usage Functions */ 
-const int colStart = 2; // sizing
-const int brightness = 10; 
+const int colStart = 1; // sizing
+const int brightness = 14; 
 
 
 void lightOneLED(int row=0, int col=3) {

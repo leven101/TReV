@@ -30,8 +30,8 @@ beat down x 2 on top grid
 
 
 def revolt_drum_rhythm():
-    r = [1, 2]
-    c = [1, 2]
+    r = [0, 2]
+    c = [1, 3]
     seconds = 0.40
     note = note_dict['1/8']
     tempo = (seconds - (note*3)) / 3
@@ -101,19 +101,11 @@ def revolt_by_malaa():
 
 if __name__ == '__main__':
     ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
-    led_brightness = 6
+    led_brightness = 15
     rsl_brightness = 100
     revolt_by_malaa()
     ser.close()
 
-
-'''
-Next track: ? 
- - Get average bass/treble ratios over each song segment.
- - Along with blinking LEDs to beat normalize the bottom/top light 
- intensities to treble/bass (bass/treble). 
- - Split beats by stereo signal (??)
-'''
 
 
 

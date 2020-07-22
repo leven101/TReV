@@ -8,8 +8,8 @@ from multiprocessing import Process
 
 
 rsl_brightness = 100
-r = [1, 1]
-c = [2, 3]
+r = [0, 1]
+c = [1, 2]
 top_on = shared.cmd_template.format(shared.cmd_dict['top_on'], '{}', r[0], r[1], c[0], c[1])
 top_off = '<11>'.encode()
 bot_on = shared.cmd_template.format(shared.cmd_dict['bottom_on'], '{}', r[0], r[1], c[0], c[1])
@@ -58,12 +58,12 @@ def run_track_program(df):
     for _, row in df.iterrows():
         row_start_time = time.time()
         procs = []
-        top_intensity = round(row['top'] * shared.total_brightness)  # % of top
-        bot_intensity = round(row['bottom'] * shared.total_brightness)  # % of bottom
+        top_intensity = int(round(row['top'] * shared.total_brightness))  # % of top
+        bot_intensity = int(round(row['bottom'] * shared.total_brightness))  # % of bottom
         # print(top_intensity, bot_intensity, top_intensity + bot_intensity)
         s_t = time.time()
-        procs.append(Process(target=top, args=(ser, row, bot_intensity, s_t)))
-        procs.append(Process(target=bottom, args=(ser, row, top_intensity, s_t)))
+        procs.append(Process(target=top, args=(ser, row, top_intensity, s_t)))
+        procs.append(Process(target=bottom, args=(ser, row, bot_intensity, s_t)))
         procs.append(Process(target=ready_state_light, args=(ser, row, s_t)))
         [p.start() for p in procs]
         [p.join() for p in procs]
@@ -74,7 +74,9 @@ def run_track_program(df):
 
 
 if __name__ == '__main__':
-    in_audio_path = '/Users/abby/work/TReV/music/audio-files/circle-of-life.wav'
+    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/tones/100hz.wav'
+    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/tones/1000hz.wav'
+    in_audio_path = '/Users/abby/work/TReV/music/audio-files/dt_16bars_102rap.wav'
     in_signals_path = 'track-data/{}-mono.csv'.format(os.path.basename(in_audio_path))
     df = pd.read_csv(in_signals_path, dtype=float)
     ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)

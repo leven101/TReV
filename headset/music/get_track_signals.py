@@ -5,12 +5,11 @@ import os
 
 import headset.shared as shared
 
-track_path = '/Users/abby/work/TReV/music/audio-files/circle-of-life.wav'
-# track_path = '/Users/abby/work/TReV/music/audio-files/tones/100hz.wav'
+track_path = '/Users/abby/work/TReV/music/audio-files/fg/eventhedarkenss-barrbrothers.m4a'
 
 # global default values
 sr = 22050  # sampling rate of music
-hop_length = 512  # how many audio frames per fft
+hop_length = 1024  # how many audio frames per fft
 n_fft = 2205  # number of buckets to divide audio spectrum into
 hz_per_fft = int(sr / n_fft)  # sr/n_fft = hz buckets per fft
 bass_range_hz = [50, 300]
@@ -28,8 +27,8 @@ def load_track(mono=True):
     print('One frame in seconds: ', track_seconds / sr)
     return y, track_seconds
 
-
-def track_tempo(y, note=shared.note_dict['1/4']):
+notee=16
+def track_tempo(y, note=shared.note_dict['1/{}'.format(notee)]):
     # tempo is how many times per second we flash the light
     # note is how long the light should be on for each beat/flash
     bpm, beat_times = librosa.beat.beat_track(y, sr, hop_length=hop_length)
@@ -59,7 +58,7 @@ def stereo_signal():
     D = librosa.stft(librosa.to_mono(y), n_fft, hop_length)
     rp = np.median(np.abs(D))  # global reference power
     # remove noise by requiring that the horizontal and vertical filters differ by margin
-    D_harmonic, D_percussive = librosa.decompose.hpss(D, margin=16)
+    D_harmonic, D_percussive = librosa.decompose.hpss(D, margin=2)
 
     hz_db_harm = librosa.amplitude_to_db(abs(D_harmonic), ref=rp)
     hz_db_harm[hz_db_harm < 0] = 0
@@ -81,9 +80,9 @@ def stereo_signal():
         if i + n_hops_interval > hz_db_harm.shape[1]:
             interval_beat = track_seconds - np.sum(df['seconds'])
         if interval_beat > 0:
-            df.loc[df.shape[0]] = [interval_beat, bass_db, treb_db, tempo_l, tempo_r, note]
-    # df.to_csv('track-data/stereo-track-data.csv', index=False)
-    df.to_csv('track-data/{}-stereo.csv'.format(os.path.basename(track_path)), index=False)
+            df.loc[df.shape[0]] = [interval_beat, treb_db, bass_db, tempo_l, tempo_r, note]
+    df['cum_secs'] = df['seconds'].cumsum()
+    df.to_csv('track-data/{}-{}-stereo.csv'.format(notee, os.path.basename(track_path)), index=False)
 
 
 def mono_signal():
@@ -110,7 +109,7 @@ def mono_signal():
         if i + n_hops_interval > hz_db.shape[1]:
             interval_beat = track_seconds - np.sum(df['seconds'])
         if interval_beat > 0:
-            df.loc[df.shape[0]] = [interval_beat, bass_db, treb_db, tempo, note]
+            df.loc[df.shape[0]] = [interval_beat, treb_db, bass_db, tempo, note]
 
     df.to_csv('track-data/{}-mono.csv'.format(os.path.basename(track_path)), index=False)
 

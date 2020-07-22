@@ -41,7 +41,7 @@ void LEDArray::set(int row, int column, bool ledOn) {
   Wire.write(reg);
   Wire.write(ledRegValues[column]);
   Wire.endTransmission();
-}
+}   
 
 void LEDArray::clear() {
   for (int col = 0; col <= 6; col++) {

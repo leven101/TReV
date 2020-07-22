@@ -29,7 +29,7 @@ def explosion(ser, pos, secs):
     ser.write(all_off_cmd)
 
 
-def circle_of_light(ser, secs_one, secs_tot, b=10):
+def circle_of_light(ser, secs_one, secs_tot, b=8):
     sec_per_col = secs_one / 14  # 14 columns
     start = time.time()
     while time.time() - start < secs_tot:
@@ -87,5 +87,9 @@ def sunset(ser, secs, b=10):
 
 if __name__ == '__main__':
     ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
-    # explosion(ser, 'top_on', 2)
-    gun_shot(ser, 'left_bottom_on')
+    # ser.write(cmd_template.format(cmd_dict['bottom_on'], 10, 4, 4, 0, 6).encode())
+    # explosion(ser, 'top_on', 3)
+    # gun_shot(ser, 'left_bottom_on')
+    # sunrise(ser, 5)
+    # time.sleep(2)
+    # sunset(ser, 5)

@@ -72,14 +72,14 @@ def dual_cam_capture_multi_thread():
     p0.start()
     p1 = Process(target=cam_capture, args=(1,))
     p1.start()
-    if not (p0.is_alive() and p1.is_alive()):
-        p0.terminate()
-        p1.terminate()
-        p0.join()
-        p1.join()
+    # if not (p0.is_alive() and p1.is_alive()):
+    #     p0.terminate()
+    #     p1.terminate()
+    #     p0.join()
+    #     p1.join()
 
 
 if __name__ == '__main__':
-    cam_capture(0)
+    dual_cam_capture_multi_thread()
 
 

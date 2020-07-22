@@ -253,8 +253,8 @@ if __name__ == '__main__':
     mid = 1102
     hz = 100
     jump = 20
-    path = 'audio-files/tones/{}hz.wav'.format(hz)
-    # path = 'audio-files/dt_16bars_102rap.wav'
+    # path = 'audio-files/tones/{}hz.wav'.format(hz)
+    path = 'audio-files/dt_16bars_102rap.wav'
     time_delay = 5
     sa = SpectrumAnalyzer(path)
     # ratios = sa.timed_window_ratios()
