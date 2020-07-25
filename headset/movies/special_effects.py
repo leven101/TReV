@@ -90,6 +90,6 @@ if __name__ == '__main__':
     # ser.write(cmd_template.format(cmd_dict['bottom_on'], 10, 4, 4, 0, 6).encode())
     # explosion(ser, 'top_on', 3)
     # gun_shot(ser, 'left_bottom_on')
-    # sunrise(ser, 5)
+    # sunrise(ser, 6)
     # time.sleep(2)
     # sunset(ser, 5)

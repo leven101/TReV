@@ -108,15 +108,18 @@ void readyStateOff() {
 
 void ledGridOn(const int brightness, const int rStart, const int rEnd, 
                const int cStart, const int cEnd) {
+  bool on = true ? brightness > 0 : false;
   for (int row = rStart; row <= rEnd; row++) {
     for (int col = cStart; col <= cEnd; col++) {
-      leftTop.set(row, 6-col, true);
-      rightTop.set(row, col, true);
-      leftBottom.set(row, col, true);
-      rightBottom.set(row, 6-col, true);
+      leftTop.set(row, 6-col, on);
+      rightTop.set(row, col, on);
+      leftBottom.set(row, col, on);
+      rightBottom.set(row, 6-col, on);
     }
   }
-  setBrightness(brightness);
+  if (on) {
+    setBrightness(brightness);
+  }
   updateAll();
 }
 
@@ -130,36 +133,45 @@ void ledGridOff() {
 
 void topOn(const int brightness, const int rStart, const int rEnd, 
                    const int cStart, const int cEnd) {
+  bool on = true ? brightness > 0 : false;
   for (int row = rStart; row <= rEnd; row++) {
     for (int col = cStart; col <= cEnd; col++) {
-      leftTop.set(row, 6-col, true);
-      rightTop.set(row, col, true);
+      leftTop.set(row, 6-col, on);
+      rightTop.set(row, col, on);
     }
   }
-  setBrightness(brightness);
+  if (on) {
+    setBrightness(brightness);
+  }
   leftTop.update();
   rightTop.update();
 }
 
 void leftTopOn(const int brightness, const int rStart, const int rEnd, 
                    const int cStart, const int cEnd) {
+  bool on = true ? brightness > 0 : false;
   for (int row = rStart; row <= rEnd; row++) {
     for (int col = cStart; col <= cEnd; col++) {
-      leftTop.set(row, 6-col, true);
+      leftTop.set(row, 6-col, on);
     }
   }
-  setBrightness(brightness);
+  if (on) {
+    setBrightness(brightness);
+  }
   leftTop.update();
 }
 
 void rightTopOn(const int brightness, const int rStart, const int rEnd, 
                    const int cStart, const int cEnd) {
+  bool on = true ? brightness > 0 : false;
   for (int row = rStart; row <= rEnd; row++) {
     for (int col = cStart; col <= cEnd; col++) {
-      rightTop.set(row, col, true);
+      rightTop.set(row, col, on);
     }
   }
-  setBrightness(brightness);
+  if (on) {
+    setBrightness(brightness);
+  }
   rightTop.update();
 }
 
@@ -182,36 +194,45 @@ void topRightOff() {
 
 void bottomOn(const int brightness, const int rStart, const int rEnd, 
                    const int cStart, const int cEnd) {
+  bool on = true ? brightness > 0 : false;                    
   for (int row = rStart; row <= rEnd; row++) {
     for (int col = cStart; col <= cEnd; col++) {
-      leftBottom.set(row, col, true);
-      rightBottom.set(row, 6-col, true);
+      leftBottom.set(row, col, on);
+      rightBottom.set(row, 6-col, on);
     }
   }
-  setBrightness(brightness);
+  if (on) {
+    setBrightness(brightness);
+  }
   leftBottom.update();
   rightBottom.update();
 }
 
 void rightBottomOn(const int brightness, const int rStart, const int rEnd, 
                    const int cStart, const int cEnd) {
+  bool on = true ? brightness > 0 : false;                    
   for (int row = rStart; row <= rEnd; row++) {
     for (int col = cStart; col <= cEnd; col++) {
-      rightBottom.set(row, 6-col, true);
+      rightBottom.set(row, 6-col, on);
     }
   }
-  setBrightness(brightness);
+  if (on) {
+    setBrightness(brightness);
+  }
   rightBottom.update();
 }
 
 void leftBottomOn(const int brightness, const int rStart, const int rEnd, 
                    const int cStart, const int cEnd) {
+  bool on = true ? brightness > 0 : false;                    
   for (int row = rStart; row <= rEnd; row++) {
     for (int col = cStart; col <= cEnd; col++) {
-      leftBottom.set(row, col, true);
+      leftBottom.set(row, col, on);
     }
   }
-  setBrightness(brightness);
+  if (on) {
+    setBrightness(brightness);
+  }
   leftBottom.update();
 }
 

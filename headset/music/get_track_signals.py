@@ -5,7 +5,7 @@ import os
 
 import headset.shared as shared
 
-track_path = '/Users/abby/work/TReV/music/audio-files/fg/eventhedarkenss-barrbrothers.m4a'
+track_path = '/Users/abby/work/TReV/music/audio-files/fg/blackclover.m4a'
 
 # global default values
 sr = 22050  # sampling rate of music
@@ -27,7 +27,7 @@ def load_track(mono=True):
     print('One frame in seconds: ', track_seconds / sr)
     return y, track_seconds
 
-notee=16
+notee=8
 def track_tempo(y, note=shared.note_dict['1/{}'.format(notee)]):
     # tempo is how many times per second we flash the light
     # note is how long the light should be on for each beat/flash

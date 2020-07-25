@@ -6,8 +6,8 @@ import pandas as pd
 import headset.shared as shared
 from multiprocessing import Process
 
-rsl_brightness = 60
-r = [1, 2]
+rsl_brightness = 200
+r = [0, 1]
 c = [1, 2]
 top_left_on = shared.cmd_template.format(shared.cmd_dict['left_top_on'], '{}', r[0], r[1], c[0], c[1])
 top_left_on_2 = shared.cmd_template.format(shared.cmd_dict['left_top_on'], '{}', r[0]+1, r[1]+1, c[0]+1, c[1]+1)
@@ -156,19 +156,23 @@ def run_track_program(df, ser):
         ser.write(shared.all_off_cmd)
 
 
+# in_audio_path = '/Users/abby/work/TReV/music/audio-files/fg/Stay(2016Remaster).mp3'
+# in_audio_path = '/Users/abby/work/TReV/music/audio-files/fg/blackclover.m4a'
+# in_audio_path = '/Users/abby/work/TReV/music/audio-files/fg/sinefromabove-ladygaga.m4a'
+in_audio_path = '/Users/abby/work/TReV/music/audio-files/onedance-drake.m4a'
+# in_audio_path = '/Users/abby/work/TReV/music/audio-files/non-stop.hamilton.m4a'
+# in_audio_path = '/Users/abby/work/TReV/music/audio-files/fg/morado-jBalvin.m4a'
+# in_audio_path = '/Users/abby/work/TReV/music/audio-files/fg/pessimist-paramore.m4a'
+# in_audio_path = '/Users/abby/work/TReV/music/audio-files/dirt-jayz.m4a'
+# in_audio_path = '/Users/abby/work/TReV/music/audio-files/dontworry-behappy.m4a'
+# in_audio_path = '/Users/abby/work/TReV/music/audio-files/fg/Disclosure-Latch.mp3'
+
 if __name__ == '__main__':
-    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/fg/eventhedarkenss-barrbrothers.m4a'
-    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/fg/Xanandra-MagodeOz.wav'
-    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/fg/RealPraise-short.wav'
-    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/fg/tmp.m4a'
-    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/fg/morado-jBalvin.m4a'
-    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/fg/pessimist-paramore.m4a'
-    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/dirt-jayz.m4a'
-    in_audio_path = '/Users/abby/work/TReV/music/audio-files/fg/Disclosure-Latch.mp3'
     in_signals_path = 'track-data/{}-stereo.csv'.format(os.path.basename(in_audio_path))
+    # in_signals_path = 'track-data/tmp.m4a-stereo.csv'
     df = pd.read_csv(in_signals_path, dtype=float)
     ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
-    ser.write(shared.all_off_cmd)
+    if ser: ser.write(shared.all_off_cmd)
     shared.play_track(in_audio_path, True)
     time.sleep(2)
     run_track_program(df, ser)

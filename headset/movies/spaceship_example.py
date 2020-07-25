@@ -21,7 +21,7 @@ ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
 
 
 play_clip('https://www.youtube.com/watch?v=8qo6bEGqe54', False)
-time.sleep(1)
+time.sleep(2)
 
 start_time = time.time()
 off_cmd = '<' + cmd_dict['all_off'] + '>'

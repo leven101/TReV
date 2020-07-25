@@ -14,6 +14,7 @@ col_choices = [0, 1, 2, 3, 4, 5, 6]
 - happy for 2:25 - 2:26
 '''
 
+
 def brightness_gradient_up(cmd_shell, speed):
     for i in range(0, 15, 5):
         cmd = cmd_shell.format(i)
@@ -94,7 +95,7 @@ def ship_takeoff():
 
 def irritate_noise():
     # for 0:23 - 0:25
-    cmd = cmd_template.format(cmd_dict['left_top_on'], 7, 2, 4, '{}', '{}')
+    cmd = cmd_template.format(cmd_dict['left_top_on'], 15, 2, 4, '{}', '{}')
     s = time.time()
     while time.time() - s < 2:
         ser.write(cmd.format(0, 1).encode())
@@ -106,7 +107,7 @@ def irritate_noise():
 
 
 def r2d2_noise():
-    cmd = cmd_template.format(cmd_dict['right_bottom_on'], 7, 2, 3, '{}', '{}')
+    cmd = cmd_template.format(cmd_dict['right_bottom_on'], 15, 2, 3, '{}', '{}')
     s = time.time()
     while time.time() - s < 2:
         ser.write(cmd.format(0, 1).encode())
@@ -119,7 +120,7 @@ def r2d2_noise():
 
 def warp_speed_effect():
     # go from back column to front column with all rows lit
-    cmd = cmd_template.format(cmd_dict['all_on'], 7, 0, 3, '{}', '{}')
+    cmd = cmd_template.format(cmd_dict['all_on'], 15, 0, 3, '{}', '{}')
     for i in range(6, -1, -1):
         print(cmd.format(i, i+1))
         ser.write(cmd.format(i, i+1).encode())
@@ -135,19 +136,19 @@ def warp_speed_effect():
     time.sleep(delay)
 
     ser.write(all_off_cmd)
-    ser.write(cmd_template.format(cmd_dict['all_on'], 7, 0, 2, 2, 4).encode())
+    ser.write(cmd_template.format(cmd_dict['all_on'], 15, 0, 2, 2, 4).encode())
     time.sleep(delay)
 
     ser.write(all_off_cmd)
-    ser.write(cmd_template.format(cmd_dict['all_on'], 7, 0, 2, 2, 3).encode())
+    ser.write(cmd_template.format(cmd_dict['all_on'], 15, 0, 2, 2, 3).encode())
     time.sleep(delay)
 
     ser.write(all_off_cmd)
-    ser.write(cmd_template.format(cmd_dict['all_on'], 7, 0, 1, 2, 3).encode())
+    ser.write(cmd_template.format(cmd_dict['all_on'], 15, 0, 1, 2, 3).encode())
     time.sleep(delay)
 
     ser.write(all_off_cmd)
-    ser.write(cmd_template.format(cmd_dict['all_on'], 7, 0, 0, 2, 2).encode())
+    ser.write(cmd_template.format(cmd_dict['all_on'], 15, 0, 0, 2, 2).encode())
     time.sleep(delay)
 
     ser.write(all_off_cmd)
@@ -194,16 +195,10 @@ if __name__ == '__main__':
     ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
     clip_url = 'https://www.youtube.com/watch?v=qPEB9PS5mOw'
     s = time.time()
-    # play_clip(clip_url, True)
-    # time.sleep(2)
-    # run_effects_timing()
-    # print(time.time() - s)
-    single_laser_beam()
-    time.sleep(0.5)
-    single_laser_beam()
-    time.sleep(0.5)
-    single_laser_beam()
-    time.sleep(0.5)
+    play_clip(clip_url, True)
+    time.sleep(2)
+    run_effects_timing()
+    print(time.time() - s)
     ser.close()
 
 

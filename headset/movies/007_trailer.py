@@ -30,7 +30,7 @@ if __name__ == '__main__':
     ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
     ser.write(all_off_cmd)
     clip_url = 'https://www.youtube.com/watch?v=2BKfE76hTJ8'
-    time.sleep(2)  # url load time
+    time.sleep(2.5)  # url load time
     play_clip(clip_url, False)
     play_effects(ser)
     ser.close()
