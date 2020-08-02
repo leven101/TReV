@@ -266,7 +266,9 @@ void randomize(LEDArray& array) {
   }
 }
 
-void blinkRandomly(const int seconds) {
+void blinkRandomly(float seconds) {
+  // seconds in at 100 scale. normalize seconds to 1 scale
+  seconds = seconds / 100;
   int milliseconds = seconds * 1000;
   unsigned long currentMillis = millis();
   while (millis()  - currentMillis < milliseconds) {
@@ -300,7 +302,7 @@ void recvParamsWithStartEndMarkers() {
             }
             else {
                 for (int i=ndx; i<numParams; ++i) {
-                  params[i] = -111;
+                  params[i] = NULL;
                 }
                 recvInProgress = false;
                 ndx = 0;

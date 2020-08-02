@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="313ef6f8-0c9d-4f10-a0a6-3ba620c7cc1f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/headset/random/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/headset/random/ftl_chip_sim.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/headset/random/neuron.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/headset/random/rapture.py" afterDir="false" />
+    <list default="true" id="313ef6f8-0c9d-4f10-a0a6-3ba620c7cc1f" name="Default Changelist" comment="- play video twice from script. &#10;- change timings.">
+      <change afterPath="$PROJECT_DIR$/headset/music/beats_to_headset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TREV software - 1.1.0/Hardware/control_from_python/control_from_python.ino" beforeDir="false" afterPath="$PROJECT_DIR$/TREV software - 1.1.0/Hardware/control_from_python/control_from_python.ino" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TREV software - 1.1.0/Hardware/first_sketch_test/first_sketch_test.ino" beforeDir="false" afterPath="$PROJECT_DIR$/TREV software - 1.1.0/Hardware/first_sketch_test/first_sketch_test.ino" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headset/half_spin.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/random/half_spin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/headset/movies/007_trailer.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/movies/007_trailer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headset/movies/circle_of_life.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/movies/circle_of_life.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/headset/movies/spaceship_example.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/movies/spaceship_example.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/headset/movies/special_effects.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/movies/special_effects.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/headset/movies/star_wars_clip.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/movies/star_wars_clip.py" afterDir="false" />
@@ -18,7 +14,11 @@
       <change beforePath="$PROJECT_DIR$/headset/music/get_track_signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/music/get_track_signals.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/headset/music/signals_to_headset.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/music/signals_to_headset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/headset/music/stereo_signals_to_headset.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/music/stereo_signals_to_headset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headset/random/ftl_chip_sim.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/random/ftl_chip_sim.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headset/random/half_spin.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/random/half_spin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/headset/shared.py" beforeDir="false" afterPath="$PROJECT_DIR$/headset/shared.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/music/librosa/get_tempo.py" beforeDir="false" afterPath="$PROJECT_DIR$/music/librosa/get_tempo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/music/librosa/stereo_split.py" beforeDir="false" afterPath="$PROJECT_DIR$/music/librosa/stereo_split.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,10 +29,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/headset/random/ftl_chip_sim.py">
+        <entry file="file://$PROJECT_DIR$/headset/movies/star_wars_clip.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="517">
-              <caret line="46" column="11" selection-start-line="46" selection-start-column="11" selection-end-line="46" selection-end-column="11" />
+            <state relative-caret-position="111">
+              <caret line="196" column="19" lean-forward="true" selection-start-line="196" selection-start-column="19" selection-end-line="196" selection-end-column="19" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -51,8 +51,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>pa</find>
-      <find>RATE</find>
       <find>RANGE</find>
       <find>INPUT_FRAMES_PER_BLOCK</find>
       <find>2we8</find>
@@ -76,11 +74,13 @@
       <find>rand</find>
       <find>run_</find>
       <find>r_b</find>
-      <find>note</find>
       <find>14</find>
       <find>+1</find>
       <find>+2</find>
       <find>spe</find>
+      <find>note</find>
+      <find>row[0]</find>
+      <find>beat_pd</find>
     </findStrings>
     <replaceStrings>
       <replace>'&gt;'</replace>
@@ -88,6 +88,10 @@
       <replace>bght</replace>
       <replace>+2</replace>
       <replace>+1</replace>
+      <replace>row['note']</replace>
+      <replace>row['beat]</replace>
+      <replace>row['beat']</replace>
+      <replace>beat_df</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -96,7 +100,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/headset/control_from_python.py" />
         <option value="$PROJECT_DIR$/music/librosa/example.py" />
         <option value="$PROJECT_DIR$/headset/track_examples.py" />
         <option value="$PROJECT_DIR$/headset/beethovens_fifth_clip.py" />
@@ -112,7 +115,6 @@
         <option value="$PROJECT_DIR$/music/librosa/get_track_data.py" />
         <option value="$PROJECT_DIR$/music/librosa/get_spectrum.py" />
         <option value="$PROJECT_DIR$/headset/music/get_track_data.py" />
-        <option value="$PROJECT_DIR$/music/librosa/get_tempo.py" />
         <option value="$PROJECT_DIR$/headset/music/normalized_bass_treble.py" />
         <option value="$PROJECT_DIR$/headset/music/audio_and_cam_example.py" />
         <option value="$PROJECT_DIR$/headset/cam/cam_response_vectors.py" />
@@ -126,41 +128,43 @@
         <option value="$PROJECT_DIR$/headset/movies/you_tube.py" />
         <option value="$PROJECT_DIR$/headset/movies/vlc_example.py" />
         <option value="$PROJECT_DIR$/headset/movies/youtube_example.py" />
-        <option value="$PROJECT_DIR$/music/librosa/stereo_split.py" />
         <option value="$PROJECT_DIR$/headset/cam/cam_capture.py" />
         <option value="$PROJECT_DIR$/headset/music/track_examples.py" />
         <option value="$PROJECT_DIR$/headset/headset_connect_test.py" />
         <option value="$PROJECT_DIR$/music/spectrum_analysis.py" />
-        <option value="$PROJECT_DIR$/headset/movies/special_effects.py" />
-        <option value="$PROJECT_DIR$/headset/movies/circle_of_life.py" />
         <option value="$PROJECT_DIR$/headset/half_spin.py" />
-        <option value="$PROJECT_DIR$/headset/music/get_track_signals.py" />
-        <option value="$PROJECT_DIR$/headset/movies/007_trailer.py" />
-        <option value="$PROJECT_DIR$/headset/movies/spaceship_example.py" />
-        <option value="$PROJECT_DIR$/headset/movies/star_wars_clip.py" />
-        <option value="$PROJECT_DIR$/headset/music/signals_to_headset.py" />
-        <option value="$PROJECT_DIR$/headset/music/beethovens_fifth_clip.py" />
-        <option value="$PROJECT_DIR$/headset/shared.py" />
-        <option value="$PROJECT_DIR$/headset/music/stereo_signals_to_headset.py" />
         <option value="$PROJECT_DIR$/headset/random/rapture.py" />
-        <option value="$PROJECT_DIR$/headset/random/half_spin.py" />
         <option value="$PROJECT_DIR$/headset/random/neuron.py" />
         <option value="$PROJECT_DIR$/headset/random/ftl_chip_sim.py" />
+        <option value="$PROJECT_DIR$/music/librosa/get_tempo.py" />
+        <option value="$PROJECT_DIR$/headset/music/beat_to_headset.py" />
+        <option value="$PROJECT_DIR$/music/librosa/stereo_split.py" />
+        <option value="$PROJECT_DIR$/headset/music/signals_to_headset.py" />
+        <option value="$PROJECT_DIR$/headset/music/beethovens_fifth_clip.py" />
+        <option value="$PROJECT_DIR$/headset/music/stereo_signals_to_headset.py" />
+        <option value="$PROJECT_DIR$/headset/shared.py" />
+        <option value="$PROJECT_DIR$/headset/random/half_spin.py" />
+        <option value="$PROJECT_DIR$/headset/music/get_track_signals.py" />
+        <option value="$PROJECT_DIR$/headset/music/beats_to_headset.py" />
+        <option value="$PROJECT_DIR$/headset/movies/spaceship_example.py" />
+        <option value="$PROJECT_DIR$/headset/movies/special_effects.py" />
+        <option value="$PROJECT_DIR$/headset/movies/007_trailer.py" />
+        <option value="$PROJECT_DIR$/headset/movies/circle_of_life.py" />
+        <option value="$PROJECT_DIR$/headset/movies/star_wars_clip.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="73" />
+    <option name="x" value="509" />
     <option name="y" value="23" />
-    <option name="width" value="1486" />
-    <option name="height" value="938" />
+    <option name="width" value="971" />
+    <option name="height" value="684" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -177,12 +181,24 @@
               <item name="TReV" type="b2602c69:ProjectViewProjectNode" />
               <item name="TReV" type="462c0819:PsiDirectoryNode" />
               <item name="headset" type="462c0819:PsiDirectoryNode" />
-              <item name="random" type="462c0819:PsiDirectoryNode" />
+              <item name="cam" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TReV" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TReV" type="462c0819:PsiDirectoryNode" />
+              <item name="headset" type="462c0819:PsiDirectoryNode" />
+              <item name="movies" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TReV" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TReV" type="462c0819:PsiDirectoryNode" />
+              <item name="music" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -214,8 +230,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.ftl_chip_sim">
-    <configuration name="ftl_chip_sim" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.star_wars_clip">
+    <configuration name="007_trailer" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TReV" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -223,11 +239,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/headset/random" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/headset/movies" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/headset/random/ftl_chip_sim.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/headset/movies/007_trailer.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -236,7 +252,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="half_spin" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="cam_capture" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TReV" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -244,11 +260,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/headset/random" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/headset/cam" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/headset/random/half_spin.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/headset/cam/cam_capture.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -257,7 +273,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="neuron" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="spaceship_example" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TReV" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -265,11 +281,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/headset/random" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/headset/movies" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/headset/random/neuron.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/headset/movies/spaceship_example.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -278,7 +294,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="rapture" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="special_effects" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TReV" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -286,11 +302,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/headset/random" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/headset/movies" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/headset/random/rapture.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/headset/movies/special_effects.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -299,7 +315,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="stereo_signals_to_headset" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="star_wars_clip" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TReV" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -307,11 +323,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/headset/music" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/headset/movies" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/headset/music/stereo_signals_to_headset.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/headset/movies/star_wars_clip.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -321,19 +337,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.stereo_signals_to_headset" />
-      <item itemvalue="Python.rapture" />
-      <item itemvalue="Python.half_spin" />
-      <item itemvalue="Python.ftl_chip_sim" />
-      <item itemvalue="Python.neuron" />
+      <item itemvalue="Python.cam_capture" />
+      <item itemvalue="Python.007_trailer" />
+      <item itemvalue="Python.spaceship_example" />
+      <item itemvalue="Python.special_effects" />
+      <item itemvalue="Python.star_wars_clip" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.ftl_chip_sim" />
-        <item itemvalue="Python.neuron" />
-        <item itemvalue="Python.half_spin" />
-        <item itemvalue="Python.rapture" />
-        <item itemvalue="Python.stereo_signals_to_headset" />
+        <item itemvalue="Python.star_wars_clip" />
+        <item itemvalue="Python.007_trailer" />
+        <item itemvalue="Python.special_effects" />
+        <item itemvalue="Python.spaceship_example" />
+        <item itemvalue="Python.cam_capture" />
       </list>
     </recent_temporary>
   </component>
@@ -474,27 +490,34 @@
       <option name="project" value="LOCAL" />
       <updated>1595384181043</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="- added random directory">
+      <created>1595691346893</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1595691346893</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="73" y="23" width="1486" height="938" extended-state="0" />
+    <frame x="509" y="23" width="971" height="684" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4971537" visible="true" weight="0.24982935" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4971537" visible="true" weight="0.33473685" />
       <window_info id="Structure" order="1" sideWeight="0.5028463" side_tool="true" weight="0.25402915" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3277405" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.20212767" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.45721272" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32742316" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3260135" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.2683215" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.38908246" />
+      <window_info anchor="bottom" id="Version Control" order="7" visible="true" weight="0.5304054" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32624114" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.2671395" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.2635135" />
       <window_info anchor="bottom" id="Messages" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -522,7 +545,8 @@
     <MESSAGE value="- added special_effects.py with methods for gun shots and explosions&#10;- play clips directly from code" />
     <MESSAGE value="- check in 007_trailer.py and circle_of_life.py&#10;- refactor shared.py for youtube clips" />
     <MESSAGE value="- add left/right ability for on/off switching to stereo_signals_to_headset.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="- add left/right ability for on/off switching to stereo_signals_to_headset.py" />
+    <MESSAGE value="- added random directory" />
+    <option name="LAST_COMMIT_MESSAGE" value="- added random directory" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -536,6 +560,13 @@
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
+    <expressions id="breakpointCondition">
+      <expression>
+        <expression-string>i &gt; 1000</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
     <expressions id="watch">
       <expression>
         <expression-string>hz_db.shape[1]</expression-string>
@@ -550,52 +581,47 @@
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>df[df['cum_secs'].between(97, 133, inclusive=True)]</expression-string>
+        <expression-string>harm_vs_perc(y[i])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>df[df['cum_secs'].between(97, 132, inclusive=True)]</expression-string>
+        <expression-string>ceil(hz_db_perc.shape[1] / len(beat_df))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>df[df['cum_secs'].between(25, 51, inclusive=True)]</expression-string>
+        <expression-string>int(hz_db_perc.shape[1] / len(beat_df))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>df</expression-string>
+        <expression-string>round(hz_db_perc.shape[1] / len(beat_df))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>df['seconds'].cumsum()</expression-string>
+        <expression-string>hz_db_perc.shape[1] / len(beat_df)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>hops_per_interval(tempo_r, note, track_seconds, hz_db_harm.shape[1])</expression-string>
+        <expression-string>len(beat_times)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>hops_per_interval(tempo_l, note, track_seconds, hz_db_harm.shape[1])</expression-string>
+        <expression-string>round(hz_db_perc.shape[1]/len(beat_df))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>hops_per_interval(avg_tempo, note, track_seconds, hz_db_harm.shape[1])</expression-string>
+        <expression-string>round(hz_db_perc.shape[1]/15)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>interval_beat % ((tempo_r + note))</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>interval_beat % ((tempo_r + note) * 2)</expression-string>
+        <expression-string>hz_db_perc.shape[1]/15</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -608,16 +634,6 @@
     <entry file="file://$PROJECT_DIR$/headset/music/track-data-1.csv" />
     <entry file="file://$PROJECT_DIR$/headset/music/track-data/100hz.mp3-track-data.csv" />
     <entry file="file://$PROJECT_DIR$/headset/movies/you_tube.py" />
-    <entry file="file://$PROJECT_DIR$/music/librosa/stereo_split.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="19" lean-forward="true" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/headset/cam/cam_frames_to_file.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -647,16 +663,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/headset/music/get_track_signals.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-93">
-          <caret line="35" column="39" lean-forward="true" selection-start-line="35" selection-start-column="39" selection-end-line="35" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/headset/music/track_examples.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-428">
@@ -664,42 +670,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/headset/cam/cam_capture.py">
+    <entry file="file://$PROJECT_DIR$/headset/random/rapture.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
+        <state relative-caret-position="240">
+          <caret line="27" column="8" lean-forward="true" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="92" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/headset/music/signals_to_headset.py">
+    <entry file="file://$PROJECT_DIR$/headset/random/ftl_chip_sim.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="82" column="43" lean-forward="true" selection-start-line="82" selection-start-column="43" selection-end-line="82" selection-end-column="43" />
+        <state relative-caret-position="463">
+          <caret line="37" column="19" lean-forward="true" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/headset/random/neuron.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="27" column="77" lean-forward="true" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="77" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/music/librosa/get_tempo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/music/librosa/plot_hprss.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-82" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/music/librosa/stereo_split.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" selection-start-line="10" selection-end-line="12" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/headset/headset_connect_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="87" column="39" selection-start-line="87" selection-start-column="39" selection-end-line="87" selection-end-column="39" />
+        <state relative-caret-position="482">
+          <caret line="88" column="16" lean-forward="true" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="16" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/headset/movies/007_trailer.py">
+    <entry file="file://$PROJECT_DIR$/headset/music/signals_to_headset.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="51" lean-forward="true" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
+        <state relative-caret-position="-756">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -714,70 +752,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/headset/movies/star_wars_clip.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="155" lean-forward="true" selection-start-line="155" selection-end-line="155" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/headset/movies/circle_of_life.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="23" column="18" lean-forward="true" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/headset/music/stereo_signals_to_headset.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="165" column="73" selection-start-line="165" selection-start-column="73" selection-end-line="165" selection-end-column="73" />
+        <state relative-caret-position="459">
+          <caret line="155" column="37" lean-forward="true" selection-start-line="159" selection-start-column="57" selection-end-line="159" selection-end-column="78" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/headset/movies/spaceship_example.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/headset/movies/special_effects.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="62" column="32" lean-forward="true" selection-start-line="62" selection-start-column="32" selection-end-line="62" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/headset/random/rapture.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="27" column="8" lean-forward="true" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="92" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/headset/random/half_spin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" selection-start-line="10" selection-end-line="10" selection-end-column="44" />
+        <state relative-caret-position="900">
+          <caret line="60" column="48" selection-start-line="60" selection-start-column="48" selection-end-line="60" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/headset/music/get_track_signals.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/headset/music/beats_to_headset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/headset/cam/cam_capture.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1200">
+          <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/headset/movies/spaceship_example.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-188">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
@@ -786,28 +814,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/headset/shared.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="60" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="60" />
+        <state relative-caret-position="151">
+          <caret line="16" column="49" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/headset/random/neuron.py">
+    <entry file="file://$PROJECT_DIR$/headset/movies/special_effects.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        <state relative-caret-position="271">
+          <caret line="94" column="38" selection-start-line="94" selection-start-column="38" selection-end-line="94" selection-end-column="38" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/headset/random/ftl_chip_sim.py">
+    <entry file="file://$PROJECT_DIR$/headset/movies/007_trailer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="517">
-          <caret line="46" column="11" selection-start-line="46" selection-start-column="11" selection-end-line="46" selection-end-column="11" />
+        <state relative-caret-position="198">
+          <caret line="35" column="26" lean-forward="true" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/headset/movies/circle_of_life.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/headset/movies/star_wars_clip.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="196" column="19" lean-forward="true" selection-start-line="196" selection-start-column="19" selection-end-line="196" selection-end-column="19" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>

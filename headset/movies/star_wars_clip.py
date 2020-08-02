@@ -166,7 +166,7 @@ def run_effects_timing():
     s = time.time()
     time.sleep(23)
     irritate_noise()  # 0:24
-    time.sleep(31)
+    time.sleep(30)
     r2d2_noise()  # 0:58
     time.sleep(6)
     irritate_noise()
@@ -192,8 +192,10 @@ def run_effects_timing():
 
 
 if __name__ == '__main__':
-    ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
     clip_url = 'https://www.youtube.com/watch?v=qPEB9PS5mOw'
+    play_clip(clip_url, True, 176)
+    time.sleep(177)
+    ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
     s = time.time()
     play_clip(clip_url, True)
     time.sleep(2)

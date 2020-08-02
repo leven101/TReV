@@ -2,14 +2,15 @@ import librosa
 import numpy as np
 import pandas as pd
 import os
+from math import ceil
 
 import headset.shared as shared
 
-track_path = '/Users/abby/work/TReV/music/audio-files/fg/blackclover.m4a'
+track_path = '/Users/abby/work/TReV/music/audio-files/theotherside-jasonderulo.m4a'
 
 # global default values
 sr = 22050  # sampling rate of music
-hop_length = 1024  # how many audio frames per fft
+hop_length = 2048  # how many audio frames per fft
 n_fft = 2205  # number of buckets to divide audio spectrum into
 hz_per_fft = int(sr / n_fft)  # sr/n_fft = hz buckets per fft
 bass_range_hz = [50, 300]
@@ -27,7 +28,8 @@ def load_track(mono=True):
     print('One frame in seconds: ', track_seconds / sr)
     return y, track_seconds
 
-notee=8
+
+notee=4
 def track_tempo(y, note=shared.note_dict['1/{}'.format(notee)]):
     # tempo is how many times per second we flash the light
     # note is how long the light should be on for each beat/flash
@@ -49,13 +51,56 @@ def hops_per_interval(tempo, note, seconds, num_hops):
     return interval_beat, n_hops_interval
 
 
-def stereo_signal():
+def by_beat_track_stereo():
     y, track_seconds = load_track(False)
+    for idx in range(len(y)):
+        _, beat_times = librosa.beat.beat_track(y=y[idx], sr=sr, units='time')
+        beat_df = pd.DataFrame(columns=['beat', 'harmonic', 'percussive', 'note', 'cum_secs'])
+        print('# of beats: {}'.format(len(beat_times)))
+        beat_df['cum_secs'] = beat_times
+        beat_df['beat'] = pd.Series(beat_times).diff()
+        beat_df.loc[0, 'beat'] = beat_times[0]
+        beat_df['note'] = shared.note_dict['1/{}'.format(notee)]
+        beat_df['beat'] = beat_df['beat'] - beat_df['note']
+        hz_db_harm, hz_db_perc = harm_vs_perc(y[idx])
+        num_per_hop = ceil(hz_db_perc.shape[1] / len(beat_df))
+        for i in range(len(beat_times)):
+            idx_start = i * num_per_hop
+            treb_db = np.sum(hz_db_harm[:, idx_start:idx_start + num_per_hop])
+            bass_db = np.sum(hz_db_perc[:, idx_start:idx_start + num_per_hop])
+            tot_db = bass_db + treb_db
+            if tot_db > 0:
+                bass_db /= tot_db
+                treb_db /= tot_db
+            beat_df.loc[i, ['harmonic', 'percussive']] = [treb_db, bass_db]
+        beat_df.to_csv('track-data/{}-{}-beat.csv'.format(os.path.basename(track_path), idx), index=False)
 
-    tempo_l, note = track_tempo(y[0])
-    tempo_r, _ = track_tempo(y[1])
 
-    D = librosa.stft(librosa.to_mono(y), n_fft, hop_length)
+def by_beat_track():
+    y, track_seconds = load_track()
+    tempo, beat_times = librosa.beat.beat_track(y=y, sr=sr, units='time')
+    beat_df = pd.DataFrame(columns=['beat', 'harmonic', 'percussive', 'note', 'cum_secs'])
+    beat_df['cum_secs'] = beat_times
+    beat_df['beat'] = pd.Series(beat_times).diff()
+    beat_df.loc[0, 'beat'] = beat_times[0]
+    beat_df['note'] = shared.note_dict['1/{}'.format(notee)]
+    beat_df['beat'] = beat_df['beat'] - beat_df['note']
+    hz_db_harm, hz_db_perc = harm_vs_perc(y)
+    num_per_hop = ceil(hz_db_perc.shape[1] / len(beat_df))
+    for i in range(len(beat_times)):
+        idx_start = i * num_per_hop
+        treb_db = np.sum(hz_db_harm[:, idx_start:idx_start+num_per_hop])
+        bass_db = np.sum(hz_db_perc[:, idx_start:idx_start+num_per_hop])
+        tot_db = bass_db + treb_db
+        if tot_db > 0:
+            bass_db /= tot_db
+            treb_db /= tot_db
+        beat_df.loc[i, ['harmonic', 'percussive']] = [treb_db, bass_db]
+    beat_df.to_csv('track-data/{}-monobeat.csv'.format(os.path.basename(track_path)), index=False)
+
+
+def harm_vs_perc(y):
+    D = librosa.stft(y, n_fft, hop_length)
     rp = np.median(np.abs(D))  # global reference power
     # remove noise by requiring that the horizontal and vertical filters differ by margin
     D_harmonic, D_percussive = librosa.decompose.hpss(D, margin=2)
@@ -66,6 +111,17 @@ def stereo_signal():
     hz_db_perc = librosa.amplitude_to_db(abs(D_percussive), ref=rp)
     hz_db_perc[hz_db_perc < 0] = 0
     print('\nhz_db_perc:', hz_db_perc.shape)
+    return hz_db_harm, hz_db_perc
+
+
+def stereo_signal():
+    y, track_seconds = load_track(False)
+
+    tempo_l, note = track_tempo(y[0])
+    tempo_r, _ = track_tempo(y[1])
+
+    hz_db_harm, hz_db_perc = harm_vs_perc(librosa.to_mono(y))
+
     avg_tempo = np.mean([tempo_l, tempo_r])
     interval_beat, n_hops_interval = hops_per_interval(avg_tempo, note, track_seconds, hz_db_harm.shape[1])
 
@@ -116,4 +172,6 @@ def mono_signal():
 
 if __name__ == '__main__':
     # mono_signal()
-    stereo_signal()
+    # stereo_signal()
+    by_beat_track()
+    # by_beat_track_stereo()

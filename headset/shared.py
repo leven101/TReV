@@ -22,7 +22,7 @@ rsl_on_cmd = '<{} {}>'.format(cmd_dict['ready_state_on'], '{}')
 rsl_off_cmd = '<3>'.encode()
 off_cmd = '<{}>'
 all_off_cmd = off_cmd.format(cmd_dict['all_off']).encode()
-total_brightness = 7
+total_brightness = 15
 
 
 # tempo is number of times the light blinks

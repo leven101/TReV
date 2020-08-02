@@ -4,7 +4,9 @@ import time
 from headset.shared import cmd_dict, all_off_cmd, \
     cmd_template, off_cmd
 
-random_cmd = '<{} {}>'.format(cmd_dict['random'], 1).encode()
+random_t = 0.3
+i_rand_t = int(random_t) * 100
+random_cmd = '<{} {}>'.format(cmd_dict['random'], i_rand_t).encode()
 
 
 def gun_shot(ser, pos):
@@ -20,12 +22,14 @@ def gun_shot(ser, pos):
 
 
 def explosion(ser, pos, secs):
-    delay = (secs - 1) / 10
+    delay = (secs - random_t) / 10
+    print(delay)
     for i in range(4, 15):
         ser.write(cmd_template.format(cmd_dict[pos], i, 0, 2, 1, 3).encode())
         time.sleep(delay)
         ser.write(all_off_cmd)
     ser.write(random_cmd)
+    time.sleep(random_t)
     ser.write(all_off_cmd)
 
 
@@ -87,9 +91,6 @@ def sunset(ser, secs, b=10):
 
 if __name__ == '__main__':
     ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
-    # ser.write(cmd_template.format(cmd_dict['bottom_on'], 10, 4, 4, 0, 6).encode())
-    # explosion(ser, 'top_on', 3)
-    # gun_shot(ser, 'left_bottom_on')
-    # sunrise(ser, 6)
-    # time.sleep(2)
-    # sunset(ser, 5)
+    start = time.time()
+    explosion(ser, 'right_top_on', 0.5)
+    print(time.time() - start)

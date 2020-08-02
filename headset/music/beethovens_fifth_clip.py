@@ -130,7 +130,7 @@ if __name__ == '__main__':
     ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
     r_start = 1
     c_start = 0
-    brightness = 10
+    brightness = 5
     off_cmd = ('<' + cmd_dict['all_off'] + '>').encode()
     ser.write(off_cmd)
     leds_cmd = ' {} {} {} {} {}'

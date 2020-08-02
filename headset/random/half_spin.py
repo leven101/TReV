@@ -49,16 +49,16 @@ start = time.time()
 #             time.sleep(0.01)
 #             ser.write(all_off_cmd)
 #             time.sleep(0.001)
-
+#
 # while time.time() - start < 90:
 #     ser.write(cmd_template.format(cmd_dict['bottom_on'], bght, 2, 3, 3, 6).encode())
 #     time.sleep(.2)
 #     ser.write(all_off_cmd)
 
 # got the stick!
-for _ in range(11):
+for _ in range(2):
     col = random.randint(0, 7)
-    ser.write(cmd_template.format(cmd_dict['all_on'], bght, 0, 3, col, col).encode())
+    ser.write(cmd_template.format(cmd_dict['left_bottom_on'], bght, 0, 3, col, col).encode())
     time.sleep(random.uniform(0.5, 4))
     ser.write(all_off_cmd)
     time.sleep(random.uniform(0.5, 2))
