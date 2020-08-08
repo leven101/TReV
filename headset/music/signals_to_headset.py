@@ -8,7 +8,7 @@ from multiprocessing import Process
 
 
 rsl_brightness = 100
-r = [0, 3]
+r = [0, 1]
 c = [0, 2]
 top_on = shared.cmd_template.format(shared.cmd_dict['top_on'], '{}', r[0], r[1], c[0], c[1])
 top_off = '<11>'.encode()

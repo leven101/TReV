@@ -6,10 +6,10 @@ from math import ceil
 
 import headset.shared as shared
 
-track_path = '/Users/abby/work/TReV/music/audio-files/theotherside-jasonderulo.m4a'
+track_path = '/Users/abby/work/TReV/music/audio-files/fg/Name_of_the_Game_The_Crystal_Method.wav'
 
 # global default values
-sr = 22050  # sampling rate of music
+sr = 88200 # 44100  # sampling rate of music
 hop_length = 2048  # how many audio frames per fft
 n_fft = 2205  # number of buckets to divide audio spectrum into
 hz_per_fft = int(sr / n_fft)  # sr/n_fft = hz buckets per fft
@@ -32,7 +32,7 @@ def load_track(mono=True):
 notee=4
 def track_tempo(y, note=shared.note_dict['1/{}'.format(notee)]):
     # tempo is how many times per second we flash the light
-    # note is how long the light should be on for each beat/flash
+    # note is how long the light should be  on for each beat/flash
     bpm, beat_times = librosa.beat.beat_track(y, sr, hop_length=hop_length)
     print('BPM: ', bpm)
     tempo = shared.get_tempo(bpm, note)
@@ -171,7 +171,8 @@ def mono_signal():
 
 
 if __name__ == '__main__':
+    print(track_path)
     # mono_signal()
     # stereo_signal()
-    by_beat_track()
-    # by_beat_track_stereo()
+    # by_beat_track()
+    by_beat_track_stereo()

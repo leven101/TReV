@@ -5,10 +5,10 @@ from headset.movies import special_effects
 
 
 def play_effects(ser):
-    ser.write(rsl_on_cmd.format(100).encode())
-    time.sleep(5)
+    ser.write(rsl_on_cmd.format(200).encode())
+    time.sleep(6)
     ser.write(rsl_off_cmd)
-    time.sleep(3)   # 8
+    time.sleep(2)   # 8
     flash_all(ser)
     time.sleep(11)  # 19
     special_effects.explosion(ser, 'right_top_on', 1.5)

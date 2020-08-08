@@ -74,5 +74,4 @@ def play_media_thread(cmd, secs):
 
 if __name__ == '__main__':
     # print(beats_per_second(103.36))
-    # play_track('/Users/abby/work/TReV/music/audio-files/fg/Name_of_the_Game_The_Crystal_Method.wav', False)
-    play_clip('/Users/abby/Desktop/tesst-sw.mov', daemon=False, youtube=False)
+    play_track('/Users/abby/work/TReV/music/audio-files/simple-hip-hop-beat_170bpm.wav', False)
