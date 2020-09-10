@@ -8,7 +8,7 @@ from multiprocessing import Process
 
 rsl_brightness = 200
 r = [1, 2]
-c = [4, 5]
+c = [1, 4]
 top_left_on = shared.cmd_template.format(shared.cmd_dict['left_top_on'], '{}', r[0], r[1], c[0], c[1])
 top_left_on_2 = shared.cmd_template.format(shared.cmd_dict['left_top_on'], '{}', r[0]+1, r[1]+1, c[0]+1, c[1]+1)
 top_right_on = shared.cmd_template.format(shared.cmd_dict['right_top_on'], '{}', r[0], r[1], c[0], c[1])
@@ -159,7 +159,7 @@ def run_track_program(df, ser):
 # in_audio_path = '/Users/abby/work/TReV/music/audio-files/fg/sinefromabove-ladygaga.m4a'
 # in_audio_path = '/Users/abby/work/TReV/music/audio-files/fg/morado-jBalvin.m4a'
 # in_audio_path = '/Users/abby/work/TReV/music/audio-files/fg/pessimist-paramore.m4a'
-in_audio_path = '/Users/abby/work/TReV/music/audio-files/onedance-drake.m4a'
+in_audio_path = '/Users/abby/work/TReV/music/audio-files/non-stop.hamilton.m4a'
 if __name__ == '__main__':
     in_signals_path = 'track-data/{}-stereo.csv'.format(os.path.basename(in_audio_path))
     # in_signals_path = 'track-data/tmp.m4a-stereo.csv'

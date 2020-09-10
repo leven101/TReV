@@ -1,7 +1,7 @@
 import librosa
 import numpy as np
 
-filename = '/Users/abby/work/TReV/music/audio-files/fg/BohemianRhapsody-Queen.mp3'
+filename = '/Users/abby/work/TReV/music/audio-files/08-Ticks&Leeches.mp3'
 # filename = '/Users/abby/work/TReV/music/audio-files/heavy-beat_140bpm_C_major.wav'
 y_stereo, sr = librosa.load(filename, mono=False)
 

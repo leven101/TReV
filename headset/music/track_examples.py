@@ -102,7 +102,7 @@ def revolt_by_malaa():
 if __name__ == '__main__':
     ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
     led_brightness = 15
-    rsl_brightness = 100
+    rsl_brightness = 200
     revolt_by_malaa()
     ser.close()
 

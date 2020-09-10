@@ -6,7 +6,7 @@ from multiprocessing import Process
 
 import headset.shared as shared
 tmpl = shared.cmd_template
-r = [0, 2]
+r = [1, 2]
 c = [2, 5]
 
 
@@ -95,37 +95,42 @@ def play_stereo(func):
     df1 = pd.read_csv(in1, dtype=float)
     shared.play_track(in_audio_path, False)
     procs = []
-    procs.append(Process(target=play_side, args=(df0, func, 'right', True)))
-    procs.append(Process(target=play_side, args=(df1, func, 'left', False)))
+    procs.append(Process(target=play_side, args=(df0, func, 'left', True)))
+    procs.append(Process(target=play_side, args=(df1, func, 'right', False)))
     [p.start() for p in procs]
     [p.join() for p in procs]
 
 
 if __name__ == '__main__':
-    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/08-Ticks&Leeches.mp3'
-    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/fg/moderngirl-sleaterkinney.m4a'
+    in_audio_path = '/Users/abby/work/TReV/music/audio-files/dontworry-behappy.m4a'
+    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/creep-r3hab.m4a'
+    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/01-DanceMonkey.mp3'
+    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/bulls-rage.m4a'
     # in_audio_path = '/Users/abby/work/TReV/music/audio-files/killing-rage.m4a'
+    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/07-Friction.mp3'
+    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/parallelLife-nekliff.m4a'
+    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/theotherside-jasonderulo.m4a'
+    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/BohemianRhapsody-Queen.mp3'
+    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/trollz-nickiminaj.m4a'
+    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/midnightblues-joebonamassa.m4a'
+    ###
+    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/08-Ticks&Leeches.mp3'
     # in_audio_path = '/Users/abby/work/TReV/music/audio-files/umbrella-rihanna.m4a'
     # in_audio_path = '/Users/abby/work/TReV/music/audio-files/newrules-dualipa.m4a'
-    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/fg/morado-jBalvin.m4a'
+    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/morado-jBalvin.m4a'
     # in_audio_path = '/Users/abby/work/TReV/music/audio-files/onemargarita-lukebryan.m4a'
-    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/theotherside-jasonderulo.m4a'
     # in_audio_path = '/Users/abby/work/TReV/music/audio-files/istandalone-godsmack.m4a'
-    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/friction-imageDragons.m4a'
-    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/fg/bohemian-queen.m4a'
     # in_audio_path = '/Users/abby/work/TReV/music/audio-files/intheend-linkinpark.m4a'
-    in_audio_path = '/Users/abby/work/TReV/music/audio-files/midnightblues-joebonamassa.m4a'
     # in_audio_path = '/Users/abby/work/TReV/music/audio-files/sexyback-justintimberlake.m4a'
-    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/fg/Name_of_the_Game_The_Crystal_Method.wav'
-    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/fg/Stay(2016Remaster).mp3'
+    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/Name_of_the_Game_The_Crystal_Method.wav'
+    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/non-stop.hamilton.m4a'
+    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/Stay(2016Remaster).mp3'
     # in_audio_path = '/Users/abby/work/TReV/music/audio-files/onedance-drake.m4a'
     # in_audio_path = '/Users/abby/work/TReV/music/audio-files/dirt-jayz.m4a'
     ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
     if ser: ser.write(shared.all_off_cmd)
-    if 'Name_of_' in in_audio_path or 'Ticks&Leeches' in in_audio_path:
-        print('playing stereo')
-        play_stereo(blink_double)
+    if os.path.exists('track-data/{}-0-beat.csv'.format(os.path.basename(in_audio_path))):
+        play_stereo(blink_single)
     else:
-        print('playing mono')
         play_mono(blink_double)
     if ser: ser.write(shared.all_off_cmd)

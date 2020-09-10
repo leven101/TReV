@@ -2,7 +2,7 @@ import numpy as np
 import librosa.display
 import matplotlib.pyplot as plt
 
-path = '../audio-files/tones/100hz.mp3'
+path = '/Users/abby/work/TReV/music/audio-files/01-DanceMonkey.mp3'
 
 # sr/n_fft = hz buckets per fft
 sr = 22050  # 44100
