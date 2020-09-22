@@ -7,9 +7,9 @@ import headset.shared as shared
 from multiprocessing import Process
 
 
-rsl_brightness = 100
-r = [0, 1]
-c = [0, 2]
+rsl_brightness = 200
+r = [0, 2]
+c = [0, 3]
 top_on = shared.cmd_template.format(shared.cmd_dict['top_on'], '{}', r[0], r[1], c[0], c[1])
 top_off = '<11>'.encode()
 bot_on = shared.cmd_template.format(shared.cmd_dict['bottom_on'], '{}', r[0], r[1], c[0], c[1])

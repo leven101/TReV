@@ -13,7 +13,7 @@ slp=0.01
 
 start=0
 end=4
-cmd = 'right_top_on'
+cmd = 'left_top_on'
 
 # ser.write(rsl_on_cmd.format(200).encode())
 while start != end:

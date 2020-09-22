@@ -6,7 +6,7 @@ from math import ceil
 
 import headset.shared as shared
 
-track_path = '/Users/abby/work/TReV/music/audio-files/dontworry-behappy.m4a'
+track_path = '/Users/abby/work/TReV/music/audio-files/BohemianRhapsody-Queen.mp3'
 
 # global default values
 sr = 44100  # sampling rate of music
@@ -29,7 +29,7 @@ def load_track(mono=True):
     return y, track_seconds
 
 
-notee=16
+notee=4
 def track_tempo(y, note=shared.note_dict['1/{}'.format(notee)]):
     # tempo is how many times per second we flash the light
     # note is how long the light should be  on for each beat/flash
@@ -186,5 +186,5 @@ if __name__ == '__main__':
     print(track_path)
     # mono_signal()
     # stereo_signal()
-    # by_beat_track()
-    by_beat_track_stereo()
+    by_beat_track()
+    # by_beat_track_stereo()

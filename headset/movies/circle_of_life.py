@@ -28,7 +28,7 @@ if __name__ == '__main__':
     clip_url = 'https://www.youtube.com/watch?v=GibiNy4d4gc'
     play_clip(clip_url, False, 143)
     time.sleep(144)
-    signals_path = "/Users/abby/work/TReV/headset/music/track-data/circle-of-life.wav-stereo.csv"
+    signals_path = "/Users/abby/work/TReV/headset/music/track-data/16-circle-of-life.m4a-stereo.csv"
     df = pd.read_csv(signals_path, dtype=float)
     df['cum_secs'] = df['seconds'].cumsum()
 

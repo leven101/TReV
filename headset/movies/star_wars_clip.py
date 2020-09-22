@@ -9,11 +9,6 @@ start_choices = ['right_bottom_on', 'right_top_on', 'left_bottom_on', 'left_top_
 row_choices = [0, 1]
 col_choices = [0, 1, 2, 3, 4, 5, 6]
 
-'''TODO for Hans Solo face
-- add surprise RSL gradient  at 1:14
-- happy for 2:25 - 2:26
-'''
-
 
 def brightness_gradient_up(cmd_shell, speed):
     for i in range(0, 15, 5):
@@ -193,8 +188,8 @@ def run_effects_timing():
 
 if __name__ == '__main__':
     clip_url = 'https://www.youtube.com/watch?v=qPEB9PS5mOw'
-    # play_clip(clip_url, True, 176)
-    # time.sleep(177)
+    play_clip(clip_url, True, 176)
+    time.sleep(177)
     ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
     s = time.time()
     play_clip(clip_url, True)
