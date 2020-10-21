@@ -102,15 +102,16 @@ def play_stereo(func):
 
 
 if __name__ == '__main__':
-    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/dontworry-behappy.m4a'
-    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/creep-r3hab.m4a'
+    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/closer-nineinchnails.m4a'
+    in_audio_path = '/Users/abby/work/TReV/music/audio-files/creep-r3hab.m4a'
     # in_audio_path = '/Users/abby/work/TReV/music/audio-files/01-DanceMonkey.mp3'
     # in_audio_path = '/Users/abby/work/TReV/music/audio-files/bulls-rage.m4a'
-    in_audio_path = '/Users/abby/work/TReV/music/audio-files/killing-rage.m4a'
+    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/killing-rage.m4a'
     # in_audio_path = '/Users/abby/work/TReV/music/audio-files/07-Friction.mp3'
     # in_audio_path = '/Users/abby/work/TReV/music/audio-files/parallelLife-nekliff.m4a'
     # in_audio_path = '/Users/abby/work/TReV/music/audio-files/theotherside-jasonderulo.m4a'
     # in_audio_path = '/Users/abby/work/TReV/music/audio-files/BohemianRhapsody-Queen.mp3'
+    # in_audio_path = '/Users/abby/work/TReV/music/audio-files/boom-tiesto.m4a'
     # in_audio_path = '/Users/abby/work/TReV/music/audio-files/trollz-nickiminaj.m4a'
     # in_audio_path = '/Users/abby/work/TReV/music/audio-files/midnightblues-joebonamassa.m4a'
     ###
@@ -130,7 +131,7 @@ if __name__ == '__main__':
     ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
     if ser: ser.write(shared.all_off_cmd)
     if os.path.exists('track-data/{}-0-beat.csv'.format(os.path.basename(in_audio_path))):
-        play_stereo(blink_double)
+        play_stereo(blink_single)
     else:
         play_mono(blink_double)
     if ser: ser.write(shared.all_off_cmd)

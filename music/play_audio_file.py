@@ -34,4 +34,5 @@ if __name__ == '__main__':
     # Usage example for pyaudio
     a = AudioFile("audio-files/dt_16bars_102rap.wav")
     a.play()
+
     a.close()

@@ -6,7 +6,7 @@ from math import ceil
 
 import headset.shared as shared
 
-track_path = '/Users/abby/work/TReV/music/audio-files/BohemianRhapsody-Queen.mp3'
+track_path = '/Users/abby/work/TReV/music/audio-files/boom-tiesto.m4a'
 
 # global default values
 sr = 44100  # sampling rate of music
@@ -66,7 +66,7 @@ def by_beat_track_stereo():
         beat_df['percussive'] = 0
         hz_db_harm, hz_db_perc, hz_full = harm_vs_perc(y[idx])
         num_per_hop = ceil(hz_db_perc.shape[1] / len(beat_df))
-        avg_hz = np.mean(hz_full)
+        avg_hz = np.mean(hz_full) - 0.45
         print('full avg hz: ', avg_hz)
         for i in range(len(beat_times)):
             idx_start = i * num_per_hop
@@ -94,7 +94,7 @@ def by_beat_track():
     beat_df['percussive'] = 0
     hz_db_harm, hz_db_perc, hz_full = harm_vs_perc(y)
     num_per_hop = ceil(hz_db_perc.shape[1] / len(beat_df))
-    avg_hz = np.mean(hz_full)
+    avg_hz = np.mean(hz_full) - 0.5
     print('full avg hz: ', avg_hz)
     for i in range(len(beat_times)):
         idx_start = i * num_per_hop

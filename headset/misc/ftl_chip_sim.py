@@ -34,7 +34,7 @@ def ptb_to_pta(pt_a, pt_b, r, cmd):
     print(time.time() - start)
 
 
-for _ in range(100):
+for _ in range(128):
     c1 = random.randint(0, 4)
     r11 = random.randint(0, 3)
     r12 = r11 if random.random() >= 0.5 else r11 + 1

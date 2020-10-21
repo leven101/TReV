@@ -42,7 +42,7 @@ def get_tempo(bpm, note):
 
 
 def play_track(path, daemon=True):
-    t1 = Process(target=playsound.playsound, daemon=daemon, args=(path,))
+    t1 = Process(target=playsound.playsound, daemon=daemon, args=(path, True))
     t1.start()
     # playsound.playsound(path)
 
@@ -74,4 +74,8 @@ def play_media_thread(cmd, secs):
 
 if __name__ == '__main__':
     # print(beats_per_second(103.36))
-    play_track('/Users/abby/work/TReV/music/audio-files/simple-hip-hop-beat_170bpm.wav', False)
+    # start = time.time()
+    play_track('/Users/abby/work/TReV/music/audio-files/tones/1000hz.mp3', True)
+    time.sleep(0.001)
+    print('..')
+    # print(time.time() - start)

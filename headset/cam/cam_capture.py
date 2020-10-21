@@ -80,6 +80,6 @@ def dual_cam_capture_multi_thread():
 
 
 if __name__ == '__main__':
-    dual_cam_capture_multi_thread()
+    duel_cam_capture_single_thread()
 
 
