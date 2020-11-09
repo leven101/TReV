@@ -22,7 +22,7 @@ rsl_on_cmd = '<{} {}>'.format(cmd_dict['ready_state_on'], '{}')
 rsl_off_cmd = '<3>'.encode()
 off_cmd = '<{}>'
 all_off_cmd = off_cmd.format(cmd_dict['all_off']).encode()
-total_brightness = 15
+total_brightness = 8
 
 
 # tempo is number of times the light blinks
@@ -76,6 +76,7 @@ if __name__ == '__main__':
     # print(beats_per_second(103.36))
     # start = time.time()
     play_track('/Users/abby/work/TReV/music/audio-files/tones/1000hz.mp3', True)
-    time.sleep(0.001)
-    print('..')
+    time.sleep(0.0011)
+    #time.sleep(0.09788)
+    #print('..')
     # print(time.time() - start)

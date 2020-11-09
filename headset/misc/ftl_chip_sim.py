@@ -7,7 +7,7 @@ from headset.shared import cmd_template, cmd_dict, all_off_cmd
 
 ser = serial.Serial('/dev/cu.SLAB_USBtoUART', 115200)
 ser.write(all_off_cmd)
-bght=15
+bght=5
 rr=0.07615690449473558
 weight_ratio = rr/1.5
 
@@ -34,7 +34,7 @@ def ptb_to_pta(pt_a, pt_b, r, cmd):
     print(time.time() - start)
 
 
-for _ in range(128):
+for _ in range(100):
     c1 = random.randint(0, 4)
     r11 = random.randint(0, 3)
     r12 = r11 if random.random() >= 0.5 else r11 + 1
@@ -52,4 +52,10 @@ for _ in range(128):
 ser.flush()
 time.sleep(0.5)
 ser.write(all_off_cmd)
-# ser.close()
+ser.close()
+# start = time.time()
+# while time.time() - start < 20:
+#     ser.write(cmd_template.format(cmd_dict['all_on'], bght, 0, 4, 0, 7).encode())
+#     time.sleep(rr)
+#     ser.write(all_off_cmd)
+#     time.sleep(rr)
